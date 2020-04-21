@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: xcasino.github.io
-Token: 399691c918580a5b1719b0d66cb332e5a8daa3830f94a8d9b60395a5d5ccf150
