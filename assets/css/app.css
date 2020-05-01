@@ -18,14 +18,13 @@ html {
     color: #FFFFFF;
     width: 250px;
     height: 100vh;
-    padding: 1rem;
     background: #000000;
     border-right: solid 1px #333333;
     box-shadow: 10px 0px 25px #000000;
 }
 
 .profile-header {
-    margin-bottom: 1rem;
+    margin: 1rem 0 1rem 1rem;
     display: inline-block;
     padding-bottom: 1rem;
 }
@@ -50,11 +49,12 @@ html {
     float: left;
     margin-left: 1.5rem;
     color: #3F3F3F;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     text-align: center;
 }
 
 .profile-seperator {
+    margin-left: 1rem;
     display: block;
     border: none;
     color: #FFFFFF;
