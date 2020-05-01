@@ -27,6 +27,7 @@ html {
 .profile-header {
     margin-bottom: 1rem;
     display: inline-block;
+    padding-bottom: 1rem;
 }
 
 .profile-image {
@@ -51,4 +52,13 @@ html {
     color: #3F3F3F;
     font-size: 1.25rem;
     text-align: center;
+}
+
+.profile-seperator {
+    display: block;
+    border: none;
+    color: #FFFFFF;
+    height: 1px;
+    background: #000000;
+    background: -webkit-gradient(radial, 100% 100%, 0, 100% 100%, 350, from(#000000), to(#333333));
 }
