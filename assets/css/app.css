@@ -18,8 +18,15 @@ html {
     color: #FFFFFF;
     width: 250px;
     height: 100vh;
+    padding: 1rem;
     background: #000000;
+    border-right: solid 1px #333333;
     box-shadow: 10px 0px 25px #000000;
+}
+
+.profile-header {
+    margin-bottom: 1rem;
+    display: inline-block;
 }
 
 .profile-image {
@@ -28,4 +35,20 @@ html {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.profile-name {
+    float: left;
+    line-height: 35px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-left: 1.5rem;
+}
+
+.profile-subtitle {
+    float: left;
+    margin-left: 1.5rem;
+    color: #3F3F3F;
+    font-size: 1.25rem;
+    text-align: center;
 }
