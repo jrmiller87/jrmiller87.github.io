@@ -49,9 +49,10 @@ html {
     float: left;
     margin-left: 1.5rem;
     color: #3F3F3F;
-    font-size: 1.1rem;
+    font-size: .95rem;
     font-weight: 600;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .profile-seperator {
