@@ -173,6 +173,25 @@ header.site-header{position:sticky;top:0;z-index:100;background:#15171a;border-b
 .life-picture-copy span{display:block;font-size:12px;color:#d0d2d4;margin-top:7px}
 @media(max-width:900px){.life-gallery{grid-template-columns:1fr 1fr}.life-picture:first-child{grid-column:1/-1;min-height:300px}.life-picture{min-height:270px}}
 @media(max-width:620px){.life-intro{display:block}.life-intro p{margin-top:12px}.life-gallery{grid-template-columns:1fr}.life-picture:first-child{grid-column:auto}.life-picture{min-height:260px}.person .portrait{height:260px}}
+
+/* Ülric homepage image framing — purposeful responsive head/upper-body crops */
+.person .portrait.photo-ulric{
+  background-image:var(--ulric-art);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:50% 3%;
+  min-height:275px;
+}
+.story-card .card-visual.feature-ulric{
+  background-image:var(--ulric-art);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:50% 5%;
+}
+@media(max-width:740px){
+  .person .portrait.photo-ulric{background-position:50% 2%;height:260px;min-height:260px}
+  .story-card .card-visual.feature-ulric{background-position:50% 3%}
+}
 </style></head>
 <body><div class="layout"><header class="site-header"><div class="site-header-inner"><a href="./index.html" class="site-brand" aria-label="The Vaelen Estate home"><span class="site-mark">ÜV</span><span class="site-wordmark">THE VAELEN ESTATE<small>A LIVING STORY OF BOHEMIA</small></span></a><nav class="site-nav" aria-label="Main navigation"><a class="active" aria-current="page" href="./index.html">Home</a><a href="./profile.html">Character Profile</a><a href="./equipment.html?v=nav8">Equipment Screen</a><a href="#characters">Characters</a><a href="#timeline">Timeline</a></nav></div></header>
 <section class="hero" id="home"><div class="hero-art"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#23171b"/><stop offset="1" stop-color="#1f2b33"/></linearGradient></defs><rect width="1600" height="900" fill="url(#g1)"/><circle cx="1200" cy="160" r="220" fill="#c9a57222"/><path d="M1000 760c80-220 140-420 208-510 37-50 111-81 174-78 42 2 104 32 138 73-33-6-72 3-113 25-56 31-105 84-136 141-40 74-63 141-97 349z" fill="#f0b7c155"/><path d="M1040 728c4-86 15-162 33-228 25-91 60-161 101-214 35-45 101-85 145-85 37 0 65 7 85 22-35 4-61 16-81 31-73 57-132 141-167 224-31 74-43 146-57 250z" fill="#fff3f344"/><path d="M0 810h1600" stroke="#d8ba8b2e" stroke-width="2"/></svg></div><div class="wrap hero-inner"><div class="hero-copy"><div class="tiny accent">The public chronicle of Ülric Vaelen</div><h1>Ülric <span>Vaelen</span></h1><div class="hero-sub">Armorer · Tailor · Miner · Watchman</div><p>The Vaelen Estate preserves Ülric’s established roleplay story in a public, read-only form. Explore his life, his family, his current character profile, and his new interactive equipment screen.</p><div class="hero-actions"><a class="btn" href="./profile.html">Open Character Profile</a><a class="btn line" href="./equipment.html?v=estate9">View Equipment Screen</a></div></div></div><div class="hero-foot"><div class="wrap hero-stats"><div><small>Current standing</small><b>Watchman</b></div><div><small>Armouring</small><b>Year V</b></div><div><small>Property</small><b>Warehouse in Tachov</b></div><div><small>Mount</small><b>Havran, white palfrey</b></div></div></div></section>
