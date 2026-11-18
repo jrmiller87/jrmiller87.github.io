@@ -1,0 +1,191 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Vaelen Estate · Steward’s Hall v3</title><style>
+:root{
+  --bg:#0f1319;
+  --bg2:#171d25;
+  --panel:#f4ecde;
+  --panel2:#ebe0cf;
+  --ink:#2f2a24;
+  --muted:#6d6658;
+  --gold:#caa260;
+  --gold2:#e1c58f;
+  --wine:#6b2f3a;
+  --wine2:#8d4250;
+  --steel:#506172;
+  --steel2:#7f92a5;
+  --line:#c7b79d;
+  --ok:#3d6947;
+  --warn:#7e5b29;
+  --danger:#7b333b;
+  --shadow:0 18px 42px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  font:15px/1.55, Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(202,162,96,.10), transparent 22%),
+    radial-gradient(circle at 100% 0%, rgba(107,47,58,.16), transparent 28%),
+    linear-gradient(180deg, #1a2028 0%, #10141a 100%);
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+.side{
+  position:sticky; top:0; height:100vh; overflow:auto;
+  padding:22px 18px;
+  color:#f6efe5;
+  background:
+    linear-gradient(180deg, rgba(11,14,18,.96), rgba(19,24,31,.98)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 8px, transparent 8px 16px);
+  border-right:1px solid rgba(202,162,96,.28);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.04);
+}
+.side-shell{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(202,162,96,.16);
+  border-radius:22px;
+  padding:20px 16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+}
+.crest-wrap{display:grid;place-items:center;margin:4px 0 14px}
+.crest{
+  width:96px;height:96px;border-radius:50%;position:relative;
+  display:grid;place-items:center;
+  border:2px solid rgba(225,197,143,.8);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 35%),
+    linear-gradient(145deg, var(--wine2), #3b1f29 70%);
+  color:#fff6e6;
+  font-size:32px; font-weight:bold; letter-spacing:1px;
+  box-shadow:0 0 0 7px rgba(202,162,96,.12), 0 12px 30px rgba(0,0,0,.35);
+}
+.crest:before,.crest:after{
+  content:''; position:absolute; inset:8px; border-radius:50%; border:1px solid rgba(255,245,225,.25);
+}
+.brand{
+  text-align:center; font-size:20px; letter-spacing:2px; color:var(--gold2);
+  margin-bottom:4px; text-transform:uppercase;
+}
+.sub{
+  text-align:center; color:#c9b89d; font-size:11px; letter-spacing:1.6px;
+  text-transform:uppercase; margin-bottom:18px;
+}
+.motto{
+  margin:0 0 18px; text-align:center; color:#dbc9a9; font-size:12px;
+  padding:12px 10px; border-top:1px solid rgba(202,162,96,.18); border-bottom:1px solid rgba(202,162,96,.18);
+}
+.side-group-title{
+  font-size:10px; color:#b29f7f; text-transform:uppercase; letter-spacing:2px; margin:0 0 10px 8px;
+}
+.nav{width:100%;text-align:left;padding:12px 14px;background:transparent;color:#f1eadc;border:1px solid transparent;border-radius:12px;margin:0 0 6px;transition:.15s ease}
+.nav:hover{background:rgba(255,255,255,.05);border-color:rgba(202,162,96,.2)}
+.nav.active{
+  background:linear-gradient(90deg, rgba(202,162,96,.16), rgba(255,255,255,.03));
+  border-color:rgba(202,162,96,.32); color:#fffaf1; box-shadow:inset 3px 0 0 var(--gold);
+}
+.foot{font-size:11px;color:#c9b89d;margin-top:auto;padding-top:18px;text-align:center;line-height:1.7}
+.main{padding:34px clamp(16px,4vw,54px);max-width:1540px;width:100%;margin:auto}
+.top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;
+  margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(199,183,157,.3)
+}
+.eyebrow{color:var(--steel2);text-transform:uppercase;letter-spacing:2.3px;font-size:11px;font-weight:bold}
+h1{font-weight:normal;font-size:clamp(30px,4vw,46px);margin:8px 0 0;color:#f3eadf;letter-spacing:.4px}
+h2{font-size:24px;font-weight:normal;color:#45392d;margin:0 0 14px}
+h3{font-size:16px;color:var(--wine);font-weight:bold;margin:0 0 12px;letter-spacing:.3px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  color:#f7efdf;border:1px solid rgba(202,162,96,.36);border-radius:999px;padding:9px 14px;font-size:12px;letter-spacing:.6px
+}
+.pill:before{content:'✦';color:var(--gold2)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{
+  position:relative;
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid rgba(145,119,79,.38);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.card:before{
+  content:''; position:absolute; left:0; top:0; right:0; height:6px;
+  background:linear-gradient(90deg, var(--wine), var(--gold), var(--steel)); opacity:.9;
+}
+.stat{color:var(--wine);font-size:30px;margin:10px 0 4px;font-weight:bold}
+.small{font-size:12px}.tiny{font-size:11px;color:var(--muted)}.muted{color:var(--muted)}
+.bar{height:10px;border-radius:999px;background:#d7c7b1;overflow:hidden;margin:12px 0;border:1px solid rgba(0,0,0,.06)}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--wine),var(--gold),var(--steel));border-radius:999px}
+.btn{border:1px solid rgba(107,47,58,.45);background:linear-gradient(180deg,var(--wine2),var(--wine));color:#fff7eb;padding:10px 15px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.btn:hover{filter:brightness(1.06)}
+.btn.alt{background:linear-gradient(180deg,#5a6878,#4b5867);border-color:rgba(80,97,114,.48)}
+.btn.danger{background:linear-gradient(180deg,#9a4b54,#7b333b);border-color:rgba(123,51,59,.55)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+label{display:block;font-size:12px;color:#645844;margin:12px 0 5px;font-weight:bold;letter-spacing:.3px}
+input,select,textarea{
+  width:100%;background:#fffcf7;color:var(--ink);border:1px solid #bfae93;padding:10px 12px;border-radius:10px;min-width:0;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.03)
+}
+textarea{min-height:95px;resize:vertical}
+.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tablewrap{overflow-x:auto;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:#fdf8f0}
+table{border-collapse:collapse;width:100%;min-width:480px}th,td{text-align:left;border-bottom:1px solid #dccfbc;padding:12px 10px}th{color:var(--wine);font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}td{font-size:13px}
+.note{
+  border-left:4px solid var(--gold);padding:13px 16px;background:#fcf6ea;color:#4c4438;margin:15px 0;border-radius:10px
+}
+.notice{padding:11px 14px;border:1px solid #c1ad8d;border-radius:10px;background:#fbf5e7;margin:12px 0}
+.ok{border-color:#88a17d;background:#eef5ec}.warning{color:#7d5927}.status{font-size:12px;color:var(--wine);font-weight:bold}.subtle{font-size:12px;color:var(--muted)}
+.hidden{display:none!important}.section{display:none}.section.active{display:block}
+.listentry{border-bottom:1px solid #d7c7b1;padding:12px 0}.listentry:last-child{border:0}.tag{font-size:11px;color:var(--wine);font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.hero{
+  position:relative;overflow:hidden;padding:28px 26px;border-radius:22px;margin-bottom:20px;min-height:168px;
+  color:#fbf6ef;box-shadow:var(--shadow);border:1px solid rgba(225,197,143,.28);
+  background:
+    linear-gradient(115deg, rgba(26,31,38,.96) 0%, rgba(49,30,37,.94) 44%, rgba(97,76,46,.90) 100%),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,.16), transparent 22%);
+}
+.hero:before{
+  content:''; position:absolute; inset:14px; border:1px solid rgba(255,245,225,.13); border-radius:16px; pointer-events:none;
+}
+.hero:after{
+  content:'✠'; position:absolute; right:26px; bottom:-20px; font-size:138px; line-height:1; opacity:.10; color:#fff8eb; pointer-events:none;
+}
+.hero h2{color:#fff2d8;margin:8px 0 0;font-size:32px}
+.hero p{margin:10px 0 0;color:#f0e5d0;max-width:70ch}
+.report{background:#f8f2e7;border:1px solid rgba(145,119,79,.25);border-radius:14px;padding:16px;line-height:1.75;color:#43392f}
+.report p{margin:6px 0}
+.mini{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--steel);font-weight:bold}
+.checkrow{display:flex;align-items:center;gap:9px;margin:12px 0;color:var(--ink);font-size:13px}
+.checkrow input{width:auto}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.section .card h2{letter-spacing:.2px}
+.decor-rule{height:12px;margin:10px 0 0;background:linear-gradient(90deg,transparent, rgba(202,162,96,.65) 15%, rgba(202,162,96,.25) 50%, transparent 85%)}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.app{grid-template-columns:260px 1fr}}
+@media(max-width:780px){.app{display:block}.side{height:auto;position:static;padding:14px}.side-shell{border-radius:18px}.brand{text-align:left}.sub,.motto,.foot{display:none}.crest-wrap{display:none}.side nav{display:flex;overflow-x:auto;gap:6px;padding-bottom:6px}.nav{white-space:nowrap;width:auto;margin:0}.main{padding:20px 14px}.two,.formgrid,.split{grid-template-columns:1fr}}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.stat{font-size:24px}.card{padding:16px}.hero h2{font-size:26px}}
+</style></head><body><div class="app"><aside class="side"><div class="side-shell"><div class="crest-wrap"><div class="crest">ÜV</div></div><div class="brand">The Vaelen Estate</div><div class="sub">Steward's Hall · Version III</div><div class="motto">By Hammer · By Steel · By Fortune</div><div class="side-group-title">Steward's Ledger</div><nav id="nav"></nav><div class="foot">House von Dubá · Bohemia<br>Estate records, workshops & trade</div></div></aside><main class="main"><div class="top"><div><div class="eyebrow">House von Dubá · Bohemia</div><h1 id="pageTitle">Steward's Dashboard</h1><div class="decor-rule"></div></div><span class="pill">Ülric Vaelen · Age 27</span></div>
+<section id="dashboard" class="section active"><div class="hero"><div class="eyebrow">The Steward's Report</div><h2>Your affairs, at a glance</h2><p>Watchman of House von Dubá · Armorer, Tailor & Miner · Aspiring knight. A reworked estate hall with a cleaner parchment-and-steel presentation for Ülric's treasury, workshops, holdings, and trade.</p></div><div class="grid" id="stats"></div><div class="two"><div class="card"><h2>Profession Progress</h2><div id="progress"></div></div><div class="card"><h2>Matters Requiring Attention</h2><div id="tasks"></div><div class="split"><input id="newTask" placeholder="New order for the steward"><button class="btn alt" onclick="addTask()">Add order</button></div><div class="actions"><button class="btn alt" onclick="go('journal')">Record a session</button></div></div></div><div class="two"><div class="card"><h2>Estate Holdings</h2><p>🏚️ Warehouse · Tachov</p><p>🐎 Havran · White palfrey, black mane and tail</p><p>🛡️ House von Dubá Watch · Confirmed membership</p></div><div class="card"><h2>Trade on Offer</h2><div id="dashTrade"></div></div></div><div class="card"><h2>Today's Steward Report</h2><div class="report" id="stewardReport"></div><div class="actions"><button class="btn alt" onclick="go('workshop')">Plan a crafting batch</button><button class="btn alt" onclick="go('journal')">Record session</button></div></div></section>
+<section id="treasury" class="section"><div class="card"><h2>Treasury Ledger</h2><p class="muted small">Opening balances are provisional where the location of funds is not confirmed. Edit them to match the game.</p><div class="formgrid"><div><label>Bank (gr)</label><input type="number" min="0" id="bank"></div><div><label>Purse (gr)</label><input type="number" min="0" id="purse"></div><div><label>Unallocated / uncertain (gr)</label><input type="number" min="0" id="uncertain"></div></div><div class="actions"><button class="btn" onclick="saveTreasury()">Save balances</button></div><div class="note" id="treasuryTotal"></div></div><div class="card"><h2>Transaction History</h2><div class="formgrid"><div><label>Type</label><select id="txnType"><option value="income">Income</option><option value="expense">Expense</option><option value="transfer">Transfer / note</option></select></div><div><label>Amount (gr)</label><input type="number" id="txnAmount" min="0" value="0"></div><div><label>Description</label><input id="txnNote" placeholder="Commission, bench fee, etc."></div></div><div class="formgrid"><div><label>From / expense account</label><select id="txnFrom"><option value="purse">Purse</option><option value="bank">Bank</option><option value="uncertain">Unallocated</option></select></div><div><label>To / income account</label><select id="txnTo"><option value="bank">Bank</option><option value="purse">Purse</option><option value="uncertain">Unallocated</option></select></div><div><label>Balance behavior</label><select id="txnMode"><option value="apply">Apply to balances</option><option value="log">Record only (already accounted for)</option></select></div></div><div class="actions"><button class="btn alt" onclick="addTxn()">Record transaction</button></div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Details</th></tr></thead><tbody id="txnRows"></tbody></table></div><p class="tiny">Choose whether each entry updates balances or is record-only. Transfers move funds between accounts without changing the estate total.</p></div></section>
+<section id="professions" class="section"><div class="card"><h2>Craftsmanship & Experience</h2><p class="muted">Edit experience after confirmed crafting or mining. Progress updates automatically throughout the estate.</p><div id="profEditor"></div></div></section>
+<section id="workshop" class="section"><div class="card"><h2>Workshop Calculator</h2><p class="muted">Plan freely. When a batch is actually completed, confirm it to update recorded inventory, bench fees, profession XP and the session log together. Unknown stock is never assumed.</p><label>Recipe</label><select id="recipe" onchange="calc()"></select><div class="formgrid"><div><label>Quantity</label><input id="qty" type="number" min="1" value="50" oninput="calc()"></div><div><label>Daily full-XP crafting cap</label><input type="number" value="50" disabled></div></div><div id="calcOutput" class="note"></div><label class="checkrow"><input type="checkbox" id="confirmCraft"> I confirm this batch was actually completed in RP</label><label class="checkrow"><input type="checkbox" id="allowUnknown"> Permit crafting with unrecorded materials (does not deduct unknown stock)</label><label class="checkrow"><input type="checkbox" id="allowReduced"> I have verified actual XP for a batch over the daily full-rate cap</label><div class="formgrid"><div><label>XP actually earned (editable)</label><input type="number" id="actualXp" min="0" step="0.1" placeholder="Calculated automatically"></div><div><label>Pay bench fee from</label><select id="craftAccount"><option value="purse">Purse</option><option value="bank">Bank</option></select></div><div><label>Crafting date</label><input type="date" id="craftDate"></div></div><div class="actions"><button class="btn" onclick="completeCraft()">Confirm batch & update ledgers</button></div><div id="craftFeedback" class="subtle">Planning does not alter any records.</div></div><div class="card"><h2>Saved Recipes</h2><div id="recipeList"></div><p class="tiny">Material values are quantities, not groschen. Material purchase prices and selling prices are not assumed.</p></div></section>
+<section id="orders" class="section"><div class="card"><h2>Steward's Daily Orders</h2><p class="muted">Review actionable matters. Completed tasks remain in the ledger until removed.</p><div id="ordersList"></div><label>New order</label><input id="orderText" placeholder="Inspect the Tachov warehouse"><div class="actions"><button class="btn" onclick="addTask(true)">Issue order</button><button class="btn alt" onclick="clearCompletedTasks()">Clear completed</button></div></div><div class="card"><h2>Recent Estate Activity</h2><div id="activityList"></div></div></section>
+<section id="warehouse" class="section"><div class="card"><h2>Warehouse at Tachov</h2><p class="muted">Quantities are unknown until you enter them; a blank inventory is not proof of zero stock.</p><div class="formgrid"><div><label>Item</label><input id="itemName" placeholder="Steel, coal, padding..."></div><div><label>Quantity</label><input type="number" id="itemQty" min="0" value="1"></div><div><label>Location / note</label><input id="itemNote" placeholder="Tachov warehouse"></div></div><div class="actions"><button class="btn" onclick="addItem()">Add or update item</button></div><div class="tablewrap"><table><thead><tr><th>Item</th><th>Quantity</th><th>Location / note</th><th></th></tr></thead><tbody id="itemsRows"></tbody></table></div></div></section>
+<section id="trading" class="section"><div class="card"><h2>Vaelen Trading Ledger</h2><p class="muted">Listed goods are not counted as sold. Sale proceeds are projections until confirmed.</p><div class="formgrid"><div><label>Item</label><input id="listingName" placeholder="Brunswick's Chainmail Coif"></div><div><label>Quantity</label><input type="number" id="listingQty" min="1" value="1"></div><div><label>Unit asking price (gr)</label><input type="number" id="listingPrice" min="0" value="0"></div></div><div class="actions"><button class="btn" onclick="addListing()">Add listing</button></div><div class="tablewrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Unit price</th><th>Potential revenue</th><th>Status</th><th></th></tr></thead><tbody id="listingRows"></tbody></table></div></div></section>
+<section id="service" class="section"><div class="card"><h2>House von Dubá Service Dossier</h2><p><span class="pill">Watch membership confirmed</span></p><p><b>Current position:</b> Watchman</p><p><b>Ambition:</b> Earn knighthood (not yet achieved)</p><p><b>Prior affiliation:</b> Order of the Golden Rose (former, not current)</p><div class="note">Only confirmed appointments and accomplishments should be entered as achieved. The service notes below are yours to maintain.</div><label>Watch duties, incidents, commendations, or ambitions</label><textarea id="serviceNotes"></textarea><div class="actions"><button class="btn" onclick="saveService()">Save service notes</button></div></div></section>
+<section id="journal" class="section"><div class="card"><h2>Roleplay Session Log</h2><p class="muted">Record what happened, what changed, and what needs follow-up.</p><div class="formgrid"><div><label>Date</label><input type="date" id="sessionDate"></div><div><label>Session title</label><input id="sessionTitle" placeholder="An evening at the forge"></div><div><label>Status</label><select id="sessionStatus"><option>Confirmed in RP</option><option>Plan / intention</option><option>Unverified</option></select></div></div><label>Notes and changes</label><textarea id="sessionNotes" placeholder="Crafted 50 coifs, sold 2, deposited 200 gr..."></textarea><div class="actions"><button class="btn" onclick="addSession()">Record session</button></div><div id="sessionList"></div></div></section>
+<section id="settings" class="section"><div class="card"><h2>Save & Move Your Estate</h2><p class="muted">Changes are stored locally in this browser. Export backups regularly; opening the website on a different device will not automatically carry over your data.</p><div class="actions"><button class="btn" onclick="exportData()">Export estate backup (.json)</button><label class="btn alt" style="display:inline-block;margin:0;cursor:pointer">Import backup<input type="file" accept="application/json" onchange="importData(event)" style="display:none"></label><button class="btn danger" onclick="resetData()">Reset to initial records</button></div><p class="tiny">V2 migrates V1 browser records on first visit when hosted at the same origin. Export a V1 JSON backup before switching domains or browsers. GitHub Pages hosts code only: it does not synchronize your ledger between devices.</p></div></section>
+</main></div><script>
+const seed={treasury:{bank:2817,purse:0,uncertain:10},professions:[{name:'Armouring',year:5,xp:48,target:3050},{name:'Tailoring',year:4,xp:1170,target:1850},{name:'Mining',year:4,xp:4763,target:6400}],tasks:[{text:'Confirm whether the planned batch of 50 Miner’s Hose was completed',done:false},{text:'Verify current purse and the location of the 10 gr alms',done:false},{text:'Check whether the 9 Brunswick coifs have sold',done:false},{text:'Review materials before next armouring batch',done:false}],transactions:[],inventory:[],listings:[{id:1,name:"Brunswick's Chainmail Coif",qty:9,price:225,status:'Listed'}],sessions:[],serviceNotes:'',recipes:[{name:'Mail Coif (Heavy)',xp:21,fee:10,materials:{Steel:6,Coal:6,Padding:1}},{name:"Noble's Gauntlets",xp:30,fee:28,materials:{'Copper Ore':1,Steel:10,Hides:4,Coal:10,Padding:1}},{name:"Miner's Hose",xp:6.7,fee:2,materials:{Nettle:6}},{name:"Master Huntsman's Hose",xp:6.7,fee:2,materials:{Nettle:6}},{name:'Bohemian Cap',xp:6.1,fee:2,materials:{Nettle:5}}]};
+const KEY='vaelen-estate-v2';let data;let migrated=false;try{const existing=localStorage.getItem(KEY);const old=localStorage.getItem('vaelen-estate-v1');data=JSON.parse(existing||(old||'null'))||structuredClone(seed);migrated=!existing&&!!old;}catch(e){data=structuredClone(seed)}data.activity ||= [];data.crafts ||= [];data.tasks ||= [];data.inventory ||= [];data.transactions ||= [];if(migrated)localStorage.setItem(KEY,JSON.stringify(data));function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert('Browser storage failed; export a backup now.')}render()}const pages=[['dashboard','⌂  Steward’s Dashboard'],['orders','☷  Daily Orders'],['treasury','◈  Treasury'],['professions','⚒  Professions'],['workshop','⚙  Crafting Calculator'],['warehouse','▣  Warehouse'],['trading','♜  Trading Ledger'],['service','♢  Watch Service'],['journal','✎  Session Journal'],['settings','☷  Backup & Settings']];let current='dashboard';const $=id=>document.getElementById(id);const fmt=n=>Number(n).toLocaleString('en-US',{maximumFractionDigits:1});function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function go(id){current=id;document.querySelectorAll('.section').forEach(e=>e.classList.toggle('active',e.id===id));document.querySelectorAll('.nav').forEach(e=>e.classList.toggle('active',e.dataset.id===id));$('pageTitle').textContent=pages.find(p=>p[0]===id)[1].replace(/^[^ ]+  /,'');window.scrollTo(0,0);render()}$('nav').innerHTML=pages.map(p=>`<button class="nav ${p[0]===current?'active':''}" data-id="${p[0]}" onclick="go('${p[0]}')">${p[1]}</button>`).join('');function progress(p){let pct=Math.max(0,Math.min(100,p.xp/p.target*100));return `<div style="margin:14px 0"><div class="row"><b>${esc(p.name)} · Year ${p.year}</b><span class="tiny">${fmt(p.xp)} / ${fmt(p.target)} XP</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`}function render(){let total=Object.values(data.treasury).reduce((a,b)=>a+Number(b||0),0);$('stats').innerHTML=[['Treasury',fmt(total)+' gr','Provisional total'],['Armouring','Year '+data.professions[0].year,fmt(data.professions[0].xp)+' / '+fmt(data.professions[0].target)+' XP'],['Warehouse','Tachov','Property confirmed'],['Trade Listings',data.listings.filter(l=>l.status==='Listed').length+' active','Sales unconfirmed']].map(s=>`<div class="card"><div class="eyebrow">${s[0]}</div><div class="stat">${s[1]}</div><div class="muted small">${s[2]}</div></div>`).join('');$('progress').innerHTML=data.professions.map(progress).join('');$('stewardReport').innerHTML=makeReport();$('ordersList').innerHTML=data.tasks.map((t,i)=>`<div class="listentry row"><label class="checkrow"><input type="checkbox" ${t.done?'checked':''} onchange="data.tasks[${i}].done=this.checked;recordActivity(this.checked?'Order completed':'Order reopened',data.tasks[${i}].text);save()"><span style="${t.done?'text-decoration:line-through;opacity:.6':''}">${esc(t.text)}</span></label><button class="btn danger" onclick="removeTask(${i})">Remove</button></div>`).join('');$('activityList').innerHTML=data.activity.slice(0,25).map(a=>`<div class="listentry"><span class="tiny">${esc(a.date)}</span> · <b>${esc(a.type)}</b><div>${esc(a.detail)}</div></div>`).join('')||'<p class="muted">No activity recorded yet.</p>';$('tasks').innerHTML=data.tasks.map((t,i)=>`<label style="display:flex;gap:10px;align-items:start;font-size:14px;color:var(--ink)"><input style="width:auto;margin-top:4px" type="checkbox" ${t.done?'checked':''} onchange="data.tasks[${i}].done=this.checked;save()"><span style="${t.done?'text-decoration:line-through;opacity:.6':''}">${esc(t.text)}</span></label>`).join('');$('dashTrade').innerHTML=data.listings.filter(l=>l.status==='Listed').map(l=>`<div class="listentry"><b>${esc(l.name)}</b><div class="muted small">${l.qty} listed · ${fmt(l.price)} gr each · ${fmt(l.qty*l.price)} gr potential</div></div>`).join('')||'<p class="muted">No active listings.</p>';$('bank').value=data.treasury.bank;$('purse').value=data.treasury.purse;$('uncertain').value=data.treasury.uncertain;$('treasuryTotal').innerHTML=`Recorded total: <b>${fmt(total)} gr</b> (includes ${fmt(data.treasury.uncertain)} gr of funds not assigned to bank or purse).`;$('txnRows').innerHTML=data.transactions.map(t=>`<tr><td>${esc(t.date)}</td><td>${esc(t.type)}${t.applied?' ✓':''}</td><td>${fmt(t.amount)} gr</td><td>${esc(t.note)}</td></tr>`).join('');$('profEditor').innerHTML=data.professions.map((p,i)=>`<div class="listentry"><h3>${esc(p.name)}</h3>${progress(p)}<div class="formgrid"><div><label>Year</label><input type="number" min="1" id="py${i}" value="${p.year}"></div><div><label>Current XP</label><input type="number" min="0" step="0.1" id="px${i}" value="${p.xp}"></div><div><label>XP target</label><input type="number" min="1" id="pt${i}" value="${p.target}"></div></div><div class="actions"><button class="btn alt" onclick="saveProf(${i})">Save ${esc(p.name)}</button></div></div>`).join('');$('recipe').innerHTML=data.recipes.map((r,i)=>`<option value="${i}">${esc(r.name)}</option>`).join('');$('recipeList').innerHTML=data.recipes.map(r=>`<div class="listentry"><b>${esc(r.name)}</b> <span class="muted small">· ${r.xp} XP · ${r.fee} gr fee</span><div class="tiny">${Object.entries(r.materials).map(([k,v])=>`${v} ${esc(k)}`).join(' · ')}</div></div>`).join('');$('itemsRows').innerHTML=data.inventory.map((it,i)=>`<tr><td>${esc(it.name)}</td><td>${fmt(it.qty)}</td><td>${esc(it.note)}</td><td><button class="btn danger" onclick="removeItem(${i})">Remove</button></td></tr>`).join('');$('listingRows').innerHTML=data.listings.map((l,i)=>`<tr><td>${esc(l.name)}</td><td>${fmt(l.qty)}</td><td>${fmt(l.price)} gr</td><td>${fmt(l.qty*l.price)} gr</td><td><select aria-label="Listing status" onchange="data.listings[${i}].status=this.value;save()"><option ${l.status==='Listed'?'selected':''}>Listed</option><option ${l.status==='Sold'?'selected':''}>Sold</option><option ${l.status==='Withdrawn'?'selected':''}>Withdrawn</option></select></td><td><button class="btn danger" onclick="removeListing(${i})">Remove</button></td></tr>`).join('');$('serviceNotes').value=data.serviceNotes;$('sessionList').innerHTML=data.sessions.map((s,i)=>`<div class="listentry"><div class="row"><b>${esc(s.title)}</b><span class="tiny">${esc(s.date)}</span></div><span class="tag">${esc(s.status)}</span><p style="white-space:pre-wrap">${esc(s.notes)}</p><button class="btn danger" onclick="removeSession(${i})">Remove entry</button></div>`).join('')||'<p class="muted">No session entries yet.</p>';calc()}
+function saveTreasury(){const values=['bank','purse','uncertain'].map(k=>Number($(k).value));if(values.some(v=>!Number.isFinite(v)||v<0))return alert('Balances must be nonnegative numbers.');data.treasury=Object.fromEntries(['bank','purse','uncertain'].map((k,i)=>[k,values[i]]));recordActivity('Treasury','Balances manually reconciled');save()}function addTxn(){let note=$('txnNote').value.trim(),amount=+$('txnAmount').value,type=$('txnType').value,from=$('txnFrom').value,to=$('txnTo').value,applied=$('txnMode').value==='apply';if(!note||!Number.isFinite(amount)||amount<=0)return alert('Enter a description and a positive amount.');if(type==='transfer'&&from===to&&applied)return alert('Choose two different accounts for a transfer.');if(applied){if(type!=='income'&&data.treasury[from]<amount)return alert('Insufficient recorded funds in '+from+'.');if(type==='income')data.treasury[to]+=amount;else if(type==='expense')data.treasury[from]-=amount;else{data.treasury[from]-=amount;data.treasury[to]+=amount}}data.transactions.unshift({date:today(),type,amount,note,from,to,applied});recordActivity('Treasury',`${type}: ${amount} gr — ${note}${applied?' (balances updated)':' (record only)'}`);$('txnNote').value='';save()}function saveProf(i){let p=data.professions[i];p.year=+$('py'+i).value||p.year;p.xp=+$('px'+i).value||0;p.target=+$('pt'+i).value||p.target;recordActivity('Profession',`${p.name}: Year ${p.year}, ${p.xp}/${p.target} XP`);save()}function calc(){let r=data.recipes[+$('recipe').value||0],q=Math.max(1,+$('qty').value||1),materials=Object.entries(r.materials).map(([k,v])=>`${fmt(v*q)} ${esc(k)}`).join(' · ');$('calcOutput').innerHTML=`<b>${fmt(q)} × ${esc(r.name)}</b><p>Full-rate XP: <b>${fmt(q*r.xp)}</b> · Bench fees: <b>${fmt(q*r.fee)} gr</b></p><p>Materials: ${materials}</p>${q>50?'<p style="color:#e5bd89">⚠ Above 50 crafts: actual XP may be reduced by the daily diminishing-returns rule.</p>':''}`}function addItem(){let name=$('itemName').value.trim();if(!name)return alert('Enter an item name.');let existing=data.inventory.find(i=>i.name.toLowerCase()===name.toLowerCase());let it={name,qty:+$('itemQty').value||0,note:$('itemNote').value.trim()};if(existing)Object.assign(existing,it);else data.inventory.push(it);$('itemName').value='';save()}function removeItem(i){if(confirm('Remove this item?')){data.inventory.splice(i,1);save()}}function addListing(){let name=$('listingName').value.trim();if(!name)return alert('Enter an item name.');data.listings.push({id:Date.now(),name,qty:+$('listingQty').value||1,price:+$('listingPrice').value||0,status:'Listed'});$('listingName').value='';save()}function removeListing(i){if(confirm('Remove this listing?')){data.listings.splice(i,1);save()}}function saveService(){data.serviceNotes=$('serviceNotes').value;save()}function addSession(){let title=$('sessionTitle').value.trim();if(!title)return alert('Enter a session title.');data.sessions.unshift({date:$('sessionDate').value||new Date().toISOString().slice(0,10),title,status:$('sessionStatus').value,notes:$('sessionNotes').value});recordActivity('RP session',title);$('sessionTitle').value='';$('sessionNotes').value='';save()}function removeSession(i){if(confirm('Remove this entry?')){data.sessions.splice(i,1);save()}}function exportData(){let a=document.createElement('a'),blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});a.href=URL.createObjectURL(blob);a.download='vaelen-estate-v2-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}function importData(e){let f=e.target.files[0];if(!f)return;let reader=new FileReader();reader.onload=()=>{try{let d=JSON.parse(reader.result);if(!d.treasury||!Array.isArray(d.professions)||!Array.isArray(d.listings)||!Array.isArray(d.recipes))throw Error('Not a Vaelen Estate backup');if(confirm('Replace current estate records with this backup?')){data=d;data.activity ||= [];data.crafts ||= [];save()}}catch(err){alert('Could not import: '+err.message)}};reader.readAsText(f)}function resetData(){if(confirm('Reset all changes to the original starter records? Export a backup first if needed.')){data=structuredClone(seed);data.activity=[];data.crafts=[];save()}}function today(){return new Date().toLocaleDateString('en-CA')}function recordActivity(type,detail){data.activity ||= [];data.activity.unshift({date:new Date().toLocaleString(),type,detail});data.activity=data.activity.slice(0,200)}function addTask(fromOrders=false){const field=$(fromOrders?'orderText':'newTask');const v=field.value.trim();if(!v)return;data.tasks.push({text:v,done:false});recordActivity('New order',v);field.value='';save()}function removeTask(i){if(!confirm('Remove this order?'))return;data.tasks.splice(i,1);save()}function clearCompletedTasks(){data.tasks=data.tasks.filter(t=>!t.done);save()}function makeReport(){const open=data.tasks.filter(t=>!t.done),p=data.professions.find(p=>p.name==='Armouring'),listed=data.listings.filter(l=>l.status==='Listed'),unknown=data.inventory.length===0;return `<p><b>Master Vaelen,</b> there are <b>${open.length}</b> outstanding orders and <b>${listed.length}</b> active trade listings.</p><p>Armouring stands at <b>Year ${p.year}</b> with <b>${fmt(p.target-p.xp)} XP</b> remaining toward the recorded target.</p><p>${unknown?'The Tachov warehouse inventory has not yet been entered.':'The Tachov warehouse holds '+data.inventory.length+' recorded item types.'} The treasury total remains provisional until reconciled.</p><p class="status">Next: ${esc(open[0]?.text||'All recorded orders are complete. Issue a new one.')}</p>`}
+function completeCraft(){const r=data.recipes[+$('recipe').value||0],q=Number($('qty').value),pname=/Hose|Cap/.test(r.name)?'Tailoring':'Armouring',p=data.professions.find(x=>x.name===pname),fee=r.fee*q,account=$('craftAccount').value,day=$('craftDate').value||today();if(!$('confirmCraft').checked)return alert('Confirm that this batch was completed in roleplay first.');if(!Number.isInteger(q)||q<1||q>10000)return alert('Enter a valid whole-number quantity.');if(data.treasury[account]<fee)return alert('Not enough recorded groschen in '+account+' for the bench fee. Reconcile your treasury first.');const unknown=[],short=[];for(const [name,n] of Object.entries(r.materials)){const item=data.inventory.find(it=>it.name.toLowerCase()===name.toLowerCase());if(!item)unknown.push(name);else if(item.qty<n*q)short.push(`${name}: need ${fmt(n*q)}, recorded ${fmt(item.qty)}`)}if(short.length)return alert('Insufficient recorded materials:\n'+short.join('\n'));if(unknown.length&&!$('allowUnknown').checked)return alert('Materials not recorded: '+unknown.join(', ')+'. Add stock to Warehouse, or explicitly allow unknown stock.');const already=data.crafts.filter(c=>c.date===day&&c.recipe===r.name).reduce((s,c)=>s+c.qty,0);const over=already+q>50;const typed=$('actualXp').value.trim();if(over&&(!$('allowReduced').checked||typed===''))return alert('This recipe exceeds 50 crafts on the selected date. Enter verified actual XP and check the diminished-XP box.');const xp=typed===''?r.xp*q:Number(typed);if(!Number.isFinite(xp)||xp<0)return alert('Enter valid actual XP.');const detail=`${q} × ${r.name}, ${fmt(xp)} XP, ${fmt(fee)} gr bench fee`;if(!confirm(`Record completed crafting?\n${detail}\nDeduct recorded materials and fees, then add XP to ${pname}. This cannot be undone automatically.`))return;for(const [name,n] of Object.entries(r.materials)){const item=data.inventory.find(it=>it.name.toLowerCase()===name.toLowerCase());if(item)item.qty=+(item.qty-n*q).toFixed(4)}data.treasury[account]-=fee;p.xp=+(p.xp+xp).toFixed(2);data.crafts.push({date:day,recipe:r.name,qty,xp,fee,account,unknown});data.transactions.unshift({date:day,type:'expense',amount:fee,note:`Bench fee: ${q} ${r.name}`,from:account,applied:true});recordActivity('Craft completed',detail+(unknown.length?' · Unknown materials not deducted: '+unknown.join(', '):''));data.sessions.unshift({date:day,title:`Crafted ${q} ${r.name}`,status:'Confirmed in RP',notes:detail});$('confirmCraft').checked=false;$('allowReduced').checked=false;$('actualXp').value='';save();$('craftFeedback').textContent='Batch recorded successfully. Materials, fee, XP and session log updated.'}
+$('sessionDate').value=today();$('craftDate').value=today();render();
+</script></body></html>
