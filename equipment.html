@@ -373,7 +373,7 @@ header.site-header .site-nav a[aria-current="page"]{
 main.layout.gear-layout-v2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start;padding:24px 0 66px}
 .gear-layout-v2>.figure-card{grid-column:1/-1;min-width:0;padding:24px;background:linear-gradient(145deg,#25292e,#1b1e23)}
 .gear-layout-v2>.panel:not(.figure-card){min-width:0;grid-column:1}
-.gear-layout-v2>.holdings-panel{grid-column:2;min-width:0}
+.gear-layout-v2>aside.holdings-panel{grid-column:2;min-width:0}
 .gear-layout-v2 .loadout-labels{display:none}
 .gear-layout-v2 .screen-title{padding:0 0 17px;margin-bottom:22px!important;border-bottom:1px solid #454a51}
 .gear-layout-v2 .screen-title h2{font-size:clamp(23px,2.7vw,32px)}
@@ -405,7 +405,7 @@ main.layout.gear-layout-v2{display:grid;grid-template-columns:minmax(0,1fr) minm
 }
 @media(max-width:760px){
  main.layout.gear-layout-v2{grid-template-columns:1fr;gap:15px;padding-top:18px}
- .gear-layout-v2>.figure-card,.gear-layout-v2>.panel:not(.figure-card),.gear-layout-v2>.holdings-panel{grid-column:1}
+ .gear-layout-v2>.figure-card,.gear-layout-v2>aside.panel:not(.holdings-panel),.gear-layout-v2>aside.holdings-panel{grid-column:1}
  .gear-layout-v2>.figure-card{padding:15px}
  .gear-layout-v2 .gear-board{grid-template-columns:1fr;grid-template-rows:auto;gap:19px}
  .gear-layout-v2 .gear-board .portrait-frame{grid-column:1;grid-row:1;min-height:460px;height:510px;max-height:510px}
@@ -430,7 +430,7 @@ main.layout.gear-layout-v2{display:grid;grid-template-columns:minmax(0,1fr) minm
 /* THE VAELEN ESTATE · Equipment dossier — complete structural redesign */
 main.layout.gear-layout-v2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start;padding:25px 0 70px}
 .gear-redesign.figure-card{grid-column:1/-1;padding:0;overflow:hidden;background:#1b1e22;border:1px solid #494d53;border-radius:8px}
-.gear-layout-v2>.panel:not(.figure-card){grid-column:1;min-width:0}
+.gear-layout-v2>aside.panel:not(.holdings-panel){grid-column:1;min-width:0}
 .gear-layout-v2>.holdings-panel{grid-column:2;min-width:0}
 .loadout-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(295px,40%);min-height:335px;position:relative;background:linear-gradient(110deg,#21252a,#191b1f);border-bottom:1px solid #494d53}
 .loadout-feature-copy{align-self:center;padding:35px clamp(26px,4vw,55px);position:relative;z-index:2}
