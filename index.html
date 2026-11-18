@@ -1,11 +1,178 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Vaelen Estate · Steward’s Command Center v2</title><style>
-:root{--bg:#151713;--panel:#22251f;--panel2:#2d3028;--ink:#f1e7d2;--muted:#b6ad96;--gold:#cba96c;--wine:#713b46;--line:#4b4a3c;--green:#a7b98a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#302a23,transparent 40%),var(--bg);color:var(--ink);font:15px/1.5 Georgia,serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{padding:28px 18px;background:#191c18;border-right:1px solid var(--line);position:sticky;top:0;height:100vh}.crest{font-size:45px;text-align:center;color:#f5e5ca;background:var(--wine);border:2px solid var(--gold);width:74px;height:82px;display:grid;place-items:center;margin:0 auto 12px;clip-path:polygon(0 0,100% 0,100% 77%,50% 100%,0 77%)}.brand{text-align:center;color:var(--gold);letter-spacing:2px;font-size:17px}.sub{text-align:center;color:var(--muted);font-size:11px;letter-spacing:1px;margin-bottom:28px}.nav{width:100%;text-align:left;padding:11px 13px;background:transparent;color:var(--muted);border:0;border-radius:7px;margin:2px 0}.nav:hover,.nav.active{background:#40352e;color:#f7e9c9}.foot{font-size:11px;color:var(--muted);margin-top:35px;text-align:center}.main{padding:32px clamp(16px,4vw,64px);max-width:1450px;width:100%;margin:auto}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2.5px;font-size:11px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:25px}h1{font-weight:normal;font-size:clamp(28px,4vw,43px);margin:5px 0}h2{font-size:22px;font-weight:normal;color:#f4dfb4;margin:0 0 16px}h3{font-size:17px;color:#e7c88f;font-weight:normal;margin:0 0 12px}.muted{color:var(--muted)}.pill{display:inline-block;background:#3e332e;color:#e5c48b;border:1px solid #765c3e;border-radius:20px;padding:5px 11px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.card{background:linear-gradient(145deg,#282b24,#20221e);border:1px solid var(--line);border-radius:10px;padding:21px;margin-bottom:17px;box-shadow:0 6px 25px #0002}.stat{color:#f4ddb1;font-size:28px;margin:8px 0}.small{font-size:12px}.bar{height:8px;border-radius:20px;background:#49483c;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:linear-gradient(90deg,#846147,#d6b879)}.btn{border:1px solid #b58d59;background:#6c4240;color:#fff1d8;padding:10px 15px;border-radius:6px}.btn.alt{background:#33362e;border-color:#6e6c55}.btn.danger{background:#542d30;border-color:#9c6262}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}label{display:block;font-size:12px;color:#cdbf9e;margin:12px 0 5px}input,select,textarea{width:100%;background:#171a16;color:var(--ink);border:1px solid #605b4a;padding:10px;border-radius:5px;min-width:0}textarea{min-height:95px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px}th,td{text-align:left;border-bottom:1px solid #48483c;padding:11px 8px}th{color:var(--gold);font-size:12px;font-weight:normal}td{font-size:13px}.note{border-left:3px solid var(--gold);padding:12px 15px;background:#302e25;color:#ddd1b9;margin:15px 0}.hidden{display:none!important}.section{display:none}.section.active{display:block}.listentry{border-bottom:1px solid var(--line);padding:12px 0}.listentry:last-child{border:0}.tag{font-size:11px;color:#e5c48b}.hero{background:linear-gradient(105deg,#4a2c33,#2c3029);padding:25px;border:1px solid #7c5b48;border-radius:11px;margin-bottom:18px}.hero p{margin:8px 0 0;color:#d5c5ac}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.tiny{font-size:11px;color:var(--muted)}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:750px){.app{display:block}.side{height:auto;position:static;padding:14px}.crest,.sub,.foot{display:none}.brand{text-align:left;margin-bottom:10px}.side nav{display:flex;overflow-x:auto;gap:5px}.nav{white-space:nowrap;width:auto}.main{padding:20px 14px}.two,.formgrid{grid-template-columns:1fr}}@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.stat{font-size:23px}.card{padding:15px}}
-
-/* V2 */
-:root{--gold:#e3bf7c;--line:#62513c}body{background:radial-gradient(ellipse at 75% -5%,#48312f 0,transparent 48%),linear-gradient(120deg,#151a17,#191812);}.side{background:linear-gradient(180deg,#261d1d,#171a16)}.crest{font-size:35px}.hero{position:relative;overflow:hidden;background:linear-gradient(100deg,#592e39ee,#252d26ee),radial-gradient(circle at 90% 30%,#c49b5a55,transparent 45%);min-height:148px}.hero:after{content:'⚔';position:absolute;right:35px;top:-42px;font-size:190px;opacity:.08;pointer-events:none}.card{box-shadow:0 10px 24px #0003}.btn:hover{filter:brightness(1.15)}.nav.active{border-left:3px solid var(--gold)}.notice{padding:11px 14px;border:1px solid #9b7950;border-radius:7px;background:#3a3026;margin:12px 0}.ok{border-color:#6b986e;background:#24382b}.warning{color:#f3d49e}.mini{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold)}.checkrow{display:flex;align-items:center;gap:9px;margin:12px 0;color:var(--ink);font-size:13px}.checkrow input{width:auto}.section .card h2{letter-spacing:.3px}.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.report{background:#282a22;border:1px solid #6d604a;border-radius:8px;padding:15px;line-height:1.7}.report p{margin:6px 0}.status{font-size:12px;color:#e8c789}.subtle{font-size:12px;color:var(--muted)}
-@media(max-width:650px){.split{grid-template-columns:1fr}.hero:after{display:none}}
-</style></head><body><div class="app"><aside class="side"><div class="crest">♜</div><div class="brand">THE VAELEN ESTATE</div><div class="sub">STEWARD’S COMMAND CENTER · V2</div><nav id="nav"></nav><div class="foot">BY HAMMER · BY STEEL · BY FORTUNE</div></aside><main class="main"><div class="top"><div><div class="eyebrow">House von Dubá · Bohemia</div><h1 id="pageTitle">Steward's Dashboard</h1></div><span class="pill">Ülric Vaelen · Age 27</span></div>
-<section id="dashboard" class="section active"><div class="hero"><div class="eyebrow">The Steward's Report</div><h2 style="margin:7px 0">Your affairs, at a glance</h2><p>Watchman of House von Dubá · Armorer, Tailor & Miner · Aspiring knight</p></div><div class="grid" id="stats"></div><div class="two"><div class="card"><h2>Profession Progress</h2><div id="progress"></div></div><div class="card"><h2>Matters Requiring Attention</h2><div id="tasks"></div><div class="split"><input id="newTask" placeholder="New order for the steward"><button class="btn alt" onclick="addTask()">Add order</button></div><div class="actions"><button class="btn alt" onclick="go('journal')">Record a session</button></div></div></div><div class="two"><div class="card"><h2>Estate Holdings</h2><p>🏚️ Warehouse · Tachov</p><p>🐎 Havran · White palfrey, black mane and tail</p><p>🛡️ House von Dubá Watch · Confirmed membership</p></div><div class="card"><h2>Trade on Offer</h2><div id="dashTrade"></div></div></div><div class="card"><h2>Today's Steward Report</h2><div class="report" id="stewardReport"></div><div class="actions"><button class="btn alt" onclick="go('workshop')">Plan a crafting batch</button><button class="btn alt" onclick="go('journal')">Record session</button></div></div></section>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Vaelen Estate · Steward’s Hall v3</title><style>
+:root{
+  --bg:#0f1319;
+  --bg2:#171d25;
+  --panel:#f4ecde;
+  --panel2:#ebe0cf;
+  --ink:#2f2a24;
+  --muted:#6d6658;
+  --gold:#caa260;
+  --gold2:#e1c58f;
+  --wine:#6b2f3a;
+  --wine2:#8d4250;
+  --steel:#506172;
+  --steel2:#7f92a5;
+  --line:#c7b79d;
+  --ok:#3d6947;
+  --warn:#7e5b29;
+  --danger:#7b333b;
+  --shadow:0 18px 42px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  font:15px/1.55, Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(202,162,96,.10), transparent 22%),
+    radial-gradient(circle at 100% 0%, rgba(107,47,58,.16), transparent 28%),
+    linear-gradient(180deg, #1a2028 0%, #10141a 100%);
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+.side{
+  position:sticky; top:0; height:100vh; overflow:auto;
+  padding:22px 18px;
+  color:#f6efe5;
+  background:
+    linear-gradient(180deg, rgba(11,14,18,.96), rgba(19,24,31,.98)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 8px, transparent 8px 16px);
+  border-right:1px solid rgba(202,162,96,.28);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.04);
+}
+.side-shell{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(202,162,96,.16);
+  border-radius:22px;
+  padding:20px 16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+}
+.crest-wrap{display:grid;place-items:center;margin:4px 0 14px}
+.crest{
+  width:96px;height:96px;border-radius:50%;position:relative;
+  display:grid;place-items:center;
+  border:2px solid rgba(225,197,143,.8);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 35%),
+    linear-gradient(145deg, var(--wine2), #3b1f29 70%);
+  color:#fff6e6;
+  font-size:32px; font-weight:bold; letter-spacing:1px;
+  box-shadow:0 0 0 7px rgba(202,162,96,.12), 0 12px 30px rgba(0,0,0,.35);
+}
+.crest:before,.crest:after{
+  content:''; position:absolute; inset:8px; border-radius:50%; border:1px solid rgba(255,245,225,.25);
+}
+.brand{
+  text-align:center; font-size:20px; letter-spacing:2px; color:var(--gold2);
+  margin-bottom:4px; text-transform:uppercase;
+}
+.sub{
+  text-align:center; color:#c9b89d; font-size:11px; letter-spacing:1.6px;
+  text-transform:uppercase; margin-bottom:18px;
+}
+.motto{
+  margin:0 0 18px; text-align:center; color:#dbc9a9; font-size:12px;
+  padding:12px 10px; border-top:1px solid rgba(202,162,96,.18); border-bottom:1px solid rgba(202,162,96,.18);
+}
+.side-group-title{
+  font-size:10px; color:#b29f7f; text-transform:uppercase; letter-spacing:2px; margin:0 0 10px 8px;
+}
+.nav{width:100%;text-align:left;padding:12px 14px;background:transparent;color:#f1eadc;border:1px solid transparent;border-radius:12px;margin:0 0 6px;transition:.15s ease}
+.nav:hover{background:rgba(255,255,255,.05);border-color:rgba(202,162,96,.2)}
+.nav.active{
+  background:linear-gradient(90deg, rgba(202,162,96,.16), rgba(255,255,255,.03));
+  border-color:rgba(202,162,96,.32); color:#fffaf1; box-shadow:inset 3px 0 0 var(--gold);
+}
+.foot{font-size:11px;color:#c9b89d;margin-top:auto;padding-top:18px;text-align:center;line-height:1.7}
+.main{padding:34px clamp(16px,4vw,54px);max-width:1540px;width:100%;margin:auto}
+.top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;
+  margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(199,183,157,.3)
+}
+.eyebrow{color:var(--steel2);text-transform:uppercase;letter-spacing:2.3px;font-size:11px;font-weight:bold}
+h1{font-weight:normal;font-size:clamp(30px,4vw,46px);margin:8px 0 0;color:#f3eadf;letter-spacing:.4px}
+h2{font-size:24px;font-weight:normal;color:#45392d;margin:0 0 14px}
+h3{font-size:16px;color:var(--wine);font-weight:bold;margin:0 0 12px;letter-spacing:.3px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  color:#f7efdf;border:1px solid rgba(202,162,96,.36);border-radius:999px;padding:9px 14px;font-size:12px;letter-spacing:.6px
+}
+.pill:before{content:'✦';color:var(--gold2)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{
+  position:relative;
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid rgba(145,119,79,.38);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.card:before{
+  content:''; position:absolute; left:0; top:0; right:0; height:6px;
+  background:linear-gradient(90deg, var(--wine), var(--gold), var(--steel)); opacity:.9;
+}
+.stat{color:var(--wine);font-size:30px;margin:10px 0 4px;font-weight:bold}
+.small{font-size:12px}.tiny{font-size:11px;color:var(--muted)}.muted{color:var(--muted)}
+.bar{height:10px;border-radius:999px;background:#d7c7b1;overflow:hidden;margin:12px 0;border:1px solid rgba(0,0,0,.06)}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--wine),var(--gold),var(--steel));border-radius:999px}
+.btn{border:1px solid rgba(107,47,58,.45);background:linear-gradient(180deg,var(--wine2),var(--wine));color:#fff7eb;padding:10px 15px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.btn:hover{filter:brightness(1.06)}
+.btn.alt{background:linear-gradient(180deg,#5a6878,#4b5867);border-color:rgba(80,97,114,.48)}
+.btn.danger{background:linear-gradient(180deg,#9a4b54,#7b333b);border-color:rgba(123,51,59,.55)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+label{display:block;font-size:12px;color:#645844;margin:12px 0 5px;font-weight:bold;letter-spacing:.3px}
+input,select,textarea{
+  width:100%;background:#fffcf7;color:var(--ink);border:1px solid #bfae93;padding:10px 12px;border-radius:10px;min-width:0;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.03)
+}
+textarea{min-height:95px;resize:vertical}
+.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tablewrap{overflow-x:auto;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:#fdf8f0}
+table{border-collapse:collapse;width:100%;min-width:480px}th,td{text-align:left;border-bottom:1px solid #dccfbc;padding:12px 10px}th{color:var(--wine);font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}td{font-size:13px}
+.note{
+  border-left:4px solid var(--gold);padding:13px 16px;background:#fcf6ea;color:#4c4438;margin:15px 0;border-radius:10px
+}
+.notice{padding:11px 14px;border:1px solid #c1ad8d;border-radius:10px;background:#fbf5e7;margin:12px 0}
+.ok{border-color:#88a17d;background:#eef5ec}.warning{color:#7d5927}.status{font-size:12px;color:var(--wine);font-weight:bold}.subtle{font-size:12px;color:var(--muted)}
+.hidden{display:none!important}.section{display:none}.section.active{display:block}
+.listentry{border-bottom:1px solid #d7c7b1;padding:12px 0}.listentry:last-child{border:0}.tag{font-size:11px;color:var(--wine);font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.hero{
+  position:relative;overflow:hidden;padding:28px 26px;border-radius:22px;margin-bottom:20px;min-height:168px;
+  color:#fbf6ef;box-shadow:var(--shadow);border:1px solid rgba(225,197,143,.28);
+  background:
+    linear-gradient(115deg, rgba(26,31,38,.96) 0%, rgba(49,30,37,.94) 44%, rgba(97,76,46,.90) 100%),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,.16), transparent 22%);
+}
+.hero:before{
+  content:''; position:absolute; inset:14px; border:1px solid rgba(255,245,225,.13); border-radius:16px; pointer-events:none;
+}
+.hero:after{
+  content:'✠'; position:absolute; right:26px; bottom:-20px; font-size:138px; line-height:1; opacity:.10; color:#fff8eb; pointer-events:none;
+}
+.hero h2{color:#fff2d8;margin:8px 0 0;font-size:32px}
+.hero p{margin:10px 0 0;color:#f0e5d0;max-width:70ch}
+.report{background:#f8f2e7;border:1px solid rgba(145,119,79,.25);border-radius:14px;padding:16px;line-height:1.75;color:#43392f}
+.report p{margin:6px 0}
+.mini{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--steel);font-weight:bold}
+.checkrow{display:flex;align-items:center;gap:9px;margin:12px 0;color:var(--ink);font-size:13px}
+.checkrow input{width:auto}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.section .card h2{letter-spacing:.2px}
+.decor-rule{height:12px;margin:10px 0 0;background:linear-gradient(90deg,transparent, rgba(202,162,96,.65) 15%, rgba(202,162,96,.25) 50%, transparent 85%)}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.app{grid-template-columns:260px 1fr}}
+@media(max-width:780px){.app{display:block}.side{height:auto;position:static;padding:14px}.side-shell{border-radius:18px}.brand{text-align:left}.sub,.motto,.foot{display:none}.crest-wrap{display:none}.side nav{display:flex;overflow-x:auto;gap:6px;padding-bottom:6px}.nav{white-space:nowrap;width:auto;margin:0}.main{padding:20px 14px}.two,.formgrid,.split{grid-template-columns:1fr}}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.stat{font-size:24px}.card{padding:16px}.hero h2{font-size:26px}}
+</style></head><body><div class="app"><aside class="side"><div class="side-shell"><div class="crest-wrap"><div class="crest">ÜV</div></div><div class="brand">The Vaelen Estate</div><div class="sub">Steward's Hall · Version III</div><div class="motto">By Hammer · By Steel · By Fortune</div><div class="side-group-title">Steward's Ledger</div><nav id="nav"></nav><div class="foot">House von Dubá · Bohemia<br>Estate records, workshops & trade</div></div></aside><main class="main"><div class="top"><div><div class="eyebrow">House von Dubá · Bohemia</div><h1 id="pageTitle">Steward's Dashboard</h1><div class="decor-rule"></div></div><span class="pill">Ülric Vaelen · Age 27</span></div>
+<section id="dashboard" class="section active"><div class="hero"><div class="eyebrow">The Steward's Report</div><h2>Your affairs, at a glance</h2><p>Watchman of House von Dubá · Armorer, Tailor & Miner · Aspiring knight. A reworked estate hall with a cleaner parchment-and-steel presentation for Ülric's treasury, workshops, holdings, and trade.</p></div><div class="grid" id="stats"></div><div class="two"><div class="card"><h2>Profession Progress</h2><div id="progress"></div></div><div class="card"><h2>Matters Requiring Attention</h2><div id="tasks"></div><div class="split"><input id="newTask" placeholder="New order for the steward"><button class="btn alt" onclick="addTask()">Add order</button></div><div class="actions"><button class="btn alt" onclick="go('journal')">Record a session</button></div></div></div><div class="two"><div class="card"><h2>Estate Holdings</h2><p>🏚️ Warehouse · Tachov</p><p>🐎 Havran · White palfrey, black mane and tail</p><p>🛡️ House von Dubá Watch · Confirmed membership</p></div><div class="card"><h2>Trade on Offer</h2><div id="dashTrade"></div></div></div><div class="card"><h2>Today's Steward Report</h2><div class="report" id="stewardReport"></div><div class="actions"><button class="btn alt" onclick="go('workshop')">Plan a crafting batch</button><button class="btn alt" onclick="go('journal')">Record session</button></div></div></section>
 <section id="treasury" class="section"><div class="card"><h2>Treasury Ledger</h2><p class="muted small">Opening balances are provisional where the location of funds is not confirmed. Edit them to match the game.</p><div class="formgrid"><div><label>Bank (gr)</label><input type="number" min="0" id="bank"></div><div><label>Purse (gr)</label><input type="number" min="0" id="purse"></div><div><label>Unallocated / uncertain (gr)</label><input type="number" min="0" id="uncertain"></div></div><div class="actions"><button class="btn" onclick="saveTreasury()">Save balances</button></div><div class="note" id="treasuryTotal"></div></div><div class="card"><h2>Transaction History</h2><div class="formgrid"><div><label>Type</label><select id="txnType"><option value="income">Income</option><option value="expense">Expense</option><option value="transfer">Transfer / note</option></select></div><div><label>Amount (gr)</label><input type="number" id="txnAmount" min="0" value="0"></div><div><label>Description</label><input id="txnNote" placeholder="Commission, bench fee, etc."></div></div><div class="formgrid"><div><label>From / expense account</label><select id="txnFrom"><option value="purse">Purse</option><option value="bank">Bank</option><option value="uncertain">Unallocated</option></select></div><div><label>To / income account</label><select id="txnTo"><option value="bank">Bank</option><option value="purse">Purse</option><option value="uncertain">Unallocated</option></select></div><div><label>Balance behavior</label><select id="txnMode"><option value="apply">Apply to balances</option><option value="log">Record only (already accounted for)</option></select></div></div><div class="actions"><button class="btn alt" onclick="addTxn()">Record transaction</button></div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Details</th></tr></thead><tbody id="txnRows"></tbody></table></div><p class="tiny">Choose whether each entry updates balances or is record-only. Transfers move funds between accounts without changing the estate total.</p></div></section>
 <section id="professions" class="section"><div class="card"><h2>Craftsmanship & Experience</h2><p class="muted">Edit experience after confirmed crafting or mining. Progress updates automatically throughout the estate.</p><div id="profEditor"></div></div></section>
 <section id="workshop" class="section"><div class="card"><h2>Workshop Calculator</h2><p class="muted">Plan freely. When a batch is actually completed, confirm it to update recorded inventory, bench fees, profession XP and the session log together. Unknown stock is never assumed.</p><label>Recipe</label><select id="recipe" onchange="calc()"></select><div class="formgrid"><div><label>Quantity</label><input id="qty" type="number" min="1" value="50" oninput="calc()"></div><div><label>Daily full-XP crafting cap</label><input type="number" value="50" disabled></div></div><div id="calcOutput" class="note"></div><label class="checkrow"><input type="checkbox" id="confirmCraft"> I confirm this batch was actually completed in RP</label><label class="checkrow"><input type="checkbox" id="allowUnknown"> Permit crafting with unrecorded materials (does not deduct unknown stock)</label><label class="checkrow"><input type="checkbox" id="allowReduced"> I have verified actual XP for a batch over the daily full-rate cap</label><div class="formgrid"><div><label>XP actually earned (editable)</label><input type="number" id="actualXp" min="0" step="0.1" placeholder="Calculated automatically"></div><div><label>Pay bench fee from</label><select id="craftAccount"><option value="purse">Purse</option><option value="bank">Bank</option></select></div><div><label>Crafting date</label><input type="date" id="craftDate"></div></div><div class="actions"><button class="btn" onclick="completeCraft()">Confirm batch & update ledgers</button></div><div id="craftFeedback" class="subtle">Planning does not alter any records.</div></div><div class="card"><h2>Saved Recipes</h2><div id="recipeList"></div><p class="tiny">Material values are quantities, not groschen. Material purchase prices and selling prices are not assumed.</p></div></section>
