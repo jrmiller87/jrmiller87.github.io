@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15171a">
+<meta name="description" content="The Vaelen Estate Quest Journal: contracts, travelers, deliveries, and unfinished business in Ülric Vaelen's Bohemian story.">
+<title>Quest Journal — The Vaelen Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--night:#15171a;--surface:#22252a;--raised:#2b2f35;--line:#4c515b;--red:#bd3045;--accent:#ec8998;--white:#f3f4f5;--text:#ced2d6;--muted:#aeb5bd}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:radial-gradient(ellipse at 82% 0%,#35303950,transparent 39%),linear-gradient(135deg,#141619,#1b1e22 58%,#15171a);font:15px/1.65 'DM Sans',system-ui,sans-serif;color:var(--white)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.serif{font-family:Cinzel,Georgia,serif}
+.wrap{width:min(1200px,calc(100% - 40px));margin:0 auto}
+.site-header{position:sticky;top:0;z-index:100;background:#15171a;border-bottom:1px solid #b41d32;box-shadow:0 8px 24px #0006}
+.site-header-inner{min-height:76px;width:min(1200px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:10px 0}
+.site-brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;min-width:0}
+.site-mark{display:grid;place-items:center;flex:0 0 44px;width:44px;height:47px;background:#b91d32;border:1px solid #fff;clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);font:bold 16px Georgia,serif;color:#fff}
+.site-wordmark{font:600 15px/1.3 'Cinzel',Georgia,serif;letter-spacing:.07em;white-space:nowrap}
+.site-wordmark small{display:block;font:700 9px/1.4 'DM Sans',system-ui,sans-serif;letter-spacing:.14em;color:#bfc3c7;margin-top:2px}
+.site-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:5px;min-width:0}
+.site-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:37px;padding:8px 11px;font:700 12px/1.3 'DM Sans',system-ui,sans-serif;color:#dadee2;border:1px solid transparent;border-radius:5px;white-space:nowrap}
+.site-nav a:hover,.site-nav a:focus-visible{background:#30343a;border-color:#6a7078;color:#fff}
+.site-nav a.active,.site-nav a[aria-current="page"]{background:#b91d32;border-color:#df4055;color:white}
+a:focus-visible{outline:2px solid #f5a5b0;outline-offset:3px}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:74px 0 67px;border-bottom:1px solid #53565d;background:#1d2025}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#14161af7 0%,#14161aee 38%,#14161ab1 68%,#14161a70 100%),url('./art/ulric-short-hair-banner.webp') center 28%/cover no-repeat}
+.eyebrow{display:block;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.hero h1{margin:12px 0 14px;font-size:clamp(38px,6vw,70px);font-weight:500;line-height:1.13;letter-spacing:-.025em}
+.hero h1 span{color:#d5d8db}
+.hero p{max-width:660px;color:#d4d8dd;line-height:1.75;font-size:14px;margin:0}
+.hero-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}
+.hero-meta span{border:1px solid #5d646d;border-radius:3px;padding:7px 11px;background:#2a2e34cf;color:#e8eaed;font-size:11px}
+main{padding:35px 0 77px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid #525862;padding-bottom:16px;margin-bottom:20px}
+.section-title h2{font-size:clamp(25px,3vw,33px);font-weight:500;margin:6px 0 0}
+.section-title p{color:#b8bfc6;font-size:12px;margin:0}
+.quest-card{border:1px solid #505660;border-radius:8px;overflow:hidden;background:linear-gradient(145deg,#25282d,#202329);box-shadow:0 12px 30px #0a0c103b}
+.quest-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:28px 30px 23px;border-bottom:1px solid #4a5058;background:linear-gradient(105deg,#30343a,#292c32 72%,#3b252d)}
+.quest-head h3{font-size:clamp(22px,3vw,30px);font-weight:500;line-height:1.3;margin:7px 0 10px}
+.quest-head p{margin:0;color:#c5cbd1;font-size:13px;max-width:690px}
+.status{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid #a45e6c;background:#412a32;color:#ffd0d7;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap}
+.status:before{content:"";display:block;width:7px;height:7px;border-radius:50%;background:#edb5c0}
+.quest-body{padding:26px 30px 30px}
+.quest-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:22px}
+.fact{padding:16px 17px;background:#2c3036;border:1px solid #4a525c;border-radius:5px;min-width:0}
+.fact span{display:block;color:#e48d9c;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;margin-bottom:7px}
+.fact strong{display:block;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.quest-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,1fr);gap:16px}
+.panel{background:#25292f;border:1px solid #4b525b;border-radius:6px;padding:22px 23px;min-width:0}
+.panel h4{font:500 19px/1.3 Cinzel,Georgia,serif;margin:0 0 15px;color:#fff}
+.checks{list-style:none;padding:0;margin:0}
+.checks li{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #464c54;font-size:13px}
+.checks li:last-child{border-bottom:0}
+.checks .symbol{flex:0 0 24px;width:24px;height:24px;display:grid;place-items:center;border:1px solid #6e5861;border-radius:50%;color:#f6b9c2;font-weight:800;font-size:12px}
+.checks strong{display:block;color:#f2f4f5}
+.checks small{display:block;color:#b8c0c8;font-size:11px;margin-top:3px}
+.panel p{font-size:13px;line-height:1.8;color:#ccd1d6;margin:0 0 13px}
+.panel p:last-child{margin-bottom:0}
+.notice{margin-top:17px;border-left:3px solid #cb3a50;background:#302b30;padding:14px 17px;color:#d9dce0;font-size:12px;line-height:1.75}
+.crosslinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.crosslinks a{display:inline-flex;align-items:center;justify-content:center;border:1px solid #6b7079;background:#2c3036;color:#f4f5f6;border-radius:4px;padding:11px 14px;font-size:11px;font-weight:700}
+.crosslinks a:hover{border-color:#e2788a;background:#38343a}
+.footer{border-top:1px solid #7c0f15;background:#131518;color:#cfd2d5;padding:27px 0;font-size:12px}
+.footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:1020px){.site-header-inner{flex-wrap:wrap;justify-content:center;gap:9px;padding:12px 0}.site-nav{justify-content:center;width:100%;gap:4px}.site-nav a{padding:7px 9px;font-size:11px;min-height:34px}.quest-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:740px){.quest-grid{grid-template-columns:1fr}.hero{padding:53px 0}.section-title{align-items:flex-start;flex-direction:column;gap:5px}.quest-head{flex-direction:column;gap:13px;padding:23px 20px}.quest-body{padding:20px}.panel{padding:19px}.status{white-space:normal}}
+@media(max-width:480px){.wrap{width:calc(100% - 26px)}.site-header-inner{width:calc(100% - 22px)}.site-wordmark{font-size:13px}.site-nav{gap:3px}.site-nav a{padding:7px;font-size:10px;white-space:normal;text-align:center}.quest-details{grid-template-columns:1fr 1fr;gap:8px}.fact{padding:13px 12px}.fact strong{font-size:13px}.quest-head h3{font-size:23px}}
+@media(max-width:350px){.quest-details{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="site-header-inner">
+<a href="./index.html" class="site-brand" aria-label="The Vaelen Estate home"><span class="site-mark">ÜV</span><span class="site-wordmark">THE VAELEN ESTATE<small>A LIVING STORY OF BOHEMIA</small></span></a>
+<nav class="site-nav" aria-label="Main navigation"><a href="./index.html">Home</a><a href="./profile.html">Character Profile</a><a href="./equipment.html">Equipment</a><a href="./chronicle.html">Chronicle</a><a class="active" aria-current="page" href="./quests.html">Quest Journal</a><a href="./index.html#characters">Characters</a><a href="./index.html#timeline">Timeline</a></nav>
+</div></header>
+<section class="hero"><div class="wrap">
+<span class="eyebrow">The Vaelen Estate / Contracts &amp; Commissions</span>
+<h1>The Quest <span>Journal</span></h1>
+<p>A record of promises made, errands undertaken, and debts yet to be settled. From the roads of Bohemia to the workshops of Tachov, every bargain leaves its mark.</p>
+<div class="hero-meta"><span>Ülric Vaelen</span><span>House von Dubá</span><span>Read-only ledger</span></div>
+</div></section>
+<main class="wrap" id="journal">
+<div class="section-title"><div><span class="eyebrow">Contracts on record</span><h2>Unsettled Business</h2></div><p>1 recorded quest · Awaiting Ülric's verification</p></div>
+<article class="quest-card" aria-labelledby="quest-hide-title">
+<div class="quest-head"><div><span class="eyebrow">Contract No. 001 · Procurement</span>
+<h3 id="quest-hide-title">The Great Bohemian Hide Crisis</h3>
+<p>Charles Baker reports that he has fulfilled Ülric's request. The exchange is not yet confirmed, and the agreed reward remains unpaid.</p></div>
+<span class="status">Reported complete · Awaiting confirmation</span></div>
+<div class="quest-body">
+<div class="quest-details">
+<div class="fact"><span>Adventurer</span><strong>Charles Baker</strong></div>
+<div class="fact"><span>Requested goods</span><strong>15 Hides</strong></div>
+<div class="fact"><span>Agreed reward</span><strong>200 groschen</strong></div>
+<div class="fact"><span>Meeting place</span><strong>Tachov</strong></div>
+</div>
+<div class="quest-grid">
+<section class="panel" aria-labelledby="steps-heading"><h4 id="steps-heading">Contract Progress</h4>
+<ul class="checks">
+<li><span class="symbol" aria-hidden="true">✓</span><div><strong>Quest issued</strong><small>Ülric commissioned the collection of 15 Hides.</small></div></li>
+<li><span class="symbol" aria-hidden="true">✓</span><div><strong>Completion reported</strong><small>Charles Baker has submitted his claim of completion.</small></div></li>
+<li><span class="symbol" aria-hidden="true">○</span><div><strong>Goods inspected and received</strong><small>Not yet confirmed by Ülric.</small></div></li>
+<li><span class="symbol" aria-hidden="true">○</span><div><strong>Reward paid and contract closed</strong><small>200 groschen remain due upon satisfactory settlement.</small></div></li>
+</ul></section>
+<section class="panel" aria-labelledby="notes-heading"><h4 id="notes-heading">The Armorsmith's Notes</h4>
+<p>Charles is to seek Ülric in Tachov. The hides must be presented and inspected before the contract is accepted and the reward handed over.</p>
+<p>The 15 Hides are <strong>not yet counted as received inventory</strong>. The 200 groschen are <strong>not yet recorded as paid</strong>.</p>
+<p>Once the meeting takes place, this record can be updated to reflect the actual exchange.</p>
+</section>
+</div>
+<div class="notice"><strong>Ledger note:</strong> This page records a reported completion, not proof of delivery. Neither materials nor reward have been posted to the Estate's inventory or treasury.</div>
+<div class="crosslinks"><a href="./profile.html">Character Profile</a><a href="./equipment.html">Equipment Dossier</a><a href="./chronicle.html">View Chronicle</a></div>
+</div></article>
+</main>
+<footer class="footer"><div class="wrap"><span>The Vaelen Estate · Quest Journal</span><span>By Hammer · By Steel · By Fortune</span><a href="./index.html">Return to the Estate</a></div></footer>
+</body></html>
