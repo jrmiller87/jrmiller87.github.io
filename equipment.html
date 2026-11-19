@@ -717,6 +717,76 @@ main.layout.gear-layout-v2{padding-top:26px}
   .loadout-feature-art .ulric-photo{height:70%!important}
 }
 
+
+/* Equipment banner · single edge-to-edge image crop */
+.loadout-feature{
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-height:435px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.loadout-feature-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:0;
+  background:none;
+}
+.loadout-feature-art .ulric-photo{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  transform:none!important;
+  filter:saturate(.9) contrast(1.03)!important;
+}
+.loadout-feature-art:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,#16181cfb 0%,#16181ce9 23%,#16181c9c 40%,#16181c1e 70%,transparent 100%),
+             linear-gradient(0deg,#14161a90,transparent 48%);
+}
+.loadout-feature-copy{
+  position:relative;
+  z-index:2;
+  align-self:center;
+  width:min(475px,43%);
+  padding:34px 0 34px clamp(24px,4vw,54px);
+}
+.loadout-feature-copy h2{font-size:clamp(27px,3vw,42px)!important}
+.loadout-art-caption{z-index:2;right:23px;bottom:17px;top:auto}
+@media(max-width:710px){
+  .loadout-feature{min-height:520px;align-items:flex-end}
+  .loadout-feature-art{inset:0;min-height:0;height:100%;width:100%;background:none}
+  .loadout-feature-art .ulric-photo{
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:50% 0%!important;
+  }
+  .loadout-feature-art:before{
+    background:linear-gradient(0deg,#15171bfa 0%,#15171bee 25%,#15171b94 47%,#15171b0d 77%,transparent 100%);
+  }
+  .loadout-feature-copy{align-self:flex-end;width:100%;padding:25px 21px 29px}
+  .loadout-art-caption{top:15px;bottom:auto;right:17px}
+}
+@media(max-width:390px){
+  .loadout-feature{min-height:480px}
+  .loadout-feature-art .ulric-photo{height:100%!important;object-position:50% 0%!important}
+  .loadout-feature-copy{padding:23px 17px 24px}
+}
+
 </style></head><body><header class="site-header"><div class="site-header-inner"><a href="./index.html" class="site-brand" aria-label="The Vaelen Estate home"><span class="site-mark">ÜV</span><span class="site-wordmark">THE VAELEN ESTATE<small>A LIVING STORY OF BOHEMIA</small></span></a><nav class="site-nav" aria-label="Main navigation"><a href="./index.html">Home</a><a href="./profile.html">Character Profile</a><a class="active" aria-current="page" href="./equipment.html">Equipment</a><a href="./chronicle.html">Chronicle</a><a href="./index.html#characters">Characters</a><a href="./index.html#timeline">Timeline</a></nav></div></header><section class="hero"><div class="wrap"><div class="kicker">Character &amp; Equipment Screen</div><h1 class="display">Ülric Vaelen</h1><p>A public, read-only presentation of Ülric’s current known equipment and possessions. Hover over an equipment slot to view its description, status, and place in his current loadout. On touchscreens, tap a slot to see the tooltip.</p></div></section><main class="wrap layout gear-layout-v2"><section class="panel figure-card gear-redesign" aria-labelledby="equipment-heading">
 <div class="loadout-feature">
   <div class="loadout-feature-copy"><span class="loadout-eyebrow">The Vaelen Estate · Personal Loadout</span><h2 id="equipment-heading">The Equipment Dossier</h2>
