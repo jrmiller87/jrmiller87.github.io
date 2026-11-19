@@ -674,6 +674,49 @@ main.layout.gear-layout-v2{padding-top:26px}
   .loadout-feature-copy{padding:24px 16px 22px}
 }
 
+
+/* Equipment portrait correction · preserve entire head */
+/* The background spans the title block; the actual portrait is not cover-cropped. */
+.loadout-feature{min-height:450px;position:relative;isolation:isolate}
+.loadout-feature-art{
+  position:absolute;inset:0;width:100%;height:100%;min-height:0;
+  background-image:linear-gradient(90deg,#16181bd9,#16181b35),url('./art/ulric-short-hair-full.webp');
+  background-size:cover;
+  background-position:center 16%;
+}
+.loadout-feature-art .ulric-photo{
+  position:absolute!important;
+  top:0!important;bottom:0!important;right:0!important;left:auto!important;
+  width:55%!important;height:100%!important;min-height:0!important;
+  object-fit:contain!important;
+  object-position:right top!important;
+  transform:none!important;
+  filter:saturate(.92) contrast(1.03) drop-shadow(-12px 0 24px #0005);
+}
+.loadout-feature-art:before{
+  background:linear-gradient(90deg,#15171bf7 0%,#15171bee 36%,#15171baa 58%,#15171b22 100%),
+             linear-gradient(0deg,#14161a9c,transparent 56%);
+}
+.loadout-feature-copy{width:min(590px,60%);align-self:center}
+@media(max-width:710px){
+  .loadout-feature{min-height:520px}
+  .loadout-feature-art{height:100%;min-height:0;background-position:center top}
+  .loadout-feature-art .ulric-photo{
+    top:0!important;bottom:auto!important;left:0!important;right:0!important;
+    width:100%!important;height:72%!important;
+    object-fit:contain!important;object-position:center top!important;
+  }
+  .loadout-feature-art:before{
+    background:linear-gradient(0deg,#14161bff 0%,#14161bf3 24%,#14161b8a 51%,#14161b1c 83%,transparent 100%);
+  }
+  .loadout-feature-copy{align-self:flex-end;width:100%;padding:26px 20px 25px}
+}
+@media(max-width:390px){
+  .loadout-feature{min-height:500px}
+  .loadout-feature-art{height:100%;min-height:0}
+  .loadout-feature-art .ulric-photo{height:70%!important}
+}
+
 </style></head><body><header class="site-header"><div class="site-header-inner"><a href="./index.html" class="site-brand" aria-label="The Vaelen Estate home"><span class="site-mark">ÜV</span><span class="site-wordmark">THE VAELEN ESTATE<small>A LIVING STORY OF BOHEMIA</small></span></a><nav class="site-nav" aria-label="Main navigation"><a href="./index.html">Home</a><a href="./profile.html">Character Profile</a><a class="active" aria-current="page" href="./equipment.html?v=estate9">Equipment Screen</a><a href="./chronicle.html">Chronicle</a><a href="./index.html#characters">Characters</a><a href="./index.html#timeline">Timeline</a></nav></div></header><section class="hero"><div class="wrap"><div class="kicker">Character &amp; Equipment Screen</div><h1 class="display">Ülric Vaelen</h1><p>A public, read-only presentation of Ülric’s current known equipment and possessions. Hover over an equipment slot to view its description, status, and place in his current loadout. On touchscreens, tap a slot to see the tooltip.</p></div></section><main class="wrap layout gear-layout-v2"><section class="panel figure-card gear-redesign" aria-labelledby="equipment-heading">
 <div class="loadout-feature">
   <div class="loadout-feature-copy"><span class="loadout-eyebrow">The Vaelen Estate · Personal Loadout</span><h2 id="equipment-heading">The Equipment Dossier</h2>
