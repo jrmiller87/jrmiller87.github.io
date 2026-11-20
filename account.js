@@ -74,6 +74,8 @@ async function loadProfile(user) {
   byId('level-progress-label').textContent='LEVEL '+String(level).padStart(2,'0')+' PROGRESS';
   byId('level-progress-numbers').textContent=intoLevel.toLocaleString()+' / '+xpPerLevel.toLocaleString()+' XP';
   byId('level-progress-fill').style.width=progressPct+'%';
+  byId('level-progress-rail').setAttribute('aria-valuenow',String(intoLevel));
+  byId('level-progress-rail').setAttribute('aria-valuetext',intoLevel+' of '+xpPerLevel+' XP toward next level');
   byId('level-progress-next').textContent=toNextLevel.toLocaleString()+' XP TO LEVEL '+String(level+1).padStart(2,'0');
 
   displayList('xp-history',(xpRes.data||[]).map(x=>makeItem('+'+x.amount+' XP · '+x.source,formatDate(x.awarded_at))),'No XP recorded yet. XP is awarded only by trusted community systems.');
@@ -132,16 +134,23 @@ byId('discord-signin').addEventListener('click',async()=>{
 });
 byId('signout').addEventListener('click',async()=>{
   status('Signing out…');
-  const {error}=await supabase.auth.signOut();
-  if(error){status(safeMessage(error),true);return;}
-  setAuthUI(false);status('');
+  const button=byId('signout');
+  button.disabled=true;
+  try {
+    const {error}=await supabase.auth.signOut();
+    if(error)throw error;
+    setAuthUI(false);status('');
+  } catch(error){status(safeMessage(error),true);}
+  finally{button.disabled=false;}
 });
 byId('profile-form').addEventListener('submit',async event=>{
   event.preventDefault();
   const button=byId('profile-form').querySelector('button[type="submit"]');
   const name=byId('display-name').value.trim();
   if(!name||name.length>40){byId('save-message').textContent='Display names must contain 1–40 characters.';return;}
-  button.disabled=true;byId('save-message').textContent='Saving…';
+  button.disabled=true;button.textContent='SAVING…';
+  byId('save-message').textContent='Saving your changes…';
+  byId('save-message').classList.remove('is-success','is-error');
   try {
     const {data:{user},error:authError}=await supabase.auth.getUser();
     if(authError||!user)throw authError||new Error('Please sign in again.');
@@ -149,9 +158,10 @@ byId('profile-form').addEventListener('submit',async event=>{
     if(error)throw error;
     byId('operator-name').textContent=name;
     byId('operator-avatar').textContent=name.slice(0,2).toUpperCase();
-    byId('save-message').textContent='Operator profile updated.';
-  } catch(error){byId('save-message').textContent=safeMessage(error);}
-  finally{button.disabled=false;}
+    byId('save-message').textContent='Profile saved successfully.';
+    byId('save-message').classList.add('is-success');
+  } catch(error){byId('save-message').textContent=safeMessage(error);byId('save-message').classList.add('is-error');}
+  finally{button.disabled=false;button.textContent='SAVE PROFILE';}
 });
 supabase.auth.onAuthStateChange(event=>{
   if(event==='SIGNED_OUT'){setAuthUI(false);status('');}
