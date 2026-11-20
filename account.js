@@ -45,7 +45,7 @@ async function loadProfile(user) {
 
   const [xpRes, missionsRes, completionsRes, badgesRes] = await Promise.all([
     supabase.from('operations_xp_events').select('amount,source,awarded_at').eq('user_id',user.id).order('awarded_at',{ascending:false}).limit(50),
-    supabase.from('operations_missions').select('id,title,description,xp_reward').eq('published',true).order('created_at',{ascending:false}).limit(50),
+    supabase.from('operations_missions').select('id,code,title,description,xp_reward').eq('published',true).order('created_at',{ascending:false}).limit(50),
     supabase.from('operations_mission_completions').select('mission_id').eq('user_id',user.id),
     supabase.from('operations_member_badges').select('awarded_at, operations_badges(name,description,visible)').eq('user_id',user.id).order('awarded_at',{ascending:false})
   ]);
@@ -61,18 +61,50 @@ async function loadProfile(user) {
     if(!page||page.length<1000)break;
     offset+=1000;
   }
-  // Starter rank progression: one level per 500 verified XP.
-  const level = Math.floor(xp/500)+1;
-  byId('operator-rank').textContent = rankFor(level);
-  byId('operator-level').textContent = String(level).padStart(2,'0');
-  byId('operator-xp').textContent = xp.toLocaleString();
+  // Starter progression: 500 verified XP per level, with ranks at set levels.
+  const xpPerLevel=500;
+  const level=Math.floor(xp/xpPerLevel)+1;
+  const intoLevel=xp%xpPerLevel;
+  const toNextLevel=xpPerLevel-intoLevel;
+  const progressPct=(intoLevel/xpPerLevel)*100;
+  byId('operator-rank').textContent=rankFor(level);
+  byId('operator-level').textContent=String(level).padStart(2,'0');
+  byId('operator-xp').textContent=xp.toLocaleString();
+  byId('level-progress-label').textContent='LEVEL '+String(level).padStart(2,'0')+' PROGRESS';
+  byId('level-progress-numbers').textContent=intoLevel.toLocaleString()+' / '+xpPerLevel.toLocaleString()+' XP';
+  byId('level-progress-fill').style.width=progressPct+'%';
+  byId('level-progress-next').textContent=toNextLevel.toLocaleString()+' XP TO LEVEL '+String(level+1).padStart(2,'0');
 
   displayList('xp-history',(xpRes.data||[]).map(x=>makeItem('+'+x.amount+' XP · '+x.source,formatDate(x.awarded_at))),'No XP recorded yet. XP is awarded only by trusted community systems.');
-  const completed = new Set((completionsRes.data||[]).map(x=>x.mission_id));
-  displayList('missions-list',(missionsRes.data||[]).map(x=>makeItem(x.title+' · +'+x.xp_reward+' XP',(completed.has(x.id)?'COMPLETED · ':'AVAILABLE · ')+(x.description||'Community mission'))),'No published missions yet.');
+  const completed=new Set((completionsRes.data||[]).map(x=>x.mission_id));
+  const missionCards=(missionsRes.data||[]).map(m=>{
+    const isDone=completed.has(m.id);
+    const card=document.createElement('div');
+    card.className='personnel-mission-item'+(isDone?' is-complete':' is-awaiting');
+    const bar=document.createElement('div');
+    bar.className='personnel-mission-top';
+    const title=document.createElement('strong');title.textContent=m.title;
+    const reward=document.createElement('span');reward.className='personnel-mission-reward';reward.textContent='+'+m.xp_reward+' XP';
+    bar.append(title,reward);
+    const description=document.createElement('p');description.textContent=m.description||'Community objective';
+    const statusLine=document.createElement('span');statusLine.className='personnel-mission-state';
+    statusLine.textContent=isDone?'✓ COMPLETED · REWARD AWARDED':'◇ VERIFICATION COMING SOON';
+    card.append(bar,description,statusLine);
+    return card;
+  });
+  displayList('missions-list',missionCards,'No published missions yet.');
   const earned=(badgesRes.data||[]).filter(x=>x.operations_badges?.visible);
-  byId('operator-badges').textContent = String(earned.length);
-  displayList('badges-list',earned.map(x=>makeItem(x.operations_badges.name,x.operations_badges.description||formatDate(x.awarded_at))),'No badges earned yet.');
+  byId('operator-badges').textContent=String(earned.length);
+  const badgeCards=earned.map(x=>{
+    const item=document.createElement('div');item.className='personnel-badge-item';
+    const mark=document.createElement('span');mark.className='personnel-badge-glyph';mark.setAttribute('aria-hidden','true');mark.textContent='✦';
+    const copy=document.createElement('div');
+    const heading=document.createElement('strong');heading.textContent=x.operations_badges.name;
+    const sub=document.createElement('small');sub.textContent=(x.operations_badges.description||'Earned achievement')+' · '+formatDate(x.awarded_at);
+    copy.append(heading,sub);item.append(mark,copy);return item;
+  });
+  displayList('badges-list',badgeCards,'No badges earned yet.');
+
 }
 async function refresh() {
   status('Checking your Discord session…');
