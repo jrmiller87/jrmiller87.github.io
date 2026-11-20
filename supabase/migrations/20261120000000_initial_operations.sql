@@ -65,7 +65,10 @@ create table if not exists public.operations_member_badges (
 );
 
 -- Initial profiles are created by Supabase Auth, never browser-written.
-create or replace function public.operations_create_profile()
+-- Keep SECURITY DEFINER functions in a non-exposed schema, not public.
+create schema if not exists private;
+revoke all on schema private from public, anon, authenticated;
+create or replace function private.operations_create_profile()
 returns trigger language plpgsql security definer
 set search_path = ''
 as $$
@@ -86,7 +89,8 @@ $$;
 drop trigger if exists operations_on_auth_user_created on auth.users;
 create trigger operations_on_auth_user_created
 after insert on auth.users
-for each row execute function public.operations_create_profile();
+for each row execute function private.operations_create_profile();
+revoke all on function private.operations_create_profile() from public, anon, authenticated;
 
 -- Backfill users who may have signed in before this migration was applied.
 insert into public.operator_profiles (user_id, display_name, avatar_url)
