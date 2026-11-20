@@ -51,8 +51,17 @@ async function loadProfile(user) {
   ]);
   for(const result of [xpRes,missionsRes,completionsRes,badgesRes])if(result.error)throw result.error;
 
-  // This is a starter rank progression formula; XP totals come only from verified server-side ledger rows.
-  const xp = (xpRes.data || []).reduce((sum,item)=>sum+item.amount,0);
+  // Paginate XP history so total XP remains correct beyond the 50 most recent events.
+  let xp=0, offset=0;
+  while(true){
+    const {data:page,error:pageError}=await supabase.from('operations_xp_events')
+      .select('amount').eq('user_id',user.id).range(offset,offset+999);
+    if(pageError)throw pageError;
+    xp+=(page||[]).reduce((sum,item)=>sum+item.amount,0);
+    if(!page||page.length<1000)break;
+    offset+=1000;
+  }
+  // Starter rank progression: one level per 500 verified XP.
   const level = Math.floor(xp/500)+1;
   byId('operator-rank').textContent = rankFor(level);
   byId('operator-level').textContent = String(level).padStart(2,'0');
@@ -84,7 +93,7 @@ byId('discord-signin').addEventListener('click',async()=>{
   const button=byId('discord-signin');button.disabled=true;status('Opening Discord authorization…');
   const {error}=await supabase.auth.signInWithOAuth({
     provider:'discord',
-    options:{redirectTo:new URL('account.html',window.location.href).href,scopes:'identify'}
+    options:{redirectTo:new URL('account.html',window.location.href).href}
   });
   if(error){status(safeMessage(error),true);button.disabled=false;}
 });
