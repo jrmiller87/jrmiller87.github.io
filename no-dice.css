@@ -1387,3 +1387,134 @@ body{background:#100d16;color:var(--text)}
  .nd-interior.nd-personnel .personnel-home-signal-end{display:none}
  .nd-interior.nd-personnel .personnel-home-shortcuts h2{font-size:30px}
 }
+
+/* =========================================================
+   PERSONNEL FINISHING PASS — refined homepage-consistent UI
+   Keep existing sections functional; fix spacing, contrast,
+   focus indicators, compact states and responsive composition.
+   ========================================================= */
+.nd-personnel{scroll-behavior:smooth}
+.nd-personnel #personnel-access{scroll-margin-top:112px}
+.nd-personnel :is(#operator-dossier,#operator-progression,#operator-settings,#operator-xp-ledger,#operator-missions,#operator-achievements){scroll-margin-top:122px}
+.nd-personnel a:focus-visible,.nd-personnel button:focus-visible,.nd-personnel input:focus-visible{
+ outline:2px solid #ffb680;outline-offset:3px;
+}
+.nd-personnel .personnel-home-hero{overflow:hidden}
+.nd-personnel .personnel-home-hero::after{
+ content:"";position:absolute;right:-180px;top:-240px;width:500px;height:500px;
+ border-radius:50%;background:radial-gradient(circle,#9c62d714,transparent 66%);
+ pointer-events:none;
+}
+.nd-personnel .personnel-hero-layout{position:relative;z-index:1}
+.nd-personnel .personnel-home-hero h1{overflow-wrap:normal}
+.nd-personnel .personnel-home-overline{line-height:1.5}
+.nd-personnel .personnel-home-shortcuts{box-shadow:0 18px 40px #08060c30;position:relative}
+.nd-personnel .personnel-home-shortcut-row{
+ display:flex;align-items:center;gap:13px;min-height:65px;padding:11px 13px;
+ background:#2b2032;border:1px solid #4f3d5a;border-radius:5px;
+}
+.nd-personnel .personnel-home-shortcut-row>span:nth-child(2){
+ flex:1;display:flex;flex-direction:column;gap:3px;min-width:0;
+}
+.nd-personnel .personnel-home-shortcut-row strong{color:#f7efff;font:800 17px/1.2 'Rajdhani',sans-serif}
+.nd-personnel .personnel-home-shortcut-row small{color:#d0bdd9;font:700 10px/1.5 'DM Sans',sans-serif;letter-spacing:.3px}
+.nd-personnel .personnel-home-shortcut-mark{color:#ffb680;font-size:13px}
+.nd-personnel .personnel-home-actions a{transition:background .18s,border-color .18s,transform .18s}
+.nd-personnel .personnel-home-actions a:hover{transform:translateY(-1px)}
+.nd-personnel .personnel-home-shortcuts-foot{color:#c4b4cd}
+.nd-personnel .personnel-alert{
+ border:1px solid #71548b;background:#32243d;color:#f2dffa;
+ border-radius:7px;padding:13px 17px;line-height:1.6;font-size:14px;
+}
+.nd-personnel .personnel-alert.is-error{background:#38252d;border-color:#b17182;color:#ffe2ea}
+.nd-personnel .personnel-guest{align-items:stretch;gap:20px}
+.nd-personnel .personnel-join-panel,.nd-personnel .personnel-info{border-color:#594566!important;background:#211927!important}
+.nd-personnel .personnel-panel-stripe{background:#352740;border-bottom-color:#5c456a}
+.nd-personnel .personnel-join-content,.nd-personnel .personnel-info-head{padding-top:30px}
+.nd-personnel .personnel-join-content h2{font-size:clamp(37px,4.5vw,52px);line-height:1.03}
+.nd-personnel .personnel-info-head h3{font-size:clamp(33px,4vw,46px);line-height:1.06}
+.nd-personnel .personnel-join-content p,.nd-personnel .personnel-info-head p{color:#ded1e5;font-size:14px;line-height:1.7}
+.nd-personnel .personnel-join-button{min-height:54px}
+.nd-personnel .personnel-capability-list>div{background:#2b2134;border:1px solid #514059;border-radius:5px}
+.nd-personnel .personnel-capability-list small{font-size:12px;line-height:1.5}
+.nd-personnel .personnel-small{color:#d3c2da;line-height:1.6}
+.nd-personnel .personnel-dashboard-intro{padding:4px 0 6px}
+.nd-personnel #signed-in .personnel-dashboard-intro h2{letter-spacing:-.4px}
+.nd-personnel #signed-in .personnel-zone,.nd-personnel #signed-in .personnel-record{
+ overflow:hidden;border-color:#594566!important;box-shadow:none;
+}
+.nd-personnel #signed-in .personnel-zone-header{border-bottom:1px solid #7b5b85}
+.nd-personnel #signed-in .personnel-record-header{position:relative}
+.nd-personnel #signed-in .personnel-record-header:before{z-index:1}
+.nd-personnel #signed-in .personnel-zone-header h3,.nd-personnel #signed-in .personnel-record-header h3{line-height:1.18}
+.nd-personnel #signed-in .personnel-profile-top{display:flex;align-items:center;gap:22px}
+.nd-personnel #signed-in .personnel-profile-top>div:nth-child(2){min-width:0;flex:1}
+.nd-personnel #signed-in #operator-name{overflow-wrap:anywhere}
+.nd-personnel #signed-in .personnel-avatar{flex:none}
+.nd-personnel #signed-in .personnel-secondary{flex:none}
+.nd-personnel #signed-in .personnel-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nd-personnel #signed-in .personnel-stats article{min-width:0;display:flex;flex-direction:column;gap:4px}
+.nd-personnel #signed-in .personnel-stats article strong{overflow-wrap:anywhere;word-break:normal}
+.nd-personnel #signed-in .personnel-stats article>span{margin-bottom:3px}
+.nd-personnel #signed-in .personnel-stats article small{margin-top:auto}
+.nd-personnel #signed-in .personnel-level-track{border-radius:7px}
+.nd-personnel #signed-in .personnel-level-track-rail{height:12px;border-radius:999px}
+.nd-personnel #signed-in .personnel-level-track-fill{border-radius:999px}
+.nd-personnel #signed-in .personnel-level-meta{gap:12px}
+.nd-personnel #signed-in .personnel-record-description{margin:0 0 19px}
+.nd-personnel #signed-in .personnel-record-body{min-width:0}
+.nd-personnel #signed-in .personnel-record-settings input[type=text]{
+ width:100%;max-width:100%;min-width:0;border-radius:5px;
+ background:#17121d;border:1px solid #775d8b;color:#f9f3ff;
+}
+.nd-personnel #signed-in .personnel-field-help{
+ font-size:12px;color:#d2c5dd;line-height:1.5;margin:5px 0 14px;
+}
+.nd-personnel #signed-in .personnel-save-message:empty{display:none}
+.nd-personnel #signed-in .personnel-save-message{
+ border-radius:5px;padding:10px 12px;margin:12px 0 0;
+ background:#31273b;border:1px solid #71538b;color:#efddf9;
+}
+.nd-personnel #signed-in .personnel-save-message.is-success{background:#213329;border-color:#477959;color:#b9efc9}
+.nd-personnel #signed-in .personnel-save-message.is-error{background:#3b262d;border-color:#9e5b68;color:#ffd9dd}
+.nd-personnel #signed-in :is(.personnel-mission-item,.personnel-badge-item){border-radius:7px;min-width:0}
+.nd-personnel #signed-in .personnel-mission-top{gap:14px}
+.nd-personnel #signed-in .personnel-mission-top strong{overflow-wrap:anywhere}
+.nd-personnel #signed-in .personnel-mission-reward{border-radius:5px}
+.nd-personnel #signed-in .personnel-mission-state{display:inline-block;line-height:1.5}
+.nd-personnel #signed-in .personnel-badge-glyph{border-radius:7px}
+.nd-personnel #signed-in .personnel-badge-item>div{min-width:0}
+.nd-personnel #signed-in .personnel-badge-item strong{overflow-wrap:anywhere}
+.nd-personnel :is(button:disabled){cursor:wait;opacity:.7;transform:none!important}
+@media(max-width:1050px){
+ .nd-personnel #signed-in .personnel-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:850px){
+ .nd-personnel .personnel-guest{grid-template-columns:1fr}
+ .nd-personnel .personnel-join-panel,.nd-personnel .personnel-info{width:100%;max-width:none}
+}
+@media(max-width:760px){
+ .nd-personnel .personnel-hero-layout{gap:24px}
+ .nd-personnel .personnel-home-shortcuts{width:100%}
+ .nd-personnel .personnel-dashboard-intro{gap:14px}
+ .nd-personnel #signed-in .personnel-profile-top{flex-wrap:wrap;gap:14px}
+ .nd-personnel #signed-in .personnel-profile-top>div:nth-child(2){flex:1 1 170px}
+ .nd-personnel #signed-in .personnel-profile-top .personnel-secondary{margin-left:auto}
+ .nd-personnel #signed-in .personnel-stats article{min-height:120px}
+}
+@media(max-width:440px){
+ .nd-personnel .personnel-home-shortcut-row{padding:10px}
+ .nd-personnel .personnel-home-shortcut-row small{font-size:9px}
+ .nd-personnel #signed-in .personnel-zone-header{gap:10px}
+ .nd-personnel #signed-in .personnel-profile-top .personnel-secondary{width:100%;margin:4px 0 0}
+ .nd-personnel #signed-in .personnel-stats{gap:9px}
+ .nd-personnel #signed-in .personnel-stats article{padding:13px 11px;min-height:118px}
+ .nd-personnel #signed-in .personnel-stats article strong{font-size:clamp(23px,6vw,29px)}
+ .nd-personnel #signed-in .personnel-record-header{gap:10px}
+ .nd-personnel #signed-in .personnel-mission-top{flex-wrap:wrap}
+ .nd-personnel #signed-in .personnel-mission-reward{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){
+ .nd-personnel .personnel-home-actions a{transition:none!important}
+ .nd-personnel .personnel-home-actions a:hover{transform:none!important}
+}
