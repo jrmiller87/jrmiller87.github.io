@@ -17,19 +17,83 @@
 <section id="personnel-access" class="wrap personnel-content">
 <div id="account-status" class="personnel-alert" role="status" aria-live="polite">Checking your account…</div>
 <div id="signed-out" class="personnel-guest" hidden><div class="personnel-panel personnel-join-panel"><div class="personnel-panel-stripe"><span>PERSONNEL ACCESS</span><span>DISCORD SIGN-IN</span></div><div class="personnel-join-content"><span class="personnel-eyebrow">WELCOME TO THE CREW</span><h2>SIGN IN TO<br><em>NO DICE.</em></h2><p>Use your Discord account to view your operator profile, XP, and achievements.</p><button id="discord-signin" class="personnel-primary personnel-join-button" type="button"><span class="personnel-button-sigil" aria-hidden="true">✦</span><span>CONNECT WITH DISCORD</span><span aria-hidden="true">↗</span></button><p class="personnel-small">Official Discord authorization · No Dice never sees your password.</p></div><div class="personnel-panel-bottom"><span>DISCORD AUTHORIZATION</span><span>NO DICE // PERSONNEL</span></div></div></div>
-<div id="signed-in" hidden>
-<div class="personnel-dashboard-intro"><div><span class="personnel-eyebrow">NO DICE // ACCOUNT</span><h2>YOUR <em>PERSONNEL RECORD.</em></h2><p>Your stats and activity, organized in one place.</p></div><span class="personnel-profile-tag">● CONNECTED</span></div>
-
-<section class="personnel-zone personnel-zone-dossier" id="operator-dossier" aria-labelledby="dossier-heading"><div class="personnel-zone-header"><span class="personnel-zone-number">01</span><div><span class="personnel-zone-kicker">ACCOUNT</span><h3 id="dossier-heading">Your operator</h3></div><span class="personnel-zone-mark" aria-hidden="true">◆</span></div>
-<div class="personnel-profile-top"><div class="personnel-avatar" id="operator-avatar" aria-hidden="true">ND</div><div><span class="personnel-eyebrow">AUTHORIZED OPERATOR</span><h2 id="operator-name">Operator</h2><p id="operator-identity">Connected through Discord</p></div><button id="signout" type="button" class="personnel-secondary">SIGN OUT</button></div></section>
-<section class="personnel-zone personnel-zone-progress" id="operator-progression" aria-labelledby="progress-heading"><div class="personnel-zone-header"><span class="personnel-zone-number">02</span><div><span class="personnel-zone-kicker">PROGRESSION</span><h3 id="progress-heading">Your progress</h3></div><span class="personnel-zone-mark" aria-hidden="true">▰</span></div>
-<div class="personnel-stats"><article><span>RANK</span><strong id="operator-rank">RECRUIT</strong><small>Community progression</small></article><article><span>LEVEL</span><strong id="operator-level">01</strong><small>Starting level</small></article><article><span>TOTAL XP</span><strong id="operator-xp">0</strong><small>Verified XP events</small></article><article><span>BADGES</span><strong id="operator-badges">0</strong><small>Unlocked achievements</small></article></div><div class="personnel-level-track" aria-label="Level progress"><div class="personnel-level-meta"><span id="level-progress-label">LEVEL 01 PROGRESS</span><strong id="level-progress-numbers">0 / 500 XP</strong></div><div class="personnel-level-track-rail" id="level-progress-rail" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="500" aria-valuenow="0"><div id="level-progress-fill" class="personnel-level-track-fill" style="width:0%"></div></div><span class="personnel-level-next" id="level-progress-next">500 XP to level 02</span></div><p class="personnel-zone-footnote">Ranks measure community participation, not Discord staff authority. Only verified actions award XP.</p></section>
-<div class="personnel-records-heading"><span class="personnel-eyebrow">MISSIONS · BADGES · HISTORY · SETTINGS</span><h3>YOUR <em>OPERATIONS.</em></h3><p>Your challenges, rewards, activity, and account settings.</p></div>
-<div class="personnel-grid personnel-records-grid">
-<section class="personnel-panel personnel-record personnel-record-missions" id="operator-missions" aria-labelledby="missions-heading"><div class="personnel-record-header"><span class="personnel-record-symbol" aria-hidden="true">◎</span><div><span class="personnel-zone-kicker">COMMUNITY CHALLENGES</span><h3 id="missions-heading">Missions</h3></div></div><div class="personnel-record-body"><p class="personnel-record-description">See available challenges and which rewards you have earned.</p><div id="missions-list" class="personnel-list"><p>No published missions yet.</p></div></div></section>
-<section class="personnel-panel personnel-record personnel-record-badges" id="operator-achievements" aria-labelledby="badges-heading"><div class="personnel-record-header"><span class="personnel-record-symbol" aria-hidden="true">★</span><div><span class="personnel-zone-kicker">UNLOCKED BADGES</span><h3 id="badges-heading">Achievements</h3></div></div><div class="personnel-record-body"><p class="personnel-record-description">Badges you have unlocked through No Dice.</p><div id="badges-list" class="personnel-list"><p>No badges earned yet.</p></div></div></section>
-<section class="personnel-panel personnel-record personnel-record-xp" id="operator-xp-ledger" aria-labelledby="xp-heading"><div class="personnel-record-header"><span class="personnel-record-symbol" aria-hidden="true">↗</span><div><span class="personnel-zone-kicker">EARNED EXPERIENCE</span><h3 id="xp-heading">XP history</h3></div></div><div class="personnel-record-body"><p class="personnel-record-description">Your latest verified XP rewards.</p><div id="xp-history" class="personnel-list"><p>No XP recorded yet.</p></div></div></section>
-<section class="personnel-panel personnel-record personnel-record-settings" id="operator-settings" aria-labelledby="settings-heading"><div class="personnel-record-header"><span class="personnel-record-symbol" aria-hidden="true">✎</span><div><span class="personnel-zone-kicker">YOUR DETAILS</span><h3 id="settings-heading">Profile settings</h3></div></div><div class="personnel-record-body"><p class="personnel-record-description">Manage how your operator identity appears across No Dice.</p><form id="profile-form"><label for="display-name">DISPLAY NAME</label><input id="display-name" name="display-name" type="text" maxlength="40" minlength="1" required autocomplete="nickname" aria-describedby="display-name-help"><p id="display-name-help" class="personnel-field-help">This name appears on your No Dice operator profile.</p><label class="personnel-toggle"><input type="checkbox" id="profile-public"><span>Show my display name and avatar in public member listings</span></label><button type="submit" class="personnel-primary">SAVE PROFILE</button><p id="save-message" role="status" aria-live="polite" class="personnel-small personnel-save-message"></p></form></div></section>
-</div></div>
+<div id="signed-in" class="operator-dashboard" hidden>
+  <header class="operator-dashboard-header">
+    <div class="operator-dashboard-welcome">
+      <span class="operator-dash-eyebrow"><span class="operator-dash-indicator" aria-hidden="true"></span> NO DICE / OPERATOR DASHBOARD</span>
+      <h2>YOUR <em>COMMAND CENTER.</em></h2>
+      <p>Everything about your No Dice account, all in one place.</p>
+    </div>
+    <div class="operator-dashboard-status"><span aria-hidden="true">●</span> DISCORD CONNECTED</div>
+  </header>
+  <div class="operator-dashboard-top">
+    <section class="operator-dash-profile" id="operator-dossier" aria-labelledby="dossier-heading">
+      <div class="operator-dash-card-label"><span>OPERATOR PROFILE</span><span>ND / 01</span></div>
+      <div class="operator-dash-profile-main">
+        <div class="personnel-avatar" id="operator-avatar" aria-hidden="true">ND</div>
+        <div class="operator-dash-profile-identity">
+          <span class="operator-dash-subtitle">SIGNED-IN OPERATOR</span>
+          <h3 id="dossier-heading"><span id="operator-name">Operator</span></h3>
+          <p id="operator-identity">Connected through Discord</p>
+        </div>
+      </div>
+      <div class="operator-dash-profile-footer">
+        <span><span class="operator-dash-online" aria-hidden="true"></span> ACCOUNT CONNECTED</span>
+        <button id="signout" type="button" class="personnel-secondary">SIGN OUT</button>
+      </div>
+    </section>
+    <section class="operator-dash-progression" id="operator-progression" aria-labelledby="progress-heading">
+      <div class="operator-dash-card-label"><span id="progress-heading">LEVEL PROGRESSION</span><span>ND / 02</span></div>
+      <div class="operator-dash-progress-rank"><span>YOUR RANK</span><strong id="operator-rank">RECRUIT</strong></div>
+      <div class="personnel-level-track" aria-label="Level progress">
+        <div class="personnel-level-meta"><span id="level-progress-label">LEVEL 01 PROGRESS</span><strong id="level-progress-numbers">0 / 500 XP</strong></div>
+        <div class="personnel-level-track-rail" id="level-progress-rail" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="500" aria-valuenow="0"><div id="level-progress-fill" class="personnel-level-track-fill" style="width:0%"></div></div>
+        <span class="personnel-level-next" id="level-progress-next">500 XP to level 02</span>
+      </div>
+      <p class="operator-dash-progress-foot">Ranks come from verified No Dice XP, not Discord staff permissions.</p>
+    </section>
+  </div>
+  <section class="operator-dash-stats" aria-label="Your account statistics">
+    <article><span>LEVEL</span><strong id="operator-level">01</strong><small>Current level</small></article>
+    <article><span>TOTAL XP</span><strong id="operator-xp">0</strong><small>Earned experience</small></article>
+    <article><span>BADGES</span><strong id="operator-badges">0</strong><small>Unlocked achievements</small></article>
+    <article><span>MISSIONS</span><strong id="operator-mission-count">0 / 0</strong><small>Completed challenges</small></article>
+  </section>
+  <nav class="operator-dash-nav" aria-label="Dashboard sections">
+    <a href="#operator-missions">MISSIONS <span aria-hidden="true">↘</span></a>
+    <a href="#operator-achievements">ACHIEVEMENTS <span aria-hidden="true">↘</span></a>
+    <a href="#operator-xp-ledger">XP ACTIVITY <span aria-hidden="true">↘</span></a>
+    <a href="#operator-settings">SETTINGS <span aria-hidden="true">↘</span></a>
+  </nav>
+  <div class="operator-dash-content">
+    <section class="operator-dash-panel operator-dash-missions" id="operator-missions" aria-labelledby="missions-heading">
+      <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">ACTIVE OPERATIONS / 03</span><h3 id="missions-heading">MISSION <em>BOARD.</em></h3><p>Community challenges and your completion status.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">◎</span></div>
+      <div class="operator-dash-panel-body"><div id="missions-list" class="personnel-list"><p>Loading your missions…</p></div></div>
+    </section>
+    <div class="operator-dash-side">
+      <section class="operator-dash-panel" id="operator-achievements" aria-labelledby="badges-heading">
+        <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">RECOGNITION / 04</span><h3 id="badges-heading">ACHIEVEMENTS.</h3><p>Badges you've earned.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">★</span></div>
+        <div class="operator-dash-panel-body"><div id="badges-list" class="personnel-list"><p>Loading achievements…</p></div></div>
+      </section>
+      <section class="operator-dash-panel" id="operator-xp-ledger" aria-labelledby="xp-heading">
+        <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">ACTIVITY / 05</span><h3 id="xp-heading">XP <em>HISTORY.</em></h3><p>Your most recent XP awards.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">↗</span></div>
+        <div class="operator-dash-panel-body"><div id="xp-history" class="personnel-list"><p>Loading XP history…</p></div></div>
+      </section>
+    </div>
+  </div>
+  <section class="operator-dash-panel operator-dash-settings" id="operator-settings" aria-labelledby="settings-heading">
+    <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">YOUR ACCOUNT / 06</span><h3 id="settings-heading">PROFILE <em>SETTINGS.</em></h3><p>Manage how your operator identity appears across No Dice.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">✎</span></div>
+    <div class="operator-dash-panel-body">
+      <form id="profile-form">
+        <label for="display-name">DISPLAY NAME</label>
+        <input id="display-name" name="display-name" type="text" maxlength="40" minlength="1" required autocomplete="nickname" aria-describedby="display-name-help">
+        <p id="display-name-help" class="personnel-field-help">The name displayed on your No Dice profile.</p>
+        <label class="personnel-toggle"><input type="checkbox" id="profile-public"><span>Show my display name and avatar in public member listings</span></label>
+        <button type="submit" class="personnel-primary">SAVE PROFILE</button>
+        <p id="save-message" role="status" aria-live="polite" class="personnel-small personnel-save-message"></p>
+      </form>
+    </div>
+  </section>
+</div>
 <div class="personnel-bottom"><span>NO DICE // YOUR COMMUNITY HQ</span><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD ↗</a></div>
 </section></main><footer class="wrap footer"><div><strong>NO DICE</strong> · Gaming. Friends. Stories. Chaos.</div><div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="footer-discord">Join Discord ↗</a> · <a href="./nexus/" style="color:#ebb2ff">Character Nexus ↗</a></div></footer><script>const btn=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));</script><script type="module" src="./account.js"></script></body></html>
