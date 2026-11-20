@@ -1239,3 +1239,151 @@ body{background:#100d16;color:var(--text)}
  .nd-interior :is(.community-cta,.banner){padding:22px}
  .nd-interior :is(.section-title h2,.studio-section-heading h2){font-size:35px}
 }
+
+/* NO DICE / PERSONNEL HOMEPAGE PARITY — same hero split, signal,
+   access board, and purple-orange visual language as Command Center. */
+.nd-interior.nd-personnel{
+ --personnel-home-bg:#100d16;--personnel-home-card:#211927;
+ --personnel-home-panel:#2a2033;--personnel-home-border:#594566;
+ --personnel-home-purple:#c59afb;--personnel-home-orange:#ffb680;
+ --personnel-home-muted:#d2c5dd;background:var(--personnel-home-bg)!important;
+}
+.nd-interior.nd-personnel .personnel-home-hero{
+ background:linear-gradient(110deg,#21162d,#100d16 76%)!important;
+ border-bottom:1px solid #674875!important;padding:25px 0 55px;
+}
+.nd-interior.nd-personnel .personnel-home-signal{
+ display:flex;align-items:center;gap:12px;margin:0 0 30px;
+ color:#d6badf;font:700 11px 'Roboto Mono',monospace;
+ letter-spacing:1px;min-width:0;
+}
+.nd-interior.nd-personnel .personnel-home-signal .personnel-live-dot{margin:0;flex:none}
+.nd-interior.nd-personnel .personnel-home-signal-rule{flex:1;height:1px;background:#584168;min-width:24px}
+.nd-interior.nd-personnel .personnel-home-signal-end{color:#af95bb}
+.nd-interior.nd-personnel .personnel-hero-layout{
+ display:grid;grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);
+ gap:42px;align-items:center;
+}
+.nd-interior.nd-personnel .personnel-hero-copy .crumb{
+ display:inline-block;color:#c7a7e9;font:700 11px 'DM Sans',sans-serif;
+ margin:0 0 22px;letter-spacing:.4px;
+}
+.nd-interior.nd-personnel .personnel-home-overline{
+ font:800 12px 'DM Sans',sans-serif;letter-spacing:1.2px;color:#ffb680;
+}
+.nd-interior.nd-personnel .personnel-home-hero h1{
+ font:800 clamp(61px,7.3vw,99px)/.93 'Rajdhani','Barlow Condensed',sans-serif;
+ letter-spacing:-1.5px;color:#f7f0fc;margin:16px 0 22px;max-width:720px;
+}
+.nd-interior.nd-personnel .personnel-home-hero h1 em{color:#c59afb!important;font-style:normal}
+.nd-interior.nd-personnel .personnel-home-outline{color:#ffb680}
+.nd-interior.nd-personnel .personnel-hero-copy>p{
+ color:#d2c5dd;font:400 15px/1.75 'DM Sans',sans-serif;max-width:54ch;margin:0;
+}
+.nd-interior.nd-personnel .personnel-home-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 19px}
+.nd-interior.nd-personnel .personnel-home-actions a{
+ display:inline-flex;align-items:center;justify-content:space-between;gap:19px;
+ min-height:48px;padding:11px 17px;border-radius:5px;
+ font:800 14px 'Rajdhani','Barlow Condensed',sans-serif;letter-spacing:.55px;
+}
+.nd-interior.nd-personnel .personnel-home-primary{background:#b987ec;border:1px solid #b987ec;color:#1c1027}
+.nd-interior.nd-personnel .personnel-home-secondary{background:#2b2035;border:1px solid #6d5282;color:#f3e8fc}
+.nd-interior.nd-personnel .personnel-home-primary:hover{background:#d0a5fc;border-color:#d0a5fc}
+.nd-interior.nd-personnel .personnel-home-secondary:hover{background:#392a45;border-color:#a77cc5}
+.nd-interior.nd-personnel .personnel-home-coordinate{
+ font:700 10px/1.7 'Roboto Mono',monospace;letter-spacing:.5px;color:#a99ab4;
+}
+.nd-interior.nd-personnel .personnel-home-coordinate span{color:#ffb680;padding:0 5px}
+.nd-interior.nd-personnel .personnel-home-shortcuts{
+ width:100%;max-width:410px;justify-self:end;border:1px solid #61476e;
+ border-radius:9px;background:#241a2c;padding:26px;min-width:0;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-head{
+ display:flex;align-items:start;justify-content:space-between;gap:10px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-head>div>span{
+ color:#c8a2e4;font:700 10px 'Roboto Mono',monospace;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts h2{
+ font:800 36px/.95 'Rajdhani',sans-serif;margin:10px 0;color:#f7ecfc;letter-spacing:-.4px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts h2 em{color:#ffb680;font-style:normal}
+.nd-interior.nd-personnel .personnel-home-sigil{
+ display:grid;place-items:center;width:39px;height:39px;flex:none;
+ background:#3b2a48;border:1px solid #765b8d;color:#ddaafa;font-size:21px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts>p{
+ font:400 13px/1.6 'DM Sans',sans-serif;color:#cfc0d8;margin:7px 0 19px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list{display:flex;flex-direction:column;gap:8px}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list a{
+ display:flex;align-items:center;gap:13px;min-height:65px;padding:11px 13px;
+ background:#2b2032;border:1px solid #4f3d5a;color:#e9dcee;border-radius:5px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list a:hover{background:#372745;border-color:#946ab4}
+.nd-interior.nd-personnel .personnel-home-index{
+ display:grid;place-items:center;min-width:32px;height:32px;
+ background:#42314f;color:#ddaaf5;font:800 16px 'Rajdhani',sans-serif;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list a>span:nth-child(2){
+ flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list strong{
+ color:#f7efff;font:800 17px/1.2 'Rajdhani',sans-serif;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list small{
+ color:#c6b4cf;font:700 9px/1.5 'DM Sans',sans-serif;letter-spacing:.4px;
+}
+.nd-interior.nd-personnel .personnel-home-shortcuts-list a>span:last-child{color:#ffb680}
+.nd-interior.nd-personnel .personnel-home-shortcuts-foot{
+ margin-top:18px;padding-top:13px;border-top:1px solid #4c3956;
+ font:700 9px 'Roboto Mono',monospace;color:#af9abb;letter-spacing:.5px;
+}
+.nd-interior.nd-personnel .personnel-content{padding-top:35px}
+.nd-interior.nd-personnel :is(.personnel-join-panel,.personnel-info,.personnel-zone,.personnel-record){
+ border-radius:9px!important;
+}
+.nd-interior.nd-personnel #signed-in :is(.personnel-zone,.personnel-record){
+ background:#211927!important;border-color:#594566;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-header{border-bottom:1px solid #594566}
+.nd-interior.nd-personnel #signed-in .personnel-level-track-fill{
+ background:linear-gradient(90deg,#b987ec,#c59afb 60%,#ffb680);
+}
+.nd-interior.nd-personnel .personnel-primary{
+ background:#b987ec!important;border-color:#b987ec!important;color:#1c1027!important;
+}
+/* After Discord sign-in, show the operator dashboard rather than a large landing hero. */
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-hero{padding:14px 0 18px!important}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-signal,
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-shortcuts,
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-actions,
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-coordinate,
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-overline{display:none}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero-layout{display:block}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero-copy .crumb{margin:0 0 8px}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-hero h1{
+ font-size:clamp(30px,4vw,44px);margin:3px 0 8px;letter-spacing:-.4px;line-height:1.07;
+}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-hero h1 br{display:none}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero-copy>p{font-size:13px;line-height:1.5}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-content{padding-top:20px}
+@media(max-width:960px){
+ .nd-interior.nd-personnel .personnel-hero-layout{grid-template-columns:minmax(0,1fr) minmax(280px,.75fr);gap:25px}
+ .nd-interior.nd-personnel .personnel-home-hero h1{font-size:clamp(57px,7vw,82px)}
+}
+@media(max-width:760px){
+ .nd-interior.nd-personnel .personnel-hero-layout{grid-template-columns:1fr;gap:24px}
+ .nd-interior.nd-personnel .personnel-home-shortcuts{max-width:none}
+ .nd-interior.nd-personnel .personnel-home-hero{padding:25px 0 40px}
+ .nd-interior.nd-personnel .personnel-home-signal{margin-bottom:18px}
+ .nd-interior.nd-personnel .personnel-home-hero h1{font-size:clamp(57px,10vw,76px)}
+}
+@media(max-width:480px){
+ .nd-interior.nd-personnel .personnel-home-hero h1{font-size:clamp(46px,12vw,64px)}
+ .nd-interior.nd-personnel .personnel-home-shortcuts{padding:18px}
+ .nd-interior.nd-personnel .personnel-home-actions{flex-direction:column}
+ .nd-interior.nd-personnel .personnel-home-actions a{width:100%}
+ .nd-interior.nd-personnel .personnel-home-signal-end{display:none}
+ .nd-interior.nd-personnel .personnel-home-shortcuts h2{font-size:30px}
+}
