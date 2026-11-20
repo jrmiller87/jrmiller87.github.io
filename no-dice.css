@@ -151,3 +151,30 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 @media(max-width:1050px){.brand-art{width:195px}}
 @media(max-width:750px){.brand-art{width:218px;max-width:calc(100vw - 125px)}}
 @media(max-width:390px){.brand-art{width:185px}}
+
+/* Actual uploaded No Dice logo — no reconstructed vector branding */
+.brand{gap:11px;display:inline-flex;align-items:center;max-width:100%}
+.brand-logo{display:block;width:63px;height:63px;object-fit:contain;border:1px solid #6c3076;background:#0c0810;box-shadow:0 0 0 3px #a45bef14,0 0 22px #b855ed21;flex:none}
+.brand-lockup{display:flex;flex-direction:column;justify-content:center;white-space:nowrap;gap:3px}
+.brand-lockup strong{font:700 27px/.95 'Rajdhani',sans-serif;letter-spacing:1.9px;color:#e7e1e9}
+.brand-lockup strong em{font-style:normal;color:#a85af2}
+.brand-lockup small{font:600 8px/1.2 'Roboto Mono',monospace;letter-spacing:1px;color:#ff9954}
+.brand-art{display:none!important}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(240px,.85fr);gap:24px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.hero-logo-panel{position:relative;z-index:1;justify-self:end;width:min(100%,400px);aspect-ratio:1/1;border:1px solid #65316e;background:#09060d;clip-path:polygon(0 0,94% 0,100% 6%,100% 100%,6% 100%,0 94%);box-shadow:0 0 58px #9a4bdd28;overflow:hidden}
+.hero-logo-panel:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(145deg,transparent 57%,#0e061533 92%);border:1px solid #8d4ace3b}
+.hero-logo-panel img{width:100%;height:100%;display:block;object-fit:cover;filter:contrast(1.05) saturate(1.09)}
+.hero-stamp{position:absolute;bottom:11px;left:13px;font:600 9px 'Roboto Mono',monospace;letter-spacing:1.1px;color:#ffc69d;z-index:2;text-shadow:0 2px 6px #000;background:#120719b5;padding:4px 7px}
+.hero{padding:72px 0 82px;background:radial-gradient(ellipse at 67% 45%,#9228c824,transparent 46%),linear-gradient(120deg,#100a17,#1c1026 72%,#221123)}
+.hero:before{opacity:.28}
+.hero h1{font-size:clamp(58px,8.8vw,126px)}
+/* Reinforce grit in cards without obscuring content */
+.feature,.lounge-detail,.space-card,.smallcard{background-image:repeating-linear-gradient(145deg,#db8dff05 0 1px,transparent 1px 15px),linear-gradient(130deg,#26192f,#140f1c)}
+.feature h3,.section-title h2{color:#f6f0f9}
+.feature:hover{border-color:#d081ff}
+.btn.nexus-launch{background:linear-gradient(115deg,#4e262a,#8d4324)!important}
+@media(max-width:1200px){.brand-logo{width:52px;height:52px}.brand-lockup strong{font-size:23px}.brand-lockup small{font-size:7px}.links{gap:0}.links a{padding:7px 8px}}
+@media(max-width:920px){.brand-lockup small{display:none}.brand-lockup strong{font-size:22px}.hero-grid{grid-template-columns:1fr 230px}.hero-logo-panel{width:230px}.hero h1{font-size:clamp(58px,9vw,96px)}}
+@media(max-width:750px){.brand-logo{width:49px;height:49px}.brand-lockup strong{font-size:27px}.brand-lockup small{display:block;font-size:7px}.hero-grid{grid-template-columns:1fr;gap:28px}.hero-logo-panel{justify-self:center;width:min(66vw,300px)}.hero{padding:49px 0 76px}.hero h1{font-size:clamp(62px,12vw,90px)}.hero:after{display:none}}
+@media(max-width:390px){.brand-lockup strong{font-size:23px}.brand-logo{width:43px;height:43px}.hero h1{font-size:58px}}
