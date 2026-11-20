@@ -295,3 +295,33 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 @media(max-width:750px){.command-hero{padding-top:19px}.command-hero-layout{grid-template-columns:1fr;padding:40px 0 20px;gap:36px}.command-hero h1{font-size:clamp(64px,12.8vw,95px)}.command-hero-visual{max-width:380px;justify-self:center}.command-strip-inner{gap:0}.strip-label{width:100%;padding:14px 0 8px}.command-strip a{flex:1 1 33%;justify-content:space-between;border-top:1px solid #533965}.command-section{padding:55px 0}.command-section-heading{align-items:start}.command-heading-mark{display:none}.command-nexus-feature{grid-template-columns:1fr}.command-nexus-art{min-height:270px;border-right:0;border-bottom:1px solid #694779}.command-nexus-copy{padding:30px}.command-feature-section{padding:58px 0}.command-info-grid{grid-template-columns:1fr}.command-info-card{min-height:0}.command-end-section{padding-bottom:60px}.command-end-panel{padding:29px}}
 @media(max-width:510px){.command-hero h1{font-size:clamp(54px,12vw,76px);letter-spacing:-1.4px}.command-hero-copy>p{font-size:14px}.command-overline{font-size:10px}.command-coordinate{font-size:9px;line-height:1.8}.command-signal{font-size:9px;letter-spacing:.45px}.command-signal-end{display:none}.ops-grid{grid-template-columns:1fr}.ops-tile{min-height:216px}.command-strip a{flex:1 1 50%}.command-actions{align-items:stretch}.command-primary,.command-secondary{width:100%}.command-nexus-copy{padding:25px}.command-nexus-copy h2{font-size:53px}.command-nexus-feature{clip-path:none}.command-hero-visual{width:min(100%,330px)}.command-end-panel{padding:24px}.command-visual-caption{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.ops-tile,.command-primary,.command-secondary{transition:none!important}.ops-tile:hover,.command-primary:hover,.command-secondary:hover{transform:none!important}}
+
+/* Hero quick-access board replaces the oversized logo photograph */
+.command-hero-shortcuts{position:relative;justify-self:end;width:100%;max-width:440px;padding:25px 23px 16px;background:linear-gradient(150deg,#2b1938 0%,#160f20 76%);border:1px solid #8754a0;box-shadow:0 16px 55px #0502097a;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.command-hero-shortcuts:before{content:"";position:absolute;left:0;top:0;width:112px;height:4px;background:#b67aee}
+.command-hero-shortcuts:after{content:"";position:absolute;right:0;bottom:0;width:80px;height:3px;background:#ff9b4d}
+.shortcuts-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.shortcuts-eyebrow{font:700 10px 'Roboto Mono',monospace;letter-spacing:1.2px;color:#ffad73}
+.shortcuts-head h2{font:700 38px/1 'Rajdhani',sans-serif;letter-spacing:.4px;color:#f8efff;margin:9px 0 0}
+.shortcuts-head h2 em{color:#c58aff;font-style:normal}
+.shortcuts-sigil{display:grid;place-items:center;width:44px;height:44px;flex:none;transform:rotate(45deg);border:1px solid #8858a8;color:#ffb679;font-size:29px;background:#291b38}
+.shortcuts-sigil::first-letter{transform:rotate(-45deg)}
+.shortcuts-lead{font-size:12px;line-height:1.6;color:#b5a3c3;margin:16px 0 23px}
+.shortcuts-list{display:grid;gap:9px}
+.shortcut-entry{display:flex;align-items:center;gap:13px;min-height:72px;padding:12px;border:1px solid #54386a;background:linear-gradient(110deg,#31213d,#24172f);transition:background .16s,border-color .16s,transform .16s}
+.shortcut-entry:hover{background:linear-gradient(110deg,#4a2b5e,#2d1b40);border-color:#b27dec;transform:translateX(3px)}
+.shortcut-index{font:700 19px 'Rajdhani',sans-serif;color:#b580e2;width:27px;flex:none}
+.shortcut-info{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.shortcut-info strong{font:700 20px/1 'Rajdhani',sans-serif;letter-spacing:.5px;color:#f8f0ff}
+.shortcut-info small{font:600 9px/1.35 'Roboto Mono',monospace;letter-spacing:.35px;color:#aa97bf}
+.shortcut-arrow{color:#d2a6f3;font-size:20px}
+.shortcut-nexus{border:1px solid #f99a54;background:linear-gradient(110deg,#50302d,#38203c)}
+.shortcut-nexus:hover{border-color:#ffc58c;background:linear-gradient(110deg,#663a31,#4c2750)}
+.shortcut-nexus .shortcut-index,.shortcut-nexus .shortcut-arrow,.shortcut-nexus .shortcut-info small{color:#ffb47c}
+.shortcuts-footer{display:flex;justify-content:space-between;gap:9px;padding-top:17px;margin-top:17px;border-top:1px solid #50385e;font:600 9px 'Roboto Mono',monospace;letter-spacing:.4px;color:#9d88ae}
+.shortcuts-footer span:last-child{color:#ffb67e}
+@media(max-width:1130px){.command-hero-shortcuts{padding:21px 17px 14px}.shortcuts-head h2{font-size:32px}.shortcut-entry{min-height:65px}.shortcut-info strong{font-size:18px}}
+@media(max-width:900px){.command-hero-shortcuts{max-width:330px}.shortcuts-head h2{font-size:28px}.shortcuts-sigil{width:37px;height:37px}.shortcut-entry{padding:9px;gap:9px}.shortcut-info strong{font-size:16px}.shortcut-info small{font-size:8px}}
+@media(max-width:750px){.command-hero-shortcuts{max-width:460px;justify-self:center}.shortcuts-head h2{font-size:36px}.shortcut-info strong{font-size:20px}}
+@media(max-width:510px){.command-hero-shortcuts{max-width:100%;padding:23px 17px}.shortcuts-head h2{font-size:32px}.shortcut-entry{min-height:66px}}
+@media(prefers-reduced-motion:reduce){.shortcut-entry{transition:none!important}.shortcut-entry:hover{transform:none!important}}
