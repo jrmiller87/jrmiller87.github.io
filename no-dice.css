@@ -89,3 +89,58 @@
 @media(max-width:1050px){.links a.nexus-nav{padding:6px 9px}.links a.nexus-nav .nexus-nav-title{font-size:11px}}
 @media(max-width:750px){.links a.nexus-nav{width:100%;padding:11px 14px;align-items:flex-start}.links a.nexus-nav .nexus-nav-title{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.links a.nexus-nav,.btn.nexus-launch{transition:none!important;transform:none!important}}
+
+/* NO DICE // TACTICAL COMMAND DESIGN SYSTEM */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+:root{--bg:#0c0912;--panel:#191222;--panel2:#251a32;--line:#623e74;--purple:#9e59ed;--violet:#b787fa;--orange:#ff903c;--amber:#ffc078;--text:#f7f3fb;--muted:#c1b1cf}
+body{
+background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeating-linear-gradient(0deg,transparent 0 39px,#9d66c608 40px),repeating-linear-gradient(90deg,transparent 0 39px,#9d66c608 40px),#0c0912;
+}
+.sitehead{background:#100c18f2;border-bottom:2px solid #7c488e;box-shadow:0 6px 0 #f9913312}
+.headinner{padding:11px 0}
+.brand-mark{border-radius:4px;clip-path:polygon(0 0,84% 0,100% 16%,100% 100%,16% 100%,0 84%);box-shadow:none;background:linear-gradient(140deg,#6530b0 5%,#9a51e9 60%,#ff9b43)}
+.brand-name{font-family:'Rajdhani','Barlow Condensed',sans-serif;font-size:31px;letter-spacing:2.5px;font-weight:700}
+.brand small{font-family:'Roboto Mono',monospace;color:#d5a5fa;letter-spacing:1.5px;font-size:9px}
+.links a{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.8px;font-size:14px}
+.links a:not(.nexus-nav):hover,.links a.active{background:#382447;color:#fff;box-shadow:inset 0 -2px #a268e5}
+.links a.join{background:linear-gradient(125deg,#9e62e1,#ff9f50);border:1px solid #ffb370;border-radius:3px;color:#160d1e;box-shadow:none}
+.hero{padding:105px 0 85px;background:linear-gradient(120deg,#120b1c90,#20102b45),repeating-linear-gradient(115deg,transparent 0 90px,#c08dfe08 91px 93px,transparent 94px 180px);border-bottom:1px solid #56366b;position:relative}
+.hero:after{content:"ND // COMMAND NETWORK";position:absolute;bottom:18px;right:max(24px,calc((100% - 1220px)/2));color:#ab78c277;letter-spacing:3px;font:600 10px 'Roboto Mono',monospace}
+.hero:before{border:2px solid #a45ff944;border-radius:0;transform:rotate(45deg);box-shadow:0 0 0 50px #a45ff907,0 0 0 105px #ff954006}
+.hero h1,.inner-hero h1{font-family:'Rajdhani','Barlow Condensed',Impact,sans-serif;font-weight:700;letter-spacing:-1.5px;text-transform:uppercase;line-height:.85}
+.hero h1{font-size:clamp(70px,11vw,142px);margin:21px 0 26px}
+.eyebrow,.tag,.discord-kicker,.space-tag,.room-label{font-family:'Roboto Mono',monospace;letter-spacing:1.6px;text-transform:uppercase}
+.eyebrow:before{content:"// ";color:var(--orange)}
+.section-title h2,.banner strong,.community-cta h2,.feature h3,.space-card h3,.lounge-detail h3,.hangout-card h3,.discord-feature h3{font-family:'Rajdhani','Barlow Condensed',sans-serif;letter-spacing:.2px;text-transform:uppercase;font-weight:700}
+.section-title h2{font-size:38px}
+.feature,.smallcard,.hangout-card,.lounge-detail,.space-card,.discord-feature,.community-cta,.banner{border-radius:3px;clip-path:polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,15px 100%,0 calc(100% - 15px))}
+.feature,.smallcard{background:linear-gradient(135deg,#25172f,#140f1b);border:1px solid #654179}
+.feature:after{content:"";position:absolute;right:0;bottom:0;width:55px;height:4px;background:var(--orange);opacity:.85}
+.feature-icon,.room-icon,.brand-mark{border-radius:3px}
+.feature-icon{background:#362248;border:1px solid #775096;color:#ddb7ff}
+.feature h3{font-size:27px}
+.btn{border-radius:3px;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.7px;text-transform:uppercase;font-size:15px}
+.btn.alt{border:1px solid #8f5cb1;background:#281c35}
+.banner{background:linear-gradient(110deg,#26183c,#3b2050 60%,#503026);border:1px solid #9a5786}
+.banner strong{font-size:30px}
+.banner .btn{flex-shrink:0}
+.footer{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1px;border-top:1px solid #755091}
+.inner-hero{background:linear-gradient(115deg,#1a0e25dd,#2b193ad9),repeating-linear-gradient(45deg,transparent 0 75px,#a068cc12 76px 77px);border-bottom:2px solid #6b3f7e}
+.inner-hero h1{font-size:clamp(60px,9vw,98px)}
+.crumb{font-family:'Roboto Mono',monospace;text-transform:uppercase;letter-spacing:.8px}
+.community-feature,.hangout-card,.community-cta{border-color:#815091}
+.room-motto,.warm-accent{color:#ff9c51}
+.room-label,.space-tag{font-size:9px}
+.feature a,.room-link,.section-title a{font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.6px;font-size:14px}
+.community-note{border-radius:0;border-left:3px solid var(--orange)}
+/* Character Nexus launches are a separate two-line control */
+.links a.nexus-nav{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;min-width:181px;min-height:56px;gap:0!important;padding:8px 13px!important;border:2px solid #ff9844!important;border-radius:3px!important;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));background:linear-gradient(110deg,#583024,#35203c)!important;white-space:nowrap}
+.nexus-nav-copy{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:3px;width:100%}
+.links a.nexus-nav .nexus-nav-title{display:block!important;font:700 15px/1.15 'Rajdhani',sans-serif!important;letter-spacing:.5px;text-transform:uppercase}
+.links a.nexus-nav .nexus-nav-title span{color:#ffba77}
+.links a.nexus-nav .nexus-nav-subtitle{display:block!important;font:600 9px/1.2 'Roboto Mono',monospace!important;letter-spacing:1.1px!important;color:#ffc186!important;margin:0!important;padding:0!important;text-transform:uppercase}
+.links a.nexus-nav:hover{background:linear-gradient(110deg,#8b472a,#59305b)!important;border-color:#ffc28d!important}
+.btn.nexus-launch{border-radius:3px;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
+.btn.nexus-launch small{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:.1px}
+@media(max-width:1050px){.links a.nexus-nav{min-width:155px;padding:8px 9px!important}.links a.nexus-nav .nexus-nav-title{font-size:13px!important}.links a{letter-spacing:0;font-size:13px}.links{gap:2px}}
+@media(max-width:750px){.links a.nexus-nav{width:100%;min-width:0;align-items:flex-start!important}.hero{padding:65px 0 75px}.hero:after{right:20px}.feature,.smallcard{clip-path:none}}
