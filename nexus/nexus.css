@@ -30,3 +30,8 @@
 .eyebrow{color:#e1a5ff}
 .status-pill{border-color:#745077;background:#31213d;color:#efc9fa}
 @media(max-width:800px){.parent-brand{margin-bottom:0;padding-bottom:10px}.sidebar.menu-open .nexus-exit{display:flex}.sidebar:not(.menu-open) .nexus-exit{display:none}}
+
+/* No Dice Discord community link in Character Nexus */
+.nexus-discord{display:flex;align-items:center;gap:8px;margin:12px 4px 6px;padding:12px 13px;border:1px solid #ef9b58;border-radius:8px;background:linear-gradient(115deg,#57302e,#3d224d);color:#ffe3c7!important;font-size:12px;font-weight:800;text-decoration:none;line-height:1.4}
+.nexus-discord:hover,.nexus-discord:focus-visible{background:linear-gradient(115deg,#87472d,#623060);border-color:#ffc488}
+@media(max-width:800px){.sidebar:not(.menu-open) .nexus-discord{display:none}.sidebar.menu-open .nexus-discord{display:flex}}
