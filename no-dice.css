@@ -700,3 +700,135 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 .personnel-badge-item strong{font:800 20px 'Rajdhani',sans-serif;color:#ffe6b5}
 .personnel-badge-item small{font:400 12px/1.6 'DM Sans',sans-serif;color:#dbcbb6}
 @media(max-width:480px){.personnel-level-track{margin:0 13px 15px;padding:15px}.personnel-level-meta{font-size:9px}.personnel-mission-top{align-items:flex-start;flex-wrap:wrap}.personnel-badge-item{padding:13px}.personnel-badge-glyph{width:42px;height:42px}}
+
+/* ==========================================================
+   NO DICE / CLARITY PASS — quieter, easier-to-scan interface
+   Shared site pages only; Character Nexus retains its own UI.
+   Simplify the surface, not the features.
+   ========================================================== */
+:root{
+ --bg:#100d16;--panel:#201926;--panel2:#27202f;
+ --line:#4a3a57;--text:#f7f4fb;--muted:#cabed4;
+}
+body{background:#100d16;color:var(--text)}
+#main-content,.studio-main,.personnel-main{background:#100d16}
+.wrap{width:min(1160px,calc(100% - 48px))}
+.sitehead{background:#15101cee;box-shadow:none;border-bottom:1px solid #584566}
+.headinner{row-gap:7px}
+.headinner .links{border-top:1px solid #483951;padding:6px 0 9px;gap:3px}
+.headinner::after{color:#9e8eab;letter-spacing:.65px}
+.headinner .links a:not(.nexus-nav){font-weight:700;border-radius:5px}
+.headinner .links a.personnel-nav{background:transparent;border:1px solid #72518d}
+.headinner .links a.join{background:#c08af7;color:#180f20!important;border:1px solid #c08af7}
+.headinner .links a.nexus-nav{background:#35232b!important;box-shadow:none!important;border-color:#b87b55!important}
+.headinner .links a:not(.join):hover{background:#34263e}
+.footer{margin-top:42px;padding-top:24px;border-top-color:#403348}
+
+/* A single strong heading, then content. Decorative labels stay secondary. */
+.section,.command-section,.studio-area-section,.studio-feature-section{padding-top:62px;padding-bottom:64px}
+.section-title,.command-section-heading,.studio-section-heading{margin-bottom:26px}
+.section-title h2,.command-section-heading h2,.studio-section-heading h2{letter-spacing:0;line-height:1.08}
+.section-title p,.command-section-heading p,.studio-section-heading p{max-width:66ch;line-height:1.7;color:#c8bdd2}
+.command-heading-mark{opacity:.6}
+.command-eyebrow,.eyebrow,.personnel-eyebrow{letter-spacing:1px}
+.inner-hero{padding:53px 0 52px;background:linear-gradient(120deg,#21162d,#19121f)!important;border-bottom:1px solid #574266}
+.inner-hero:before,.inner-hero:after{opacity:.3}
+.inner-hero h1{font-size:clamp(53px,7.2vw,82px);line-height:1}
+.inner-hero p{max-width:65ch;color:#d3c7d9}
+.crumb{font-size:11px}
+
+/* Home: one purposeful introduction, one directory, one featured project. */
+#main-content .command-hero{background:linear-gradient(110deg,#21162d,#100d16 76%);padding:27px 0 55px}
+#main-content .command-hero:before,#main-content .command-hero:after{opacity:.16}
+#main-content .command-hero-layout{gap:34px}
+#main-content .command-hero h1{font-size:clamp(65px,8vw,101px);line-height:.94}
+#main-content .command-hero-copy>p{max-width:56ch;font-size:15px;color:#d3c8dd;line-height:1.75}
+#main-content .command-coordinate{opacity:.65}
+#main-content .command-hero-shortcuts{border:1px solid #61476e;background:#241a2c;box-shadow:none;clip-path:none;padding:24px}
+#main-content .command-hero-shortcuts:before,#main-content .command-hero-shortcuts:after{opacity:.15}
+#main-content .shortcuts-head h2{font-size:31px}
+#main-content .shortcut-entry{border:1px solid #47374f;background:#2b2032;margin-bottom:8px;clip-path:none;transition:background .18s,border-color .18s}
+#main-content .shortcut-entry:hover{background:#392744;border-color:#8965a5;transform:none}
+#main-content .shortcuts-footer{opacity:.65}
+#main-content .command-section{background:#100d16;padding:70px 0}
+#main-content .ops-grid{gap:16px}
+#main-content .ops-tile{min-height:232px;padding:24px;background:#211927;border:1px solid #51415e;clip-path:none;border-radius:9px;box-shadow:none;transform:none}
+#main-content .ops-tile:before,#main-content .ops-tile:after{opacity:.08}
+#main-content .ops-tile:hover{background:#292032;border-color:#a379c9;transform:translateY(-2px)}
+#main-content .ops-tile-name{font-size:clamp(25px,3vw,34px);line-height:1.05}
+#main-content .ops-tile-desc{color:#c9bed1;line-height:1.65}
+#main-content .ops-tile-foot{border-top:1px solid #4b3b55;padding-top:12px}
+#main-content .ops-tile-foot span{font-size:11px}
+#main-content .command-feature-section{padding:67px 0 72px;background:#18121f}
+#main-content .command-nexus-feature{border:1px solid #694d70;clip-path:none;background:#211729;box-shadow:none}
+#main-content .command-nexus-art{background:#291c36}
+#main-content .command-nexus-copy{background:#211729;padding:37px}
+#main-content .command-nexus-chips span{background:#35263f;border-color:#57465f}
+#main-content .command-end-section{padding:55px 0 70px}
+#main-content .command-end-panel{background:#281d32;border:1px solid #694d70;clip-path:none}
+#main-content .command-end-panel:after{opacity:.25}
+#main-content .command-primary{background:#b684ed;color:#180e24;border-color:#b684ed}
+#main-content .command-secondary{background:#2b2035;border-color:#6d5282;color:#f3e8fc}
+
+/* Interior cards: fewer competing glows, more useful whitespace. */
+.feature,.smallcard,.lounge-detail,.space-card,.studio-module{background:#221a29;border:1px solid #51415c;box-shadow:none;clip-path:none;border-radius:10px}
+.hangout-card,.discord-feature,.community-cta{box-shadow:none;border-radius:12px;clip-path:none}
+.hangout-card:before{opacity:.15}
+.hangout-card h3{margin-top:25px}
+.hangout-card>p:not(.room-motto),.lounge-detail p,.space-card p,.feature p,.smallcard p{color:#d0c4d7;line-height:1.7}
+.community-cta,.discord-feature{background:#281d32}
+.discord-feature-copy{padding:31px}
+.studio-module{min-height:0}
+.studio-module:before,.studio-module:after{opacity:.15}
+.studio-main .studio-hero{background:linear-gradient(110deg,#22172f,#14101c)!important}
+.studio-status-panel{background:#251c2c;border-color:#584661}
+.studio-safety-section{background:#18121f}
+
+/* Operator page: preserve color labels but use calm, aligned surfaces. */
+.personnel-main{background:#100d16!important}
+.personnel-hero{background:linear-gradient(110deg,#241830,#14101c)!important;padding:45px 0 50px}
+.personnel-hero h1{font-size:clamp(57px,7vw,91px);line-height:.94}
+.personnel-hero-art{background:#24182e;box-shadow:none}
+.personnel-art-center:before,.personnel-art-center:after{opacity:.2}
+.personnel-hero-flags span{background:#2b2033}
+.personnel-guest{gap:20px}
+.personnel-main .personnel-panel{box-shadow:none}
+.personnel-join-panel{background:#23192c}
+.personnel-info{background:#28202c}
+.personnel-section-nav{gap:8px;margin-bottom:26px}
+.personnel-section-nav a{background:#241c2c;border-color:#54415f;min-height:44px}
+.personnel-main .personnel-zone{margin-bottom:27px;background:#201827;box-shadow:none}
+.personnel-zone-header{background:#342540}
+.personnel-zone-progress .personnel-zone-header{background:#3c2a31}
+.personnel-zone-dossier .personnel-profile-top{background:#201827}
+.personnel-zone-progress .personnel-stats article{background:#271e2e}
+.personnel-main .personnel-records-grid{gap:20px}
+.personnel-main .personnel-record{min-height:0;background:#201827}
+.personnel-main .personnel-record-xp{background:#1b252f}
+.personnel-main .personnel-record-missions{background:#2b211f}
+.personnel-main .personnel-record-badges{background:#29251e}
+.personnel-main .personnel-record-header{min-height:77px}
+.personnel-record-body{padding:23px 25px 27px}
+.personnel-main .personnel-record .personnel-list-item{border-top:0}
+.personnel-record-description{min-height:0}
+.personnel-records-heading{margin:43px 0 22px}
+.personnel-zone-footnote{font-size:12px}
+
+/* Small screens: no compressed text or overly dense navigation. */
+@media(max-width:900px){
+ .headinner .links{gap:5px}
+ .headinner .links.open{background:#191321}
+ .wrap{width:min(100% - 32px,1160px)}
+}
+@media(max-width:760px){
+ #main-content .command-hero{padding-bottom:35px}
+ #main-content .command-hero-layout{gap:22px}
+ #main-content .command-section{padding:53px 0}
+ #main-content .command-feature-section{padding:52px 0}
+ #main-content .command-nexus-copy{padding:25px}
+ #main-content .command-hero-shortcuts{padding:19px}
+ .section,.studio-area-section,.studio-feature-section{padding-top:45px;padding-bottom:48px}
+ .personnel-hero{padding:31px 0 39px}
+ .personnel-record-body{padding:20px}
+}
+@media(prefers-reduced-motion:reduce){#main-content .ops-tile{transition:none!important;transform:none!important}}
