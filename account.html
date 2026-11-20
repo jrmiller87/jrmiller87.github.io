@@ -27,30 +27,40 @@
     <div class="operator-dashboard-status"><span aria-hidden="true">●</span> DISCORD CONNECTED</div>
   </header>
   <div class="operator-dashboard-top">
-    <section class="operator-dash-profile" id="operator-dossier" aria-labelledby="dossier-heading">
-      <div class="operator-dash-card-label"><span>OPERATOR PROFILE</span><span>ND / 01</span></div>
+    <section class="operator-dash-profile operator-identity-premium" id="operator-dossier" aria-labelledby="dossier-heading">
+      <div class="operator-dash-card-label"><span>OPERATOR IDENTITY</span><span>ND / PROFILE 01</span></div>
+      <div class="operator-id-banner" aria-hidden="true"><span class="operator-id-banner-label">NO DICE // VERIFIED CREW</span><span class="operator-id-watermark">ND</span><span class="operator-id-banner-dice">✦</span></div>
       <div class="operator-dash-profile-main">
-        <div class="personnel-avatar" id="operator-avatar" aria-hidden="true">ND</div>
+        <div class="operator-avatar-frame">
+          <div class="personnel-avatar" id="operator-avatar" aria-hidden="true">ND</div>
+          <img id="operator-avatar-image" class="operator-avatar-image" alt="" referrerpolicy="no-referrer" hidden>
+          <span class="operator-avatar-connected" aria-label="Discord account connected"></span>
+        </div>
         <div class="operator-dash-profile-identity">
-          <span class="operator-dash-subtitle">SIGNED-IN OPERATOR</span>
+          <span class="operator-dash-subtitle">NO DICE / OPERATOR CALLSIGN</span>
           <h3 id="dossier-heading"><span id="operator-name">Operator</span></h3>
           <p id="operator-identity">Connected through Discord</p>
+          <div class="operator-id-rankline"><span id="operator-profile-rank">RECRUIT</span><span class="operator-id-divider" aria-hidden="true">/</span><span>LEVEL <strong id="operator-profile-level">01</strong></span></div>
         </div>
       </div>
       <div class="operator-dash-profile-footer">
-        <span><span class="operator-dash-online" aria-hidden="true"></span> ACCOUNT CONNECTED</span>
+        <span><span class="operator-dash-online" aria-hidden="true"></span> DISCORD CONNECTED</span>
         <button id="signout" type="button" class="personnel-secondary">SIGN OUT</button>
       </div>
     </section>
-    <section class="operator-dash-progression" id="operator-progression" aria-labelledby="progress-heading">
-      <div class="operator-dash-card-label"><span id="progress-heading">LEVEL PROGRESSION</span><span>ND / 02</span></div>
-      <div class="operator-dash-progress-rank"><span>YOUR RANK</span><strong id="operator-rank">RECRUIT</strong></div>
+    <section class="operator-dash-progression operator-rank-premium" id="operator-progression" aria-labelledby="progress-heading">
+      <div class="operator-dash-card-label"><span id="progress-heading">RANK &amp; PROGRESSION</span><span>ND / PROGRESS 02</span></div>
+      <div class="operator-rank-hero">
+        <div class="operator-rank-emblem" id="operator-rank-emblem" data-rank="recruit" aria-hidden="true"><span class="operator-rank-emblem-lines"></span><span class="operator-rank-emblem-diamond">◆</span><span class="operator-rank-emblem-lines"></span></div>
+        <div class="operator-rank-copy"><span class="operator-dash-subtitle">CURRENT NO DICE RANK</span><strong id="operator-rank">RECRUIT</strong><span class="operator-rank-level">LEVEL <strong id="operator-rank-level">01</strong></span></div>
+      </div>
       <div class="personnel-level-track" aria-label="Level progress">
         <div class="personnel-level-meta"><span id="level-progress-label">LEVEL 01 PROGRESS</span><strong id="level-progress-numbers">0 / 500 XP</strong></div>
         <div class="personnel-level-track-rail" id="level-progress-rail" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="500" aria-valuenow="0"><div id="level-progress-fill" class="personnel-level-track-fill" style="width:0%"></div></div>
         <span class="personnel-level-next" id="level-progress-next">500 XP to level 02</span>
       </div>
-      <p class="operator-dash-progress-foot">Ranks come from verified No Dice XP, not Discord staff permissions.</p>
+      <div class="operator-rank-next"><div><span>NEXT RANK</span><strong id="operator-next-rank">PRIVATE · LEVEL 05</strong></div><span id="operator-next-rank-xp">2,000 XP TO PROMOTION</span></div>
+      <p class="operator-dash-progress-foot">Rank progression uses verified No Dice XP and is separate from Discord staff roles.</p>
     </section>
   </div>
   <section class="operator-dash-stats" aria-label="Your account statistics">
