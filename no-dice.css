@@ -1800,3 +1800,153 @@ body{background:#100d16;color:var(--text)}
  .nd-personnel .operator-dash-settings .operator-dash-panel-body{padding:18px}
 }
 @media(prefers-reduced-motion:reduce){.nd-personnel .operator-dash-nav a{transition:none}}
+
+/* =============================================================
+   PREMIUM OPERATOR IDENTITY + RANK / NO DICE
+   Homepage palette: purple identity, orange progression, charcoal.
+   ============================================================= */
+.nd-personnel .operator-identity-premium,.nd-personnel .operator-rank-premium{
+ position:relative;isolation:isolate;border:1px solid #695275!important;background:#211927!important;
+}
+.nd-personnel .operator-identity-premium .operator-dash-card-label,
+.nd-personnel .operator-rank-premium .operator-dash-card-label{
+ background:#2b2134;border-bottom:1px solid #574365;color:#e6d6f2;
+}
+.nd-personnel .operator-id-banner{
+ position:relative;height:92px;overflow:hidden;padding:17px 21px;
+ background:radial-gradient(ellipse at 82% -40%,#d6a6ff50,transparent 60%),linear-gradient(105deg,#4e315f,#30233e 65%,#271f31);
+ border-bottom:1px solid #7c568f;
+}
+.nd-personnel .operator-id-banner::before{
+ content:"";position:absolute;inset:0;opacity:.28;
+ background:repeating-linear-gradient(120deg,transparent 0 24px,#ebcdff12 24px 25px,transparent 25px 49px);
+ pointer-events:none;
+}
+.nd-personnel .operator-id-banner-label{
+ position:relative;z-index:1;color:#f1dafa;font:800 10px 'DM Sans',sans-serif;letter-spacing:1.2px;
+}
+.nd-personnel .operator-id-watermark{
+ position:absolute;right:40px;top:-33px;font:900 148px/.95 'Rajdhani',sans-serif;letter-spacing:-10px;color:#e3c3f41a;user-select:none;
+}
+.nd-personnel .operator-id-banner-dice{
+ position:absolute;right:23px;bottom:9px;font-size:30px;color:#ffbd89;opacity:.8;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-main{
+ padding:0 23px 20px;gap:19px;align-items:flex-end;margin-top:-27px;position:relative;z-index:2;
+}
+.nd-personnel .operator-avatar-frame{
+ width:106px;height:106px;flex:0 0 106px;position:relative;display:grid;place-items:center;padding:4px;
+ border-radius:16px;background:linear-gradient(140deg,#e0b0ff,#ffbe8a);
+ box-shadow:0 7px 21px #09061255;
+}
+.nd-personnel .operator-identity-premium .personnel-avatar,
+.nd-personnel .operator-avatar-image{
+ display:grid;place-items:center;width:100%!important;height:100%!important;min-width:0!important;
+ background:#382849!important;border:3px solid #261c32!important;border-radius:12px!important;
+ object-fit:cover;color:#f7e7ff;font:800 39px 'Rajdhani',sans-serif;
+ box-shadow:none!important;
+}
+.nd-personnel .operator-avatar-image[hidden],.nd-personnel .operator-identity-premium .personnel-avatar[hidden]{display:none!important}
+.nd-personnel .operator-avatar-connected{
+ position:absolute;right:-4px;bottom:1px;width:20px;height:20px;border:4px solid #211927;
+ border-radius:50%;background:#82d4a2;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-identity{
+ padding-top:28px;min-width:0;align-self:center;
+}
+.nd-personnel .operator-identity-premium .operator-dash-subtitle{
+ color:#ffca9c;font-size:10px;letter-spacing:1px;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-identity h3{
+ font-size:clamp(29px,3.6vw,43px);margin:5px 0 3px;line-height:1.04;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-identity p{margin:4px 0 10px;font-size:12px}
+.nd-personnel .operator-id-rankline{
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;font:800 11px 'DM Sans',sans-serif;
+ letter-spacing:.5px;color:#dbc4ed;
+}
+.nd-personnel .operator-id-rankline>span:first-child{
+ padding:5px 9px;color:#f2d9ff;background:#4c3261;border:1px solid #815b9a;border-radius:4px;
+}
+.nd-personnel .operator-id-rankline strong{color:#ffbd89}
+.nd-personnel .operator-id-divider{color:#866b98}
+.nd-personnel .operator-identity-premium .operator-dash-profile-footer{
+ margin-top:auto;border-top-color:#4f3e59;
+}
+.nd-personnel .operator-rank-premium{
+ background:radial-gradient(circle at 4% 60%,#53314620,transparent 50%),#211927!important;
+}
+.nd-personnel .operator-rank-hero{
+ display:flex;align-items:center;gap:22px;padding:22px 22px 13px;min-width:0;
+}
+.nd-personnel .operator-rank-emblem{
+ --rank-tone:#d4a8fa;
+ width:92px;height:100px;flex:0 0 92px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:3px;color:var(--rank-tone);
+ background:linear-gradient(145deg,#43304e,#292031);
+ border:1px solid #755784;clip-path:polygon(50% 0%,92% 16%,92% 67%,50% 100%,8% 67%,8% 16%);
+ filter:drop-shadow(0 6px 11px #100b16);
+}
+.nd-personnel .operator-rank-emblem[data-rank="private"]{--rank-tone:#eab3fb}
+.nd-personnel .operator-rank-emblem[data-rank="corporal"]{--rank-tone:#ffc491}
+.nd-personnel .operator-rank-emblem[data-rank="sergeant"]{--rank-tone:#ffb27a}
+.nd-personnel .operator-rank-emblem[data-rank="lieutenant"]{--rank-tone:#e3bcff}
+.nd-personnel .operator-rank-emblem[data-rank="captain"]{--rank-tone:#ffd39c}
+.nd-personnel .operator-rank-emblem-lines{height:3px;width:33px;border-radius:8px;background:currentColor;box-shadow:0 7px 0 #b597ca55}
+.nd-personnel .operator-rank-emblem-diamond{font-size:38px;line-height:1.1;text-shadow:0 0 18px #c79aef40}
+.nd-personnel .operator-rank-copy{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.nd-personnel .operator-rank-copy>.operator-dash-subtitle{color:#d4c1df;font-size:10px}
+.nd-personnel .operator-rank-copy>#operator-rank{
+ display:block;color:#ffbf89!important;font:800 clamp(31px,4.1vw,49px)/.98 'Rajdhani',sans-serif;
+ letter-spacing:.2px;overflow-wrap:anywhere;
+}
+.nd-personnel .operator-rank-level{
+ display:inline-flex;align-items:center;gap:7px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.7px;
+ color:#e8d7f1;background:#372a42;border:1px solid #5d466d;padding:6px 10px;border-radius:4px;
+}
+.nd-personnel .operator-rank-level strong{color:#ffd0a9}
+.nd-personnel .operator-rank-premium .personnel-level-track{
+ margin:5px 20px 0!important;padding:16px 17px!important;background:#2b2234!important;
+}
+.nd-personnel .operator-rank-premium .personnel-level-track-fill{
+ background:linear-gradient(90deg,#a56fdf,#c59afb 55%,#ffb680)!important;box-shadow:none!important;
+}
+.nd-personnel .operator-rank-next{
+ display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+ margin:12px 20px 0;padding:11px 14px;border-radius:6px;border:1px solid #664d63;
+ background:#342637;
+}
+.nd-personnel .operator-rank-next>div{display:flex;flex-direction:column;gap:4px}
+.nd-personnel .operator-rank-next>div>span{
+ font:800 10px 'DM Sans',sans-serif;letter-spacing:.6px;color:#d8c0e7;
+}
+.nd-personnel .operator-rank-next strong{
+ font:800 18px/1.1 'Rajdhani',sans-serif;color:#fff2e5;
+}
+.nd-personnel .operator-rank-next>span{
+ font:800 11px 'DM Sans',sans-serif;color:#ffbd89;letter-spacing:.2px;
+}
+.nd-personnel .operator-rank-premium .operator-dash-progress-foot{margin-top:12px}
+@media(max-width:1050px){
+ .nd-personnel .operator-rank-hero{gap:13px;padding:17px 17px 10px}
+ .nd-personnel .operator-rank-emblem{width:76px;height:88px;flex-basis:76px}
+ .nd-personnel .operator-rank-next{margin-inline:16px}
+}
+@media(max-width:760px){
+ .nd-personnel .operator-rank-hero{gap:20px}
+ .nd-personnel .operator-rank-emblem{width:90px;height:99px;flex-basis:90px}
+ .nd-personnel .operator-identity-premium .operator-dash-profile-main{gap:17px}
+}
+@media(max-width:440px){
+ .nd-personnel .operator-id-banner{height:80px;padding:14px 16px}
+ .nd-personnel .operator-identity-premium .operator-dash-profile-main{padding:0 15px 17px;gap:11px;margin-top:-20px;align-items:flex-start}
+ .nd-personnel .operator-avatar-frame{width:76px;height:76px;flex-basis:76px}
+ .nd-personnel .operator-identity-premium .operator-dash-profile-identity{padding-top:27px}
+ .nd-personnel .operator-identity-premium .operator-dash-profile-identity h3{font-size:26px}
+ .nd-personnel .operator-identity-premium .operator-dash-profile-identity p{font-size:11px}
+ .nd-personnel .operator-id-rankline{font-size:10px;gap:6px}
+ .nd-personnel .operator-rank-hero{gap:12px}
+ .nd-personnel .operator-rank-emblem{width:73px;height:83px;flex-basis:73px}
+ .nd-personnel .operator-rank-copy>#operator-rank{font-size:34px}
+ .nd-personnel .operator-rank-next{align-items:flex-start;flex-direction:column;gap:8px}
+}
