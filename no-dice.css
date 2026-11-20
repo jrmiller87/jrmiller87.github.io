@@ -1518,3 +1518,167 @@ body{background:#100d16;color:var(--text)}
  .nd-personnel .personnel-home-actions a{transition:none!important}
  .nd-personnel .personnel-home-actions a:hover{transform:none!important}
 }
+
+/* PERSONNEL / STRUCTURAL CLEANUP — NOV 2026
+   Bring the actual content forward and remove surplus decoration.
+   Prior CSS is kept for compatibility; these selectors scope the final view. */
+.nd-interior.nd-personnel .personnel-home-hero{
+ padding:30px 0 45px!important;
+ background:linear-gradient(110deg,#21162d,#100d16 76%)!important;
+}
+.nd-interior.nd-personnel .personnel-home-hero::after{
+ opacity:.45;
+}
+.nd-interior.nd-personnel .personnel-hero-layout{
+ display:block;
+ max-width:900px;
+}
+.nd-interior.nd-personnel .personnel-hero-copy{
+ max-width:900px;
+}
+.nd-interior.nd-personnel .personnel-home-signal{
+ margin-bottom:22px;
+}
+.nd-interior.nd-personnel .personnel-hero-copy .crumb{
+ margin-bottom:13px;
+}
+.nd-interior.nd-personnel .personnel-home-hero h1{
+ font-size:clamp(54px,7vw,84px);
+ line-height:.97;
+ margin:11px 0 18px;
+}
+.nd-interior.nd-personnel .personnel-hero-copy>p{
+ max-width:670px;
+ font-size:16px;
+ line-height:1.7;
+}
+.nd-interior.nd-personnel .personnel-home-actions{
+ margin:24px 0 0;
+}
+.nd-interior.nd-personnel .personnel-home-actions a{
+ min-height:49px;
+ padding:12px 19px;
+}
+.nd-interior.nd-personnel .personnel-content{
+ padding-top:28px;
+ padding-bottom:54px;
+}
+.nd-interior.nd-personnel .personnel-guest{
+ display:block;
+ max-width:720px;
+ margin-inline:auto;
+}
+.nd-interior.nd-personnel .personnel-join-panel{
+ max-width:720px;
+ padding:0;
+ border:1px solid #725585!important;
+ background:#211927!important;
+}
+.nd-interior.nd-personnel .personnel-join-content{
+ padding:32px;
+}
+.nd-interior.nd-personnel .personnel-join-content h2{
+ font-size:clamp(34px,4vw,47px);
+ margin-bottom:15px;
+}
+.nd-interior.nd-personnel .personnel-join-content>p{
+ max-width:520px;
+}
+.nd-interior.nd-personnel .personnel-join-button{
+ width:auto;
+ max-width:100%;
+}
+.nd-interior.nd-personnel #signed-in{
+ max-width:1040px;
+ margin:0 auto;
+}
+.nd-interior.nd-personnel #signed-in .personnel-dashboard-intro{
+ margin:4px 0 22px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-dashboard-intro h2{
+ font-size:clamp(30px,4.1vw,44px);
+}
+.nd-interior.nd-personnel #signed-in .personnel-zone{
+ margin-bottom:21px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-records-heading{
+ margin:35px 0 20px;
+ padding-left:15px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-records-heading h3{
+ font-size:clamp(32px,4vw,44px);
+}
+.nd-interior.nd-personnel #signed-in .personnel-records-grid{
+ display:grid;
+ grid-template-columns:minmax(0,1fr);
+ gap:17px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record{
+ border-color:#594566!important;
+ background:#211927!important;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-header{
+ padding:16px 22px;
+ min-height:67px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-body{
+ padding:21px 25px 24px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-description{
+ margin-bottom:15px;
+ font-size:14px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-mission-item{
+ background:#2a2033;
+ border:1px solid #65526e;
+ border-left:3px solid #ffb680;
+ padding:17px 20px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-mission-item.is-complete{
+ background:#222e28;
+ border:1px solid #4c7660;
+ border-left:3px solid #80cf9b;
+}
+.nd-interior.nd-personnel #signed-in .personnel-badge-item{
+ padding:17px 20px;
+ background:#2a2033;
+ border-color:#665269;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-xp .personnel-list-item{
+ background:#28202f;
+ border:1px solid #4f415a;
+ border-left:3px solid #c59afb;
+}
+.nd-interior.nd-personnel #signed-in .personnel-record-settings #profile-form{
+ max-width:650px;
+}
+.nd-interior.nd-personnel #signed-in .personnel-zone-footnote{
+ padding:12px 16px;
+}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-hero{
+ padding:12px 0 17px!important;
+}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-home-hero h1{
+ font-size:clamp(27px,3.5vw,40px);
+ margin:0 0 5px;
+}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero-copy>p{
+ font-size:13px;
+}
+@media(max-width:760px){
+ .nd-interior.nd-personnel .personnel-home-hero{padding:23px 0 35px!important}
+ .nd-interior.nd-personnel .personnel-home-signal{margin-bottom:17px}
+ .nd-interior.nd-personnel .personnel-home-hero h1{font-size:clamp(48px,11vw,70px)}
+ .nd-interior.nd-personnel .personnel-join-content{padding:24px}
+ .nd-interior.nd-personnel #signed-in .personnel-record-header{padding:15px 17px}
+ .nd-interior.nd-personnel #signed-in .personnel-record-body{padding:18px}
+}
+@media(max-width:480px){
+ .nd-interior.nd-personnel .personnel-home-hero h1{font-size:clamp(43px,11vw,57px)}
+ .nd-interior.nd-personnel .personnel-hero-copy>p{font-size:14px}
+ .nd-interior.nd-personnel .personnel-home-actions{flex-direction:column}
+ .nd-interior.nd-personnel .personnel-home-actions a{width:100%}
+ .nd-interior.nd-personnel .personnel-join-content{padding:20px}
+ .nd-interior.nd-personnel .personnel-join-button{width:100%}
+ .nd-interior.nd-personnel #signed-in .personnel-records-heading{margin-top:29px}
+}
