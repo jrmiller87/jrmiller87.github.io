@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="280" viewBox="0 0 120 140" role="img" aria-labelledby="title desc">
+<title id="title">House Rado shield</title><desc id="desc">A dark charcoal shield bearing two bold ascending forest-green chevrons, based on the House Rado heraldry provided by the player.</desc>
+<defs><clipPath id="shield"><path d="M8 9 Q60 -1 112 9 V76 C112 108 86 126 60 137 C34 126 8 108 8 76Z"/></clipPath><linearGradient id="forest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#206b40"/><stop offset=".5" stop-color="#358a51"/><stop offset="1" stop-color="#176039"/></linearGradient></defs>
+<path d="M8 9 Q60 -1 112 9 V76 C112 108 86 126 60 137 C34 126 8 108 8 76Z" fill="#15191a" stroke="#62766a" stroke-width="3"/>
+<g clip-path="url(#shield)">
+<path d="M-12 63 L60 -8 L132 63 L132 87 L60 17 L-12 87 Z" fill="url(#forest)"/>
+<path d="M-12 110 L60 40 L132 110 L132 137 L60 69 L-12 137 Z" fill="url(#forest)"/>
+<path d="M-12 63 L60 -8 L132 63" fill="none" stroke="#8bd89a" stroke-opacity=".22" stroke-width="2"/>
+</g><path d="M8 9 Q60 -1 112 9 V76 C112 108 86 126 60 137 C34 126 8 108 8 76Z" fill="none" stroke="#0a100d" stroke-width="2"/>
+</svg>
