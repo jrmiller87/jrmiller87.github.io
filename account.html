@@ -22,9 +22,9 @@
     <div class="operator-dashboard-welcome">
       <span class="operator-dash-eyebrow"><span class="operator-dash-indicator" aria-hidden="true"></span> NO DICE / OPERATOR DASHBOARD</span>
       <h2>YOUR <em>COMMAND CENTER.</em></h2>
-      <p>Everything about your No Dice account, all in one place.</p>
+      <p>Your identity, community progression, and the latest operations—all in one place.</p>
     </div>
-    <div class="operator-dashboard-status"><span aria-hidden="true">●</span> DISCORD CONNECTED</div>
+    <div class="operator-dash-head-actions"><div class="operator-dashboard-status"><span aria-hidden="true">●</span> DISCORD CONNECTED</div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="operator-dash-discord">JOIN THE CREW ↗</a></div>
   </header>
   <div class="operator-dashboard-top">
     <section class="operator-dash-profile operator-identity-premium" id="operator-dossier" aria-labelledby="dossier-heading">
@@ -64,35 +64,48 @@
     </section>
   </div>
   <section class="operator-dash-stats" aria-label="Your account statistics">
-    <article><span>LEVEL</span><strong id="operator-level">01</strong><small>Current level</small></article>
-    <article><span>TOTAL XP</span><strong id="operator-xp">0</strong><small>Earned experience</small></article>
-    <article><span>BADGES</span><strong id="operator-badges">0</strong><small>Unlocked achievements</small></article>
-    <article><span>MISSIONS</span><strong id="operator-mission-count">0 / 0</strong><small>Completed challenges</small></article>
+    <article><span class="operator-dash-stat-icon" aria-hidden="true">⬆</span><span>LEVEL</span><strong id="operator-level">01</strong><small>Current level</small></article>
+    <article><span class="operator-dash-stat-icon" aria-hidden="true">✦</span><span>TOTAL XP</span><strong id="operator-xp">0</strong><small>Verified experience</small></article>
+    <article><span class="operator-dash-stat-icon" aria-hidden="true">★</span><span>BADGES</span><strong id="operator-badges">0</strong><small>Unlocked achievements</small></article>
+    <article><span class="operator-dash-stat-icon" aria-hidden="true">◎</span><span>MISSIONS</span><strong id="operator-mission-count">0 / 0</strong><small>Completed challenges</small></article>
   </section>
-  <nav class="operator-dash-nav" aria-label="Dashboard sections">
-    <a href="#operator-missions">MISSIONS <span aria-hidden="true">↘</span></a>
+  <nav class="operator-dash-nav" aria-label="Dashboard shortcuts">
+    <a href="#operator-missions">MISSION BOARD <span aria-hidden="true">↘</span></a>
     <a href="#operator-achievements">ACHIEVEMENTS <span aria-hidden="true">↘</span></a>
-    <a href="#operator-xp-ledger">XP ACTIVITY <span aria-hidden="true">↘</span></a>
+    <a href="#operator-xp-ledger">ACTIVITY FEED <span aria-hidden="true">↘</span></a>
     <a href="#operator-settings">SETTINGS <span aria-hidden="true">↘</span></a>
   </nav>
   <div class="operator-dash-content">
     <section class="operator-dash-panel operator-dash-missions" id="operator-missions" aria-labelledby="missions-heading">
       <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">ACTIVE OPERATIONS / 03</span><h3 id="missions-heading">MISSION <em>BOARD.</em></h3><p>Community challenges and your completion status.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">◎</span></div>
-      <div class="operator-dash-panel-body"><div id="missions-list" class="personnel-list"><p>Loading your missions…</p></div></div>
+      <div class="operator-dash-panel-body">
+        <div class="operator-mission-toolbar" role="group" aria-label="Filter missions">
+          <button type="button" class="operator-mission-filter is-active" data-mission-filter="available" aria-pressed="true">AVAILABLE <span id="mission-available-count">0</span></button>
+          <button type="button" class="operator-mission-filter" data-mission-filter="completed" aria-pressed="false">COMPLETED <span id="mission-completed-count">0</span></button>
+          <button type="button" class="operator-mission-filter" data-mission-filter="all" aria-pressed="false">ALL <span id="mission-total-count">0</span></button>
+        </div>
+        <div id="missions-list" class="personnel-list" aria-live="polite"><p>Loading your missions…</p></div>
+        <p class="operator-mission-note">XP is awarded only for verified activity. Missions cannot be self-completed here.</p>
+      </div>
     </section>
     <div class="operator-dash-side">
       <section class="operator-dash-panel" id="operator-achievements" aria-labelledby="badges-heading">
         <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">RECOGNITION / 04</span><h3 id="badges-heading">ACHIEVEMENTS.</h3><p>Badges you've earned.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">★</span></div>
-        <div class="operator-dash-panel-body"><div id="badges-list" class="personnel-list"><p>Loading achievements…</p></div></div>
+        <div class="operator-dash-panel-body">
+          <div id="featured-badge" class="operator-featured-badge" aria-live="polite"><span class="operator-featured-glyph" aria-hidden="true">✦</span><div><span class="operator-dash-subtitle">FEATURED ACHIEVEMENT</span><strong id="featured-badge-name">YOUR NEXT REWARD</strong><small id="featured-badge-detail">Earn a badge to display it here.</small></div></div>
+          <div class="operator-achievement-toolbar"><span>EARNED COLLECTION</span><strong id="achievement-collection-count">0 UNLOCKED</strong></div>
+          <div id="badges-list" class="personnel-list operator-badge-grid"><p>Loading achievements…</p></div>
+        </div>
       </section>
-      <section class="operator-dash-panel" id="operator-xp-ledger" aria-labelledby="xp-heading">
-        <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">ACTIVITY / 05</span><h3 id="xp-heading">XP <em>HISTORY.</em></h3><p>Your most recent XP awards.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">↗</span></div>
-        <div class="operator-dash-panel-body"><div id="xp-history" class="personnel-list"><p>Loading XP history…</p></div></div>
-      </section>
+
     </div>
   </div>
+  <div class="operator-dash-lower">      <section class="operator-dash-panel" id="operator-xp-ledger" aria-labelledby="xp-heading">
+        <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">VERIFIED EVENTS / 05</span><h3 id="xp-heading">ACTIVITY <em>FEED.</em></h3><p>Recent XP awards and badge unlocks.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">↗</span></div>
+        <div class="operator-dash-panel-body"><div id="xp-history" class="personnel-list operator-activity-timeline"><p>Loading verified activity…</p></div></div>
+      </section>
   <section class="operator-dash-panel operator-dash-settings" id="operator-settings" aria-labelledby="settings-heading">
-    <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">YOUR ACCOUNT / 06</span><h3 id="settings-heading">PROFILE <em>SETTINGS.</em></h3><p>Manage how your operator identity appears across No Dice.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">✎</span></div>
+    <div class="operator-dash-panel-heading"><div><span class="operator-dash-kicker">PERSONALIZE / 06</span><h3 id="settings-heading">ACCOUNT <em>SETTINGS.</em></h3><p>Manage how your operator identity appears across No Dice.</p></div><span class="operator-dash-panel-symbol" aria-hidden="true">✎</span></div>
     <div class="operator-dash-panel-body">
       <form id="profile-form">
         <label for="display-name">DISPLAY NAME</label>
@@ -104,6 +117,8 @@
       </form>
     </div>
   </section>
+  </div>
+
 </div>
 <div class="personnel-bottom"><span>NO DICE // YOUR COMMUNITY HQ</span><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD ↗</a></div>
 </section></main><footer class="wrap footer"><div><strong>NO DICE</strong> · Gaming. Friends. Stories. Chaos.</div><div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="footer-discord">Join Discord ↗</a> · <a href="./nexus/" style="color:#ebb2ff">Character Nexus ↗</a></div></footer><script>const btn=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));</script><script type="module" src="./account.js"></script></body></html>
