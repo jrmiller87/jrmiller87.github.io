@@ -30,6 +30,7 @@ const displayList = (id, items, empty) => {
 const setAuthUI = loggedIn => {
   byId('signed-in').hidden = !loggedIn;
   byId('signed-out').hidden = loggedIn;
+  document.body.classList.toggle('personnel-is-signed-in', loggedIn);
 };
 const rankFor = level => level>=50?'CAPTAIN':level>=35?'LIEUTENANT':level>=20?'SERGEANT':level>=10?'CORPORAL':level>=5?'PRIVATE':'RECRUIT';
 
