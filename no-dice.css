@@ -1092,3 +1092,150 @@ body{background:#100d16;color:var(--text)}
 .personnel-main #signed-in .personnel-badge-glyph{background:#55402d;border-color:#ac8759;color:#ffdcac}
 .personnel-main #signed-in .personnel-mission-item.is-complete{background:#222d28;border-color:#4c7660;border-left:3px solid #80cf9b}
 .personnel-main #signed-in .personnel-mission-item.is-complete .personnel-mission-state{color:#a2e2b8}
+
+/* ================================================================
+   NO DICE / SHARED COMMAND CENTER VISUAL SYSTEM
+   Home design language applied to all six main interior pages.
+   Character Nexus lives under /nexus/ and is intentionally untouched.
+   ================================================================ */
+.nd-interior{
+ --nd-home-bg:#100d16;
+ --nd-home-card:#211927;
+ --nd-home-card-hover:#2a2033;
+ --nd-home-border:#594566;
+ --nd-home-purple:#c59afb;
+ --nd-home-orange:#ffb680;
+ --nd-home-muted:#d2c5dd;
+ background:var(--nd-home-bg)!important;
+}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero){
+ position:relative;
+ background:linear-gradient(110deg,#241830,#15101d 78%)!important;
+ border-bottom:1px solid #715284!important;
+}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) :is(.crumb,.studio-return){color:#d6b1f7;font-size:12px;letter-spacing:.4px}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) :is(.eyebrow,.studio-kicker,.personnel-eyebrow){color:#ffba81;font-size:12px;letter-spacing:1px;font-weight:700}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) h1{
+ font-family:'Rajdhani','Barlow Condensed',sans-serif;
+ font-weight:800;
+ font-size:clamp(58px,7.3vw,96px);
+ line-height:.95;
+ letter-spacing:-1.6px;
+ margin:15px 0 21px;
+ color:#f7effe;
+ text-transform:uppercase;
+}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) h1 :is(span,em).warm-accent,
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) h1 em,
+.nd-interior .inner-hero h1 .warm-accent{color:var(--nd-home-purple)!important;font-style:normal}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) p,
+.nd-interior .studio-hero-grid>div:first-child>p{
+ max-width:62ch;color:#d5c8df;font-size:15px;line-height:1.75
+}
+.nd-interior :is(.inner-hero,.studio-hero,.personnel-hero){padding-top:47px;padding-bottom:54px}
+.nd-interior .inner-hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.nd-interior :is(.btn.discord-cta,.studio-action-main,.personnel-primary){
+ background:#b987ec!important;border:1px solid #b987ec!important;color:#1c1027!important;
+ border-radius:5px;box-shadow:none;font-weight:800;
+}
+.nd-interior :is(.btn.alt,.studio-action-secondary,.personnel-secondary){
+ background:#2a2134!important;border:1px solid #7b5e90!important;color:#f2e6ff!important;
+ border-radius:5px;box-shadow:none;
+}
+.nd-interior :is(.btn.discord-cta,.studio-action-main,.personnel-primary):hover{
+ background:#d0a5fc!important;border-color:#d0a5fc!important;
+}
+.nd-interior :is(.btn.alt,.studio-action-secondary,.personnel-secondary):hover{
+ background:#382946!important;border-color:#aa83c5!important;
+}
+/* Home-style section markers and headings */
+.nd-interior :is(.section,.studio-area-section,.studio-feature-section){padding-top:65px;padding-bottom:67px}
+.nd-interior :is(.section-title,.studio-section-heading){margin-bottom:27px}
+.nd-interior :is(.section-title h2,.studio-section-heading h2,.studio-feature-copy h2,.studio-safety-panel h2){
+ font-family:'Rajdhani','Barlow Condensed',sans-serif;
+ font-weight:800;letter-spacing:-.3px;line-height:1.04;
+ font-size:clamp(35px,4.5vw,52px);color:#f8f0fc;
+}
+.nd-interior :is(.section-title .eyebrow,.studio-index){color:#ffb680;font:700 11px 'DM Sans',sans-serif;letter-spacing:1.2px;text-transform:uppercase}
+.nd-interior :is(.section-title p,.studio-section-heading p){color:var(--nd-home-muted);font-size:14px;line-height:1.7;max-width:67ch}
+.nd-interior :is(.section-title,.studio-section-heading)>div{max-width:790px}
+.nd-interior :is(.section-title h2,.studio-section-heading h2,.studio-feature-copy h2) em{color:var(--nd-home-purple);font-style:normal}
+.nd-interior :is(.section,.studio-area-section):nth-of-type(even){background:#18131f}
+.nd-interior :is(.section,.studio-area-section):nth-of-type(odd){background:#100d16}
+/* Shared homepage-style tiles */
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module){
+ position:relative;clip-path:none!important;border-radius:9px!important;
+ border:1px solid var(--nd-home-border)!important;background:var(--nd-home-card)!important;
+ box-shadow:none!important;overflow:hidden;
+}
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module):before{
+ opacity:.06!important;filter:none!important;
+}
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module):after{opacity:.25}
+.nd-interior :is(.hangout-grid,.lounge-trio,.community-spaces,.grid,.studio-module-grid){gap:17px}
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module){padding:27px}
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module) h3{
+ font-family:'Rajdhani','Barlow Condensed',sans-serif;font-size:clamp(25px,3vw,34px);line-height:1.08;
+ color:#f8eefc;letter-spacing:0;
+}
+.nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module) p{
+ color:#d6cbdc;font-size:14px;line-height:1.7;
+}
+.nd-interior :is(.room-label,.space-tag,.studio-module-number,.studio-module-sub){color:var(--nd-home-purple);font-size:11px;letter-spacing:.6px}
+.nd-interior :is(.room-icon,.space-symbol,.feature-icon,.studio-module-icon){background:#382747;border:1px solid #715488;color:#d6aaff;border-radius:6px;box-shadow:none}
+.nd-interior :is(.room-motto,.detail-number){color:var(--nd-home-orange)}
+.nd-interior :is(.studio-module-bottom,.ops-tile-foot){border-color:#504058}
+.nd-interior .studio-module.studio-orange:after,.nd-interior .feature:after{background:var(--nd-home-orange);opacity:.65}
+.nd-interior .studio-module.studio-purple:after{background:var(--nd-home-purple);opacity:.6}
+.nd-interior :is(.community-cta,.banner,.discord-feature,.studio-feature-grid,.studio-safety-panel){
+ border:1px solid #715381!important;background:#281d32!important;clip-path:none!important;
+ border-radius:10px!important;box-shadow:none!important;
+}
+.nd-interior .discord-feature-art{background:#2f2240!important;color:#f7e6ff}
+.nd-interior .community-cta h2,.nd-interior .banner strong{color:#f6effc}
+.nd-interior .community-cta p,.nd-interior .banner p,.nd-interior .discord-feature-copy>p{color:var(--nd-home-muted);font-size:14px;line-height:1.7}
+.nd-interior :is(.community-cta,.banner){padding:30px}
+.nd-interior .studio-status-section{background:#18131f;border-color:#514057}
+.nd-interior .studio-status-panel{background:#24202d;border:1px solid #61526d;border-radius:8px}
+.nd-interior .studio-status-label{color:#e8c99e;border-color:#846449}
+.nd-interior .studio-hero-display{background:#271e32;border:1px solid #75588b;clip-path:none;border-radius:9px;box-shadow:none}
+.nd-interior .studio-display-graphic{opacity:.8}
+.nd-interior .studio-feature-grid{padding:20px}
+.nd-interior .studio-feature-links a{background:#30243a;border-color:#6f5180}
+.nd-interior .studio-safety-panel{padding:30px}
+/* Personnel uses identical home backgrounds and card shape while preserving
+   profile/XP data, reward cues and its single-column reading layout. */
+.nd-interior.nd-personnel{background:#100d16!important}
+.nd-interior.nd-personnel .personnel-hero{background:linear-gradient(110deg,#241830,#15101d 78%)!important}
+.nd-interior.nd-personnel .personnel-hero h1 em{color:var(--nd-home-purple)!important}
+.nd-interior.nd-personnel :is(.personnel-panel,.personnel-zone,.personnel-record){border-radius:9px!important;box-shadow:none!important}
+.nd-interior.nd-personnel .personnel-hero-art{background:#291f35;border:1px solid #70528a;clip-path:none;border-radius:9px;min-height:330px}
+.nd-interior.nd-personnel .personnel-art-center{min-height:210px}
+.nd-interior.nd-personnel .personnel-hero-flags span{border-radius:4px}
+.nd-interior.nd-personnel :is(.personnel-join-panel,.personnel-info){background:#211927}
+.nd-interior.nd-personnel #signed-in :is(.personnel-zone,.personnel-record){background:#211927}
+.nd-interior.nd-personnel #signed-in :is(.personnel-zone-header,.personnel-record-header){border-radius:0}
+.nd-interior.nd-personnel #signed-in .personnel-record-description{color:#d6c9df}
+.nd-interior.nd-personnel #signed-in .personnel-dashboard-intro h2{color:#f8f0fc}
+.nd-interior.nd-personnel #signed-in .personnel-records-heading h3{color:#f8f0fc}
+.nd-interior.nd-personnel #signed-in .personnel-zone-progress .personnel-stats article{background:#292130}
+.nd-interior.nd-personnel #signed-in .personnel-mission-item.is-complete{background:#222e28}
+/* Keep signed-in dashboards compact; don't let big decorative hero crowd out data. */
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero{padding:17px 0 24px!important}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero h1{font-size:clamp(34px,4vw,49px);line-height:1.1;margin:8px 0}
+.personnel-is-signed-in .nd-interior.nd-personnel .personnel-hero-art{display:none}
+/* Mobile consistency */
+@media(max-width:800px){
+ .nd-interior :is(.inner-hero,.studio-hero,.personnel-hero){padding:35px 0 43px}
+ .nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) h1{font-size:clamp(51px,10vw,76px);line-height:1}
+ .nd-interior :is(.section,.studio-area-section,.studio-feature-section){padding:48px 0}
+ .nd-interior :is(.hangout-card,.lounge-detail,.space-card,.feature,.studio-module){padding:22px}
+ .nd-interior .studio-feature-grid{padding:12px}
+ .nd-interior .studio-hero-display{max-width:520px}
+ .nd-interior.nd-personnel .personnel-hero-art{min-height:240px}
+}
+@media(max-width:480px){
+ .nd-interior :is(.inner-hero,.studio-hero,.personnel-hero) h1{font-size:clamp(45px,12vw,62px)}
+ .nd-interior :is(.community-cta,.banner){padding:22px}
+ .nd-interior :is(.section-title h2,.studio-section-heading h2){font-size:35px}
+}
