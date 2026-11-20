@@ -144,3 +144,10 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 .btn.nexus-launch small{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:.1px}
 @media(max-width:1050px){.links a.nexus-nav{min-width:155px;padding:8px 9px!important}.links a.nexus-nav .nexus-nav-title{font-size:13px!important}.links a{letter-spacing:0;font-size:13px}.links{gap:2px}}
 @media(max-width:750px){.links a.nexus-nav{width:100%;min-width:0;align-items:flex-start!important}.hero{padding:65px 0 75px}.hero:after{right:20px}.feature,.smallcard{clip-path:none}}
+
+/* Tactical SVG wordmark in the shared header */
+.brand{display:inline-flex;align-items:center;min-width:0}
+.brand-art{display:block;width:245px;height:auto;max-height:68px;object-fit:contain;object-position:left center;filter:drop-shadow(0 2px 9px #9b53d72e)}
+@media(max-width:1050px){.brand-art{width:195px}}
+@media(max-width:750px){.brand-art{width:218px;max-width:calc(100vw - 125px)}}
+@media(max-width:390px){.brand-art{width:185px}}
