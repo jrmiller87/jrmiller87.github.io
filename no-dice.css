@@ -10,3 +10,58 @@
 .links a[aria-current="page"]{background:#523068;color:#fff;border:1px solid #8f59a2}
 .feature{height:100%}
 .feature-icon span{font-family:'Barlow Condensed',sans-serif}
+
+/* No Dice Lounge & Community — signature spaces */
+.lounge-hero{background:radial-gradient(circle at 80% 0%,#9c4b873f,transparent 40%),linear-gradient(120deg,#1d1029,#2b1739 65%,#452322)}
+.community-hero{background:radial-gradient(circle at 83% 3%,#e77c4140,transparent 40%),linear-gradient(115deg,#191023,#2b1743 65%,#432522)}
+.warm-accent{color:#ff9b56}
+.hangout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.hangout-card{min-height:340px;border:1px solid #694678;border-radius:22px;position:relative;overflow:hidden;padding:34px;background:#23162f}
+.hangout-card:before{content:"";position:absolute;width:280px;height:280px;top:-130px;right:-90px;border-radius:50%;filter:blur(38px);opacity:.42;pointer-events:none}
+.hangout-card.pit{background:linear-gradient(145deg,#30184b,#171124 76%);border-color:#714997}
+.hangout-card.pit:before{background:#9a50f2}
+.hangout-card.whiskey{background:linear-gradient(145deg,#402621,#1b1420 79%);border-color:#8d5949}
+.hangout-card.whiskey:before{background:#ec8542}
+.hangout-card>*{position:relative}
+.hangout-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.room-icon{display:grid;place-items:center;width:61px;height:61px;background:#ffffff15;border:1px solid #ffffff24;border-radius:17px;font-size:29px}
+.room-label,.space-tag{font-size:10px;letter-spacing:1.6px;color:#d0b3db;font-weight:800}
+.hangout-card h3{font:800 clamp(36px,4vw,57px)/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.3px;margin:35px 0 8px}
+.hangout-card .room-motto{font-size:17px;color:#ffbe8e;font-weight:800;margin:0 0 20px}
+.hangout-card>p:not(.room-motto){max-width:440px;color:#cabcd1;font-size:13px;line-height:1.7;margin:0 0 23px}
+.room-link{font-size:12px;color:#e9b3ff;font-weight:800}
+.whiskey .room-link{color:#ffc18b}
+.room-link:hover{color:white}
+.lounge-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lounge-detail{border:1px solid #4c375d;border-radius:17px;padding:27px;background:linear-gradient(145deg,#271a34,#181220)}
+.detail-number{font:800 12px 'DM Sans',sans-serif;letter-spacing:2px;color:#ff9c54}
+.lounge-detail h3{font:800 25px/1.1 'Barlow Condensed',sans-serif;margin:15px 0 11px}
+.lounge-detail p{font-size:12px;color:#bcaecb;margin:0}
+.community-cta{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:33px;border-radius:21px;background:linear-gradient(110deg,#332047,#322046 60%,#643a2d);border:1px solid #7a5485}
+.community-cta h2{font:800 34px/1.15 'Barlow Condensed',sans-serif;margin:8px 0 12px}
+.community-cta p{max-width:650px;color:#d2bbdb;font-size:13px;margin:0 0 11px}
+.community-cta>.btn{flex:none}
+.quiet-note{display:block;color:#af9bb5;font-size:11px;margin-top:10px}
+.cta-links{display:flex;gap:9px;flex-wrap:wrap}
+.discord-feature{display:grid;grid-template-columns:1.4fr 1fr;min-height:340px;background:linear-gradient(120deg,#2b193e,#171020);border:1px solid #67457f;border-radius:22px;overflow:hidden}
+.discord-feature-copy{padding:36px}
+.discord-kicker{color:#ffad76;font-size:10px;font-weight:800;letter-spacing:2px}
+.discord-feature h3{font:800 clamp(38px,5vw,59px)/1 'Barlow Condensed',Impact,sans-serif;margin:18px 0}
+.discord-feature h3 span{color:#ffa15d}
+.discord-feature p{max-width:550px;color:#cbbbd3;font-size:13px;margin:0 0 21px}
+.discord-feature-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.discord-feature-art{display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,#f88a5344,transparent 55%),linear-gradient(140deg,#502d77,#30204e);border-left:1px solid #705285}
+.discord-feature-art:after{content:"";position:absolute;inset:14%;border:2px solid #ffffff14;border-radius:40px;transform:rotate(22deg)}
+.discord-feature-art>span,.discord-feature-art>strong{position:relative;z-index:1;font:900 clamp(54px,8vw,100px)/.8 'Barlow Condensed',sans-serif;letter-spacing:4px}
+.discord-feature-art>strong{color:#ff9a54}
+.discord-feature-art>small{z-index:1;position:relative;margin-top:25px;color:#d9c7e6;font-size:9px;letter-spacing:1.3px;text-align:center}
+.community-spaces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.space-card{border:1px solid #513a61;border-radius:18px;padding:26px;background:linear-gradient(145deg,#271b35,#1a1425)}
+.space-card:nth-child(2){border-color:#79523f;background:linear-gradient(145deg,#34231f,#21171d)}
+.space-card:nth-child(3){border-color:#494b6c;background:linear-gradient(145deg,#242139,#181727)}
+.space-symbol{font-size:32px;line-height:1;margin-bottom:21px}
+.space-card h3{font:800 27px/1.1 'Barlow Condensed',sans-serif;margin:9px 0}
+.space-card p{font-size:12px;color:#c8bbd0;margin:0}
+.community-note{margin-top:16px;border-left:3px solid #8b638b;background:#211729;padding:14px 16px;color:#bdaec8;font-size:12px;border-radius:0 9px 9px 0}
+@media(max-width:850px){.discord-feature{grid-template-columns:1fr}.discord-feature-art{border-left:0;border-top:1px solid #705285;padding:45px 25px}.community-cta{align-items:flex-start;flex-direction:column}.hangout-grid{grid-template-columns:1fr}.lounge-trio,.community-spaces{grid-template-columns:1fr}}
+@media(max-width:500px){.hangout-card{min-height:315px;padding:25px}.discord-feature-copy{padding:25px}.community-cta{padding:25px}.community-cta h2{font-size:29px}}
