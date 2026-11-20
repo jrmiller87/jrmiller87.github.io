@@ -1950,3 +1950,184 @@ body{background:#100d16;color:var(--text)}
  .nd-personnel .operator-rank-copy>#operator-rank{font-size:34px}
  .nd-personnel .operator-rank-next{align-items:flex-start;flex-direction:column;gap:8px}
 }
+
+/* ================================================================
+   NO DICE / COMPLETE OPERATOR DASHBOARD VISUAL SYSTEM — 2026-11
+   Applies to signed-in dashboard only. No change to Character Nexus.
+   ================================================================ */
+.nd-personnel .operator-dashboard{
+ --dash-panel:#211927;--dash-panel-2:#2a2033;--dash-border:#594566;
+ --dash-violet:#c59afb;--dash-amber:#ffb680;--dash-ink:#f8f2fc;--dash-secondary:#d2c5dd;
+}
+.nd-personnel .operator-dashboard-header{margin-bottom:22px}
+.nd-personnel .operator-dashboard-header h2{font-size:clamp(40px,5vw,59px)}
+.nd-personnel .operator-dash-head-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+.nd-personnel .operator-dash-discord{
+ display:inline-flex;align-items:center;min-height:39px;border-radius:6px;
+ padding:10px 14px;color:#261629;background:#ffb680;border:1px solid #ffb680;
+ font:800 11px 'DM Sans',sans-serif;letter-spacing:.3px;
+}
+.nd-personnel .operator-dash-discord:hover{background:#ffd0aa;border-color:#ffd0aa}
+.nd-personnel .operator-dash-stats article{position:relative;overflow:hidden;padding:19px 18px 16px;min-height:125px}
+.nd-personnel .operator-dash-stats article::before{
+ position:absolute;content:"";right:-19px;top:-28px;width:100px;height:100px;
+ background:radial-gradient(circle,#c59afb19,transparent 65%);pointer-events:none;
+}
+.nd-personnel .operator-dash-stats article:nth-child(even)::before{
+ background:radial-gradient(circle,#ffb68020,transparent 65%);
+}
+.nd-personnel .operator-dash-stats .operator-dash-stat-icon{
+ position:absolute;top:13px;right:16px;display:grid;place-items:center;width:31px;height:31px;
+ background:#453252;border:1px solid #76548c;color:#d9b5ff;border-radius:6px;
+ font:800 18px 'Rajdhani',sans-serif;
+}
+.nd-personnel .operator-dash-stats article:nth-child(even) .operator-dash-stat-icon{
+ background:#453126;border-color:#815b42;color:#ffcca0;
+}
+.nd-personnel .operator-dash-stats article>span:not(.operator-dash-stat-icon){padding-right:37px}
+.nd-personnel .operator-dash-nav{gap:9px;margin-bottom:19px}
+.nd-personnel .operator-dash-nav a{flex:1 1 160px;border-radius:7px;border-color:#5d4a69;background:#251b2f;transition:background .18s,border-color .18s,transform .18s}
+.nd-personnel .operator-dash-nav a:hover{transform:translateY(-2px)}
+.nd-personnel .operator-dash-content{grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);gap:17px}
+.nd-personnel .operator-dash-lower{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(320px,.94fr);gap:17px;margin-top:17px;align-items:start}
+.nd-personnel .operator-dash-side{display:block;min-width:0}
+.nd-personnel .operator-dash-content .operator-dash-panel,.nd-personnel .operator-dash-lower .operator-dash-panel{
+ height:100%;margin:0!important;border:1px solid #634d71!important;
+ background:#211927!important;transition:border-color .18s;
+}
+.nd-personnel .operator-dash-content .operator-dash-panel:hover,.nd-personnel .operator-dash-lower .operator-dash-panel:hover{border-color:#8869a0!important}
+.nd-personnel .operator-dash-missions .operator-dash-panel-heading{
+ background:linear-gradient(100deg,#3f2a39,#292032 77%);border-bottom-color:#785469;
+}
+.nd-personnel #operator-achievements .operator-dash-panel-heading{
+ background:linear-gradient(100deg,#372a45,#292032 77%);border-bottom-color:#6d5680;
+}
+.nd-personnel #operator-xp-ledger .operator-dash-panel-heading{
+ background:linear-gradient(100deg,#342a43,#292032 77%);border-bottom-color:#705a81;
+}
+.nd-personnel #operator-settings .operator-dash-panel-heading{
+ background:linear-gradient(100deg,#32293c,#292032 77%);border-bottom-color:#645270;
+}
+.nd-personnel .operator-dash-panel-heading h3{font-size:clamp(27px,2.8vw,36px)}
+.nd-personnel .operator-mission-toolbar{
+ display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:0 0 15px;margin-bottom:17px;
+ border-bottom:1px solid #4e3e5a;
+}
+.nd-personnel .operator-mission-filter{
+ display:inline-flex;align-items:center;justify-content:space-between;gap:10px;
+ padding:10px 12px;min-height:40px;border-radius:6px;background:#2a2233;
+ border:1px solid #56435f;color:#d4c3df;
+ font:800 11px 'DM Sans',sans-serif;letter-spacing:.3px;cursor:pointer;
+ transition:background .18s,border-color .18s;
+}
+.nd-personnel .operator-mission-filter span{
+ display:inline-grid;place-items:center;min-width:21px;height:21px;border-radius:5px;
+ background:#43334b;color:#ebd5f9;font-size:11px;padding:0 5px;
+}
+.nd-personnel .operator-mission-filter:hover{background:#392944;border-color:#9171a6}
+.nd-personnel .operator-mission-filter.is-active{
+ color:#27172a;background:#c59afb;border-color:#c59afb;
+}
+.nd-personnel .operator-mission-filter.is-active span{color:#f4e8ff;background:#5c3c75}
+.nd-personnel .operator-mission-note{
+ color:#baabca;font-size:12px;line-height:1.6;margin:17px 0 0;padding:12px 13px;
+ background:#261d2d;border-left:2px solid #a47cb9;border-radius:4px;
+}
+.nd-personnel .operator-dash-panel .personnel-mission-item{
+ padding:19px;border-radius:8px;border-color:#655069;background:#2b2134;gap:9px;
+}
+.nd-personnel .operator-dash-panel .personnel-mission-item.is-complete{
+ background:#233129;border-color:#4f795d;
+}
+.nd-personnel .operator-dash-panel .personnel-mission-top strong{font-size:22px}
+.nd-personnel .operator-dash-panel .personnel-mission-reward{
+ border-radius:5px;font:800 11px 'DM Sans',sans-serif;
+}
+.nd-personnel .operator-featured-badge{
+ display:flex;gap:15px;align-items:center;padding:16px;border-radius:8px;
+ border:1px solid #8d678b;background:linear-gradient(110deg,#443045,#32263b);
+ margin-bottom:20px;
+}
+.nd-personnel .operator-featured-badge.is-empty{
+ background:#292331;border-color:#5f4f6b;
+}
+.nd-personnel .operator-featured-glyph{
+ flex:0 0 58px;width:58px;height:58px;display:grid;place-items:center;border-radius:12px;
+ background:linear-gradient(135deg,#6e4771,#3b2c4b);border:1px solid #bd8bc0;
+ color:#ffcc9e;font-size:32px;text-shadow:0 0 14px #ffbd8945;
+}
+.nd-personnel .operator-featured-badge.is-empty .operator-featured-glyph{
+ filter:grayscale(.6);opacity:.75;
+}
+.nd-personnel .operator-featured-badge>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.nd-personnel .operator-featured-badge strong{
+ font:800 24px/1.06 'Rajdhani',sans-serif;color:#fff;overflow-wrap:anywhere;
+}
+.nd-personnel .operator-featured-badge small{font-size:12px;line-height:1.45;color:#ddcde7}
+.nd-personnel .operator-achievement-toolbar{
+ display:flex;align-items:center;justify-content:space-between;gap:10px;
+ padding-bottom:11px;margin-bottom:12px;border-bottom:1px solid #51415b;
+ font:800 10px 'DM Sans',sans-serif;letter-spacing:.6px;color:#cbb6d9;
+}
+.nd-personnel .operator-achievement-toolbar strong{color:#ffbf8a;font-size:11px}
+.nd-personnel .operator-badge-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px!important}
+.nd-personnel .operator-badge-grid>p{grid-column:1/-1}
+.nd-personnel .operator-badge-grid .personnel-badge-item{
+ min-width:0;display:flex;align-items:flex-start;flex-direction:column;gap:9px;
+ background:#292131;border:1px solid #57445f;border-top:2px solid #c59afb;
+ border-left:1px solid #57445f;padding:14px;border-radius:7px;
+}
+.nd-personnel .operator-badge-grid .personnel-badge-glyph{background:#44314f;color:#ffd19e}
+.nd-personnel .operator-badge-grid .personnel-badge-item strong{font:800 19px/1.1 'Rajdhani',sans-serif}
+.nd-personnel .operator-badge-grid .personnel-badge-item small{font-size:11px;line-height:1.55}
+.nd-personnel .operator-activity-timeline{position:relative;gap:0!important}
+.nd-personnel .operator-activity-timeline::before{
+ content:"";position:absolute;left:19px;top:23px;bottom:24px;width:2px;background:#654d79;
+}
+.nd-personnel .operator-activity-timeline:has(>p)::before{display:none}
+.nd-personnel .operator-timeline-item{
+ position:relative;display:flex;align-items:flex-start;gap:15px;padding:12px 0;
+ border-bottom:1px solid #43364d;min-width:0;
+}
+.nd-personnel .operator-timeline-item:last-child{border-bottom:0}
+.nd-personnel .operator-timeline-marker{
+ position:relative;z-index:1;display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;
+ background:#453451;border:1px solid #785c91;color:#dfb9ff;border-radius:9px;font-size:17px;
+}
+.nd-personnel .operator-timeline-item.is-badge .operator-timeline-marker{
+ background:#503728;color:#ffd0a4;border-color:#846044;
+}
+.nd-personnel .operator-timeline-copy{display:flex;flex-direction:column;gap:5px;min-width:0;padding-top:3px}
+.nd-personnel .operator-timeline-copy strong{font-size:14px;color:#f6edfc;line-height:1.4;overflow-wrap:anywhere}
+.nd-personnel .operator-timeline-copy small{color:#c7b6d1;font-size:12px;line-height:1.5}
+.nd-personnel .operator-dash-settings .operator-dash-panel-body{padding:22px}
+.nd-personnel .operator-dash-settings #profile-form{max-width:100%}
+.nd-personnel .operator-dash-settings .personnel-primary{min-height:44px}
+.nd-personnel .operator-mission-filter:focus-visible,.nd-personnel .operator-dash-nav a:focus-visible,
+.nd-personnel .operator-dash-discord:focus-visible{outline:2px solid #ffb680;outline-offset:3px}
+@media(max-width:1090px){
+ .nd-personnel .operator-dash-content,.nd-personnel .operator-dash-lower{grid-template-columns:minmax(0,1fr) minmax(285px,.82fr)}
+ .nd-personnel .operator-badge-grid{grid-template-columns:1fr}
+}
+@media(max-width:880px){
+ .nd-personnel .operator-dash-content,.nd-personnel .operator-dash-lower{grid-template-columns:1fr}
+ .nd-personnel .operator-badge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .nd-personnel .operator-dashboard-header{align-items:flex-start}
+ .nd-personnel .operator-dash-head-actions{justify-content:flex-start}
+}
+@media(max-width:540px){
+ .nd-personnel .operator-dashboard-header h2{font-size:clamp(34px,9vw,43px)}
+ .nd-personnel .operator-dash-stats article{min-height:115px;padding:15px 12px}
+ .nd-personnel .operator-dash-stats .operator-dash-stat-icon{top:11px;right:10px}
+ .nd-personnel .operator-mission-filter{flex:1 1 100%;justify-content:space-between}
+ .nd-personnel .operator-badge-grid{grid-template-columns:1fr}
+ .nd-personnel .operator-badge-grid .personnel-badge-item{flex-direction:row}
+ .nd-personnel .operator-featured-badge{padding:13px}
+ .nd-personnel .operator-featured-glyph{width:47px;height:47px;flex-basis:47px;font-size:26px}
+ .nd-personnel .operator-dash-discord{width:100%;justify-content:center}
+ .nd-personnel .operator-dash-head-actions{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .nd-personnel .operator-dash-nav a:hover{transform:none}
+ .nd-personnel .operator-mission-filter,.nd-personnel .operator-dash-nav a{transition:none}
+}
