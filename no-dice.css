@@ -582,3 +582,30 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 @media(max-width:1020px){.personnel-hero-layout{gap:23px}.personnel-hero-art{min-height:350px}.personnel-art-center{min-height:230px}.personnel-reticle{width:170px;height:170px}.personnel-reticle-two{width:130px;height:130px}.personnel-art-symbol{width:115px;height:115px;font-size:63px}}
 @media(max-width:760px){.personnel-hero-layout{grid-template-columns:1fr}.personnel-hero-art{min-height:250px;width:100%;max-width:480px}.personnel-art-center{min-height:190px}.personnel-hero h1{font-size:clamp(65px,12vw,90px)}.personnel-dashboard-intro{flex-wrap:wrap}.personnel-guest{grid-template-columns:1fr}.personnel-join-panel{min-height:0}.personnel-join-content{padding:31px 25px}.personnel-info-head{padding:27px 25px 10px}}
 @media(max-width:480px){.personnel-hero h1{font-size:clamp(50px,14vw,69px)}.personnel-hero-art{min-height:225px}.personnel-reticle{width:150px;height:150px}.personnel-reticle-two{width:110px;height:110px}.personnel-art-symbol{width:100px;height:100px;font-size:55px}.personnel-hero-flags span{font-size:8px}.personnel-panel-stripe{font-size:8px;padding-inline:14px}.personnel-join-content h2{font-size:47px}.personnel-capability-list{padding:0 15px}}
+
+/* Personnel login spacing / optical alignment fix.
+   Keep stripe, content, features and footer on one consistent inset. */
+.personnel-guest{--personnel-card-inset:clamp(20px,2.75vw,34px)}
+.personnel-guest>.personnel-panel{min-width:0}
+.personnel-guest .personnel-panel-stripe,
+.personnel-guest .personnel-panel-bottom{padding-left:var(--personnel-card-inset);padding-right:var(--personnel-card-inset)}
+.personnel-guest .personnel-join-content{padding:34px var(--personnel-card-inset) 28px}
+.personnel-guest .personnel-info-head{padding:34px var(--personnel-card-inset) 20px}
+.personnel-guest .personnel-capability-list{padding:0 var(--personnel-card-inset)}
+.personnel-guest .personnel-info>.personnel-small{padding:18px var(--personnel-card-inset) 0;margin:0}
+.personnel-guest .personnel-info{padding-bottom:28px}
+.personnel-guest .personnel-join-content>p:not(.personnel-small){margin:0}
+.personnel-guest .personnel-join-button{max-width:none;margin:26px 0 15px}
+.personnel-guest .personnel-join-content>.personnel-small{margin:0;max-width:42ch}
+.personnel-guest .personnel-info-head>p{margin:0}
+.personnel-guest .personnel-capability-list>div{min-width:0}
+.personnel-guest .personnel-capability-list>div>span:nth-child(2){min-width:0}
+@media(max-width:480px){
+ .personnel-guest{--personnel-card-inset:19px}
+ .personnel-guest .personnel-panel-stripe,
+ .personnel-guest .personnel-panel-bottom{font-size:8px;gap:8px;flex-wrap:wrap}
+ .personnel-guest .personnel-join-content,
+ .personnel-guest .personnel-info-head{padding-top:27px}
+ .personnel-guest .personnel-join-button{font-size:16px;gap:9px;padding:12px 13px}
+ .personnel-guest .personnel-capability-list>div{padding:11px;gap:10px}
+}
