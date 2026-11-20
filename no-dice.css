@@ -410,3 +410,32 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 @media(max-width:800px){.studio-hero-grid{grid-template-columns:1fr}.studio-hero-display{justify-self:center;max-width:540px}.studio-module{min-height:320px;padding:23px}.studio-module h3{font-size:30px}.studio-module-bottom{align-items:flex-start;flex-direction:column}.studio-feature-grid{grid-template-columns:1fr}.studio-feature-mark{min-height:170px}.studio-safety-panel{flex-direction:column;align-items:flex-start}}
 @media(max-width:600px){.studio-hero-grid{padding-top:39px}.studio-hero h1{font-size:clamp(67px,15vw,100px)}.studio-topline{font-size:8px}.studio-hero-actions{flex-direction:column;align-items:stretch}.studio-module-grid{grid-template-columns:1fr}.studio-module{min-height:0}.studio-module-bottom{align-items:normal}.studio-status-panel{flex-wrap:wrap}.studio-status-label{margin-left:29px}.studio-feature-links{flex-direction:column}.studio-feature-links a{justify-content:space-between}.studio-safety-panel{padding:24px}.studio-area-section{padding:54px 0}}
 @media(prefers-reduced-motion:reduce){.studio-action-main,.studio-action-secondary{transition:none!important}}
+
+/* ICON SIZE HOTFIX: inline SVG viewBox alone permits 300x150 default viewport.
+   Explicit heights keep arrows from expanding rows into enormous shapes. */
+.studio-main svg,
+#main-content .command-hero svg,
+#main-content .command-strip svg,
+#main-content .command-section svg,
+#main-content .command-feature-section svg,
+#main-content .command-end-section svg {
+  display:inline-block;
+  vertical-align:middle;
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+}
+.studio-hero .studio-display-core svg{width:49px;height:49px}
+.studio-module .studio-module-icon svg{width:27px;height:27px}
+.studio-main .studio-action-main svg,
+.studio-main .studio-action-secondary svg{width:16px;height:16px}
+.studio-main .studio-module-bottom a svg,
+.studio-main .studio-feature-links a svg{width:15px;height:15px}
+.studio-main .studio-nexus-jump svg{width:17px;height:17px}
+#main-content .command-hero .command-primary svg,
+#main-content .command-hero .command-secondary svg{width:17px;height:17px}
+#main-content .command-strip a svg{width:13px;height:13px}
+#main-content .command-section .ops-tile-icon svg{width:24px;height:24px}
+#main-content .command-section .ops-tile-foot svg{width:16px;height:16px}
+#main-content .command-feature-section .command-launch>svg{width:22px;height:22px}
+#main-content .command-section .command-info-card a svg{width:14px;height:14px}
