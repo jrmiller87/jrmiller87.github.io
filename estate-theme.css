@@ -1,0 +1,121 @@
+/* The Vaelen Estate: unified House Rado era palette and layout, 2026-11-20 */
+:root {
+  color-scheme:dark;
+  --night:#101a17; --night2:#15231d; --night3:#203329;
+  --bg:#101a17; --bg2:#182720; --panel:#1e3128; --panel2:#233a2f;
+  --ivory:#f5f0e3; --paper:#eee3ca; --text:#e3e9df;
+  --muted:#b9c8b8; --gold:#e9bf76; --gold2:#f1d69d;
+  --wine:#9e454a; --red:#b84c56; --line:#526c56;
+  --crimson:#ab444f; --crimson-deep:#592e33; --crimson-hover:#ca5a62;
+  --white:#fffaf0; --cream:#f4ead2; --soft:#c8d8c5;
+  --estate-bg:#101a17; --estate-panel:#203329; --estate-raised:#294133;
+  --estate-border:#506b55; --estate-gold:#e9bf76; --estate-green:#87bda1;
+}
+html {scroll-behavior:smooth;scroll-padding-top:100px}
+body {
+ background:radial-gradient(ellipse at 85% -12%,#2d4e3b88,transparent 43%),linear-gradient(130deg,#101a17,#192920 60%,#111b18)!important;
+ color:#f5f0e3!important;line-height:1.67;
+}
+::selection {background:#ad8550;color:#121b16}
+:where(a,button,summary):focus-visible {outline:2px solid #f2cc85!important;outline-offset:3px}
+header.site-header {
+ background:#101d17f5!important;border-bottom:1px solid #b6975a!important;
+ box-shadow:0 8px 28px #060d09a6!important;
+}
+.site-header .site-mark {background:linear-gradient(145deg,#315942,#172b21)!important;border-color:#ddb874!important;color:#f5deb0!important}
+.site-header .site-wordmark {color:#fff4de!important}
+.site-header .site-wordmark small {color:#d1bb8a!important}
+header.site-header .site-nav a, .site-header .site-nav a:link,.site-header .site-nav a:visited {
+ color:#e3e8dc!important;background:transparent!important;border:1px solid transparent!important;border-radius:5px!important;
+}
+header.site-header .site-nav a:not(.active):not([aria-current="page"]):hover,
+header.site-header .site-nav a:not(.active):not([aria-current="page"]):focus-visible {
+ background:#2b4235!important;color:#fff7e8!important;border-color:#8dac83!important;
+}
+header.site-header .site-nav a.active,header.site-header .site-nav a[aria-current="page"] {
+ background:#35583f!important;color:#fff4d8!important;border:1px solid #deb76a!important;
+}
+.hero {border-color:#506b55!important}
+.hero .kicker,.hero .eyebrow,.hero .tiny,.hero .loadout-eyebrow,.eyebrow,.tiny,.textlink {
+ color:#e9bf76!important;
+}
+.hero h1,.hero h1 span,.hero .subtitle,.hero .hero-sub {color:#fff4e1!important}
+.hero p {color:#e0e5d8!important}
+.hero .tags .tag,.tags .tag,.hero-meta span,.loadout-marks span {
+ background:#234032d9!important;color:#f6edda!important;border-color:#779a7a!important;
+}
+.hero .quick {background:transparent!important;border-color:#647b60!important}
+.hero .quick>div,.hero-stats>div {background:#14261fdc!important;color:#f4ebd8!important;border-color:#5d7861!important}
+.hero .quick b,.hero-stats b {color:#fff0d2!important}
+.hero .quick small,.hero-stats small {color:#d5bd89!important}
+.hero .btn,.btn:not(.line),.hero-actions a:not(.line) {
+ background:#e3bd79!important;border-color:#e3bd79!important;color:#18271d!important;
+}
+.hero .btn.line,.btn.line {background:#20392cde!important;color:#f5e4c3!important;border-color:#b99b64!important}
+.hero .btn:hover,.btn:hover {filter:brightness(1.12)}
+main,main.wrap,.section {color:#f4f0e5!important}
+.section:nth-of-type(even),.section {background:#14231c!important}
+.section-heading h2,.section-heading p,.sectionhead h2,.section-title h2,
+.section-heading .tiny,.sectionhead span {color:#f3e6c7!important}
+.sectionhead,.section-heading,.section-title,.estate-section-heading {border-color:#5a735b!important}
+.panel,.story-card,.person,.service-grid .card,.achievement,.item,.quest-card,
+.equipment-group,.gear-redesign.figure-card,.estate-identity-v3,.estate-professions-v3,
+.estate-wealth-v3,.estate-property-v3,.estate-inventory-v3,.estate-papers-v3 {
+ background:linear-gradient(145deg,#263b2e,#1b2d24)!important;
+ border-color:#58745b!important;color:#f2eddf!important;
+ box-shadow:0 9px 26px #080f0ba3!important;
+}
+.panel h3,.story-card h3,.person h3,.service-grid h3,.achievement b,
+.equipment-group h4,.estate-section-heading h3 {color:#fff0d5!important}
+.panel p,.story-card p,.person p,.service-grid p,.achievement p,
+.panel .detail li,.item strong {color:#e2e8d9!important}
+.label,.xp,.person .relationship,.event .date,
+.estate-section-index,.estate-eyebrow,.estate-fact span,.estate-profession-no {
+ color:#e5bf7e!important
+}
+.detail li,.statrow {border-color:#4f6856!important}
+.item,.estate-fact,.estate-profession,.estate-overview-v3 .hold-balance,
+.estate-overview-v3 .hold-split>div,.estate-overview-v3 .hold-item,
+.estate-overview-v3 .hold-document,.equipment-entry {
+ background:#294032!important;border-color:#5a745d!important;color:#fff4df!important;
+}
+.item small,.estate-section-meta,.estate-xp,.estate-overview-v3 .hold-item-body small {color:#c4d3bf!important}
+.progress,.estate-progress {background:#101d17!important;border-color:#5b7560!important}
+.progress span,.estate-progress span,.bar span {background:linear-gradient(90deg,#789d67,#e5bc74)!important}
+.tag,.chip,.estate-year,.hold-pill {border-color:#9f8e60!important;color:#ffe2a7!important;background:#344b39!important}
+.achievement .sigil,.equipment-group-symbol,.site-mark {background:#355840!important;border-color:#d7af68!important;color:#f4dca2!important}
+.quote,.notice,.footnote,.read-only,.loadout-disclaimer {
+ color:#eee3c9!important;background:#20362a!important;border-color:#b89760!important;
+}
+.story-card:before {background:linear-gradient(90deg,#507c60,#e2bd77)!important}
+.story-card .card-visual,.person .portrait {background-color:#253e30!important}
+.life-section,.chronicle-invite,.intro,.chapters {background-color:#14221c!important}
+.life-picture-copy,.life-intro p,.chronicle-invite p {color:#e5e9dc!important}
+.event:before {background:#d7ac66!important;box-shadow:0 0 0 6px #d7ac6633!important}
+.timeline:before {background:#8b9f74!important}
+.equipment-group h4 {background:#355342!important;border-color:#668265!important}
+.equipment-entry:hover,.equipment-entry.selected,.equipment-entry:focus-visible {
+ background:#365943!important;border-left-color:#e5bf7e!important;
+}
+.equipment-entry-copy small,.equipment-entry-arrow,.inspector-eyebrow {color:#eac681!important}
+.equipment-entry-icon,.estate-overview-v3 .hold-item-icon {background:#1a2c22!important;border-color:#6b8569!important}
+.equipment-inspector {background:#263d31!important;border-color:#6f8a6a!important;border-left-color:#ddba79!important}
+.inspector-intro h4,.inspector-record ul,.estate-fact strong {color:#fff0d5!important}
+.inspector-meta span {border-color:#a99a64!important;color:#f1d599!important;background:#314936!important}
+.loadout-feature,.estate-overview-heading {background:linear-gradient(110deg,#2c4937,#192b22 70%,#433a2b)!important;border-color:#668365!important}
+.estate-overview-v3 .hold-split span,.estate-overview-v3 .hold-qty {color:#e9c789!important}
+.estate-overview-v3 .hold-balance strong,.estate-overview-v3 .hold-split strong {color:#fff0d5!important}
+.estate-overview-v3 .hold-asset-symbol {background:#234333!important;color:#e9bd78!important;border-color:#668365!important}
+.estate-heading-links a,.profile-equipment-link,.crosslinks a,.chronicle-link {
+ background:#2e4b38!important;color:#f6e8c8!important;border-color:#b69a62!important;
+}
+.estate-heading-links a:hover,.profile-equipment-link:hover,.crosslinks a:hover,.chronicle-link:hover {
+ background:#40644a!important;color:#fff5e3!important;
+}
+footer,.footer,.end {background:#101c16!important;border-top:1px solid #8c754e!important;color:#e0dfd1!important}
+footer a {color:#efd098!important}
+@media(max-width:760px) {
+ .wrap {width:min(100% - 28px,1200px)}
+ .site-header .site-nav {row-gap:5px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
