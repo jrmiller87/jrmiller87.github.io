@@ -832,3 +832,90 @@ body{background:#100d16;color:var(--text)}
  .personnel-record-body{padding:20px}
 }
 @media(prefers-reduced-motion:reduce){#main-content .ops-tile{transition:none!important;transform:none!important}}
+
+/* =====================================================
+   PERSONNEL READABILITY PASS — operator information first
+   Larger copy, fewer distractions, one clear reading column.
+   ===================================================== */
+.personnel-is-signed-in .personnel-hero{padding:20px 0 23px!important}
+.personnel-is-signed-in .personnel-hero-layout{display:block}
+.personnel-is-signed-in .personnel-hero-copy .crumb{display:inline-flex;margin-bottom:8px}
+.personnel-is-signed-in .personnel-hero-copy .personnel-eyebrow{margin-top:10px}
+.personnel-is-signed-in .personnel-hero h1{font-size:clamp(33px,4vw,49px);line-height:1.12;letter-spacing:-.5px;margin:8px 0}
+.personnel-is-signed-in .personnel-hero h1 br{display:none}
+.personnel-is-signed-in .personnel-hero-copy>p{font-size:14px;line-height:1.6;max-width:700px}
+.personnel-is-signed-in .personnel-hero-flags,.personnel-is-signed-in .personnel-hero-art{display:none}
+.personnel-main #signed-in{max-width:1030px;margin:0 auto}
+.personnel-main #signed-in .personnel-dashboard-intro{margin:12px 0 25px;align-items:center;gap:18px}
+.personnel-main #signed-in .personnel-dashboard-intro h2{font-size:clamp(32px,4vw,47px);line-height:1.1;letter-spacing:0;margin:4px 0 9px}
+.personnel-main #signed-in .personnel-dashboard-intro p{font-size:15px;line-height:1.65;color:#e0d6e7;max-width:650px}
+.personnel-main #signed-in .personnel-profile-tag{font-size:11px;letter-spacing:0;white-space:normal}
+.personnel-main #signed-in .personnel-zone{margin-bottom:30px;border:1px solid #756186;border-radius:11px;overflow:hidden}
+.personnel-main #signed-in .personnel-zone-header{padding:17px 24px;min-height:70px;background:#372b43;border-bottom:1px solid #79638a;gap:14px}
+.personnel-main #signed-in .personnel-zone-progress .personnel-zone-header{background:#443038;border-bottom-color:#8b6a69}
+.personnel-main #signed-in .personnel-zone-number{width:38px;height:38px;font-size:19px;border-radius:7px}
+.personnel-main #signed-in .personnel-zone-kicker{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.5px;font-weight:700;color:#dec2ee;line-height:1.3}
+.personnel-main #signed-in .personnel-zone-progress .personnel-zone-kicker{color:#ffcdad}
+.personnel-main #signed-in .personnel-zone-header h3{font-family:'Rajdhani',sans-serif;font-size:clamp(25px,3vw,31px);line-height:1.15;letter-spacing:0;margin-top:4px}
+.personnel-main #signed-in .personnel-zone-mark{opacity:.45}
+.personnel-main #signed-in .personnel-profile-top{padding:25px 28px}
+.personnel-main #signed-in #operator-name{font-size:clamp(32px,4vw,44px);line-height:1.1}
+.personnel-main #signed-in #operator-identity{color:#ddd0e4;font-size:14px}
+.personnel-main #signed-in .personnel-secondary{min-height:42px;font-size:15px;padding:8px 16px}
+.personnel-main #signed-in .personnel-stats{gap:12px}
+.personnel-main #signed-in .personnel-stats article{min-height:115px;padding:17px 18px;border-radius:7px}
+.personnel-main #signed-in .personnel-stats article>span{font:700 12px 'DM Sans',sans-serif;letter-spacing:.5px;color:#e6d1ed}
+.personnel-main #signed-in .personnel-stats article strong{font-size:clamp(29px,3.3vw,41px);line-height:1.05}
+.personnel-main #signed-in .personnel-stats article small{font-size:13px;color:#dccddd;line-height:1.45}
+.personnel-main #signed-in .personnel-level-meta{font:700 13px 'DM Sans',sans-serif;letter-spacing:0}
+.personnel-main #signed-in .personnel-level-next{font:700 13px 'DM Sans',sans-serif;letter-spacing:0}
+.personnel-main #signed-in .personnel-zone-footnote{font-size:13px;color:#e5d7de;line-height:1.6}
+.personnel-main #signed-in .personnel-records-heading{margin:44px 0 24px;padding-left:17px}
+.personnel-main #signed-in .personnel-records-heading h3{font-size:clamp(32px,4.3vw,46px);line-height:1.08;letter-spacing:0;margin:5px 0 8px}
+.personnel-main #signed-in .personnel-records-heading p{font-size:15px;line-height:1.6;color:#d9ccdf}
+/* Full-width record panels keep missions and achievement details readable. */
+.personnel-main #signed-in .personnel-records-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;max-width:100%}
+.personnel-main #signed-in .personnel-record{border-radius:10px;border-width:1px;min-height:0}
+.personnel-main #signed-in .personnel-record-header{padding:17px 23px;min-height:72px;gap:14px}
+.personnel-main #signed-in .personnel-record-header h3{font-family:'Rajdhani',sans-serif;font-size:clamp(26px,3.5vw,33px);line-height:1.12;letter-spacing:0;margin:3px 0}
+.personnel-main #signed-in .personnel-record-header .personnel-zone-kicker{font:700 11px 'DM Sans',sans-serif;letter-spacing:.4px}
+.personnel-main #signed-in .personnel-record-symbol{width:42px;height:42px;border-radius:8px;font-size:24px}
+.personnel-main #signed-in .personnel-record-body{padding:24px 28px 29px}
+.personnel-main #signed-in .personnel-record-description{font-size:15px;line-height:1.6;color:#e1d4e6;margin-bottom:22px}
+.personnel-main #signed-in .personnel-record-settings #profile-form{max-width:650px;gap:14px}
+.personnel-main #signed-in .personnel-record-settings label{font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:.1px;color:#f4e8fa}
+.personnel-main #signed-in .personnel-record-settings input[type=text]{min-height:48px;font-size:16px}
+.personnel-main #signed-in .personnel-record-settings .personnel-toggle{font-size:14px;line-height:1.6!important}
+.personnel-main #signed-in .personnel-record-settings .personnel-primary{font-size:16px;min-height:45px}
+.personnel-main #signed-in .personnel-record .personnel-list>p{font-size:15px;line-height:1.65;padding:19px 20px}
+.personnel-main #signed-in .personnel-record .personnel-list-item{padding:17px 19px}
+.personnel-main #signed-in .personnel-record .personnel-list-item strong{font-size:16px;line-height:1.4}
+.personnel-main #signed-in .personnel-record .personnel-list-item small{font-size:14px;line-height:1.6;color:#dbcede}
+.personnel-main #signed-in .personnel-mission-item{gap:9px;padding:18px 20px;border-radius:7px}
+.personnel-main #signed-in .personnel-mission-top strong{font-size:21px;line-height:1.2}
+.personnel-main #signed-in .personnel-mission-reward{font-size:12px;padding:7px 11px}
+.personnel-main #signed-in .personnel-mission-item p{font-size:15px;line-height:1.65;color:#e8d9dd}
+.personnel-main #signed-in .personnel-mission-state{font:700 13px 'DM Sans',sans-serif;letter-spacing:0}
+.personnel-main #signed-in .personnel-badge-item{border-radius:7px}
+.personnel-main #signed-in .personnel-badge-item strong{font-size:23px}
+.personnel-main #signed-in .personnel-badge-item small{font-size:14px;line-height:1.65;color:#ece0d0}
+.personnel-main #signed-in .personnel-bottom{font-size:12px}
+@media(max-width:760px){
+ .personnel-is-signed-in .personnel-hero{padding:18px 0 23px!important}
+ .personnel-is-signed-in .personnel-hero h1{font-size:35px}
+ .personnel-main #signed-in .personnel-dashboard-intro{align-items:flex-start;flex-direction:column}
+ .personnel-main #signed-in .personnel-zone-header{padding:14px}
+ .personnel-main #signed-in .personnel-profile-top{padding:18px}
+ .personnel-main #signed-in .personnel-record-header{padding:15px 16px}
+ .personnel-main #signed-in .personnel-record-body{padding:19px}
+ .personnel-main #signed-in .personnel-records-grid{gap:20px}
+ .personnel-main #signed-in .personnel-stats{gap:10px}
+}
+@media(max-width:430px){
+ .personnel-main #signed-in .personnel-stats article{padding:13px;min-height:112px}
+ .personnel-main #signed-in .personnel-stats article strong{font-size:29px}
+ .personnel-main #signed-in .personnel-stats article small{font-size:12px}
+ .personnel-main #signed-in .personnel-level-meta{flex-wrap:wrap;gap:6px}
+ .personnel-main #signed-in .personnel-profile-tag{font-size:10px}
+ .personnel-main #signed-in .personnel-record-body{padding:17px}
+}
