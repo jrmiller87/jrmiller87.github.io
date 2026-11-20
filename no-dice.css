@@ -65,3 +65,27 @@
 .community-note{margin-top:16px;border-left:3px solid #8b638b;background:#211729;padding:14px 16px;color:#bdaec8;font-size:12px;border-radius:0 9px 9px 0}
 @media(max-width:850px){.discord-feature{grid-template-columns:1fr}.discord-feature-art{border-left:0;border-top:1px solid #705285;padding:45px 25px}.community-cta{align-items:flex-start;flex-direction:column}.hangout-grid{grid-template-columns:1fr}.lounge-trio,.community-spaces{grid-template-columns:1fr}}
 @media(max-width:500px){.hangout-card{min-height:315px;padding:25px}.discord-feature-copy{padding:25px}.community-cta{padding:25px}.community-cta h2{font-size:29px}}
+
+/* Character Nexus is a distinct app-like experience, not another No Dice page */
+.links a.nexus-nav{
+ display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;
+ padding:7px 12px;min-height:46px;border:2px solid #ff963f;border-radius:10px;
+ background:linear-gradient(115deg,#4d2a24,#40213c);
+ box-shadow:inset 0 0 0 1px #ffad6822,0 0 18px #fd8f3424;
+ color:#ffe6cb!important;white-space:nowrap;
+}
+.links a.nexus-nav .nexus-nav-title{display:block;font-weight:900;font-size:12px;line-height:1.2}
+.links a.nexus-nav .nexus-nav-title span{color:#ffb578;font-size:14px}
+.links a.nexus-nav small{display:block;font-size:8px;line-height:1.35;letter-spacing:1.45px;color:#ffb983;font-weight:800}
+.links a.nexus-nav:hover,.links a.nexus-nav:focus-visible{
+ border-color:#ffc17d;background:linear-gradient(115deg,#733b24,#51275b);
+ box-shadow:0 0 22px #ff92374b;color:#fff8ec!important;transform:translateY(-1px);
+}
+.btn.nexus-launch{padding:9px 16px;min-height:51px;border:2px solid #ff9844!important;background:linear-gradient(115deg,#5c3031,#7a3a27)!important;color:#fff3df!important;box-shadow:0 0 20px #fb8f3526}
+.btn.nexus-launch span{display:block;text-align:left;line-height:1.22}
+.btn.nexus-launch small{display:block;font-size:10px;font-weight:600;letter-spacing:.15px;color:#ffd19e;margin-top:4px}
+.btn.nexus-launch:hover{background:linear-gradient(115deg,#8a4537,#a04d28)!important;box-shadow:0 0 25px #ff8a4055}
+.nexus-text-link{color:#ffb57b!important}
+@media(max-width:1050px){.links a.nexus-nav{padding:6px 9px}.links a.nexus-nav .nexus-nav-title{font-size:11px}}
+@media(max-width:750px){.links a.nexus-nav{width:100%;padding:11px 14px;align-items:flex-start}.links a.nexus-nav .nexus-nav-title{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.links a.nexus-nav,.btn.nexus-launch{transition:none!important;transform:none!important}}
