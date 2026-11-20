@@ -677,3 +677,26 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
 @media(max-width:1050px){.personnel-section-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.personnel-zone-progress .personnel-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.personnel-records-grid{gap:17px!important}}
 @media(max-width:760px){.personnel-main .personnel-records-grid{grid-template-columns:1fr;gap:22px!important}.personnel-zone-header{padding:14px 18px}.personnel-zone-dossier .personnel-profile-top{padding:22px}.personnel-zone-progress .personnel-stats{padding:18px}.personnel-record-body{padding:22px}.personnel-records-heading{margin:45px 0 20px}.personnel-zone{scroll-margin-top:95px}.personnel-main .personnel-record{scroll-margin-top:95px}}
 @media(max-width:480px){.personnel-section-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.personnel-section-nav a{justify-content:flex-start}.personnel-zone-header{gap:10px;min-height:66px;padding:12px}.personnel-zone-number{width:36px;height:36px;font-size:17px}.personnel-zone-header h3{font-size:24px}.personnel-zone-kicker{font-size:9px}.personnel-zone-mark{font-size:19px}.personnel-zone-progress .personnel-stats{gap:9px;padding:12px}.personnel-zone-progress .personnel-stats article{padding:13px;min-height:129px}.personnel-zone-progress .personnel-stats strong{font-size:30px}.personnel-zone-footnote{margin:2px 13px 17px}.personnel-main .personnel-record-header{padding:15px;min-height:80px;gap:10px}.personnel-record-symbol{width:38px;height:38px}.personnel-main .personnel-record-header h3{font-size:27px}.personnel-record-body{padding:19px}.personnel-dashboard-intro{gap:12px}}
+
+/* NO DICE OPERATIONS / REAL XP AND MISSION FEEDBACK */
+.personnel-level-track{margin:0 24px 18px;padding:18px 20px;background:#211526;border:1px solid #754b63}
+.personnel-level-meta{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#ffbd89;font:700 11px 'Roboto Mono',monospace;letter-spacing:.45px}
+.personnel-level-meta strong{color:#f8d4b6;white-space:nowrap}
+.personnel-level-track-rail{width:100%;height:13px;margin:14px 0 9px;background:#100d19;border:1px solid #765061;overflow:hidden}
+.personnel-level-track-fill{height:100%;width:0%;background:linear-gradient(90deg,#9758dc,#c68bfd 63%,#ffab72);transition:width .65s ease;box-shadow:0 0 14px #d790f9}
+.personnel-level-next{color:#ddc5e3;font:700 10px 'Roboto Mono',monospace;letter-spacing:.6px}
+.personnel-mission-item{border:1px solid #865a46;border-left:4px solid #ffae76;background:#21151a;padding:16px 17px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.personnel-mission-item.is-complete{border-color:#648f82;border-left-color:#80dcb8;background:#182820}
+.personnel-mission-top{display:flex;align-items:center;justify-content:space-between;gap:11px}
+.personnel-mission-top strong{color:#fff1df;font:800 19px/1.15 'Rajdhani',sans-serif}
+.personnel-mission-reward{padding:6px 9px;flex:none;background:#493027;color:#ffbc87;border:1px solid #aa7049;font:800 10px 'Roboto Mono',monospace;white-space:nowrap}
+.personnel-mission-item.is-complete .personnel-mission-reward{background:#29483a;border-color:#6ea48a;color:#a6f3cb}
+.personnel-mission-item p{color:#d3c1c1;font-size:12px;line-height:1.6;margin:0}
+.personnel-mission-state{font:700 10px 'Roboto Mono',monospace;color:#f2b48c;letter-spacing:.3px}
+.personnel-mission-item.is-complete .personnel-mission-state{color:#99e6c1}
+.personnel-badge-item{display:flex;align-items:center;gap:15px;background:linear-gradient(100deg,#423521,#221c1b);border:1px solid #b08b57;border-left:4px solid #f1c987;padding:18px}
+.personnel-badge-glyph{width:48px;height:48px;flex:none;display:grid;place-items:center;background:#7c5b2d;border:1px solid #dfb876;box-shadow:0 0 0 3px #f7d39c14;color:#ffe2a4;font-size:27px}
+.personnel-badge-item>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.personnel-badge-item strong{font:800 20px 'Rajdhani',sans-serif;color:#ffe6b5}
+.personnel-badge-item small{font:400 12px/1.6 'DM Sans',sans-serif;color:#dbcbb6}
+@media(max-width:480px){.personnel-level-track{margin:0 13px 15px;padding:15px}.personnel-level-meta{font-size:9px}.personnel-mission-top{align-items:flex-start;flex-wrap:wrap}.personnel-badge-item{padding:13px}.personnel-badge-glyph{width:42px;height:42px}}
