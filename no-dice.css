@@ -1032,3 +1032,63 @@ body{background:#100d16;color:var(--text)}
 .personnel-main #signed-in .personnel-badge-item small{color:var(--nd-muted)}
 .personnel-main .personnel-bottom{border-color:var(--nd-border);color:var(--nd-muted)}
 .personnel-main .personnel-bottom a{color:var(--nd-orange)}
+
+/* Personnel color balance v2: expressive accent zones, calm readable surfaces.
+   Purple = profile/navigation, orange = progress/rewards, mint = earned only. */
+.personnel-main{
+ --nd-purple:#c49bff;
+ --nd-orange:#ffba7f;
+}
+.personnel-main .personnel-hero{
+ background:radial-gradient(ellipse at 86% 26%,#663b9150,transparent 48%),linear-gradient(105deg,#282034,#17151d)!important;
+ border-bottom-color:#725482;
+}
+.personnel-main .personnel-hero h1 em{color:#d2adff}
+.personnel-main .personnel-hero-flags span{border-color:#6a5181;background:#31263a;color:#e6d4f5}
+.personnel-main .personnel-hero-flags span:nth-child(2){border-color:#856047;background:#392b29;color:#ffcd9f}
+.personnel-main .personnel-hero-art{background:radial-gradient(circle at 50% 50%,#69428b40,transparent 66%),#26212e;border-color:#8d67a6}
+.personnel-main .personnel-art-symbol{background:linear-gradient(140deg,#5a3972,#342740);border-color:#b68bd6;color:#ffe0b9}
+.personnel-main .personnel-primary{background:#ffb477;border-color:#ffb477;color:#27170d}
+.personnel-main .personnel-primary:hover{background:#ffca99;border-color:#ffca99}
+.personnel-main .personnel-profile-tag{background:#3c2c4b;border-color:#9370b4;color:#f2dcff}
+.personnel-main #signed-in .personnel-zone-dossier{border-color:#79618d;background:#211c29}
+.personnel-main #signed-in .personnel-zone-dossier .personnel-zone-header{background:linear-gradient(100deg,#513764,#30293a);border-bottom-color:#826398}
+.personnel-main #signed-in .personnel-zone-dossier .personnel-zone-number{background:#6c4885;border-color:#ae83c8;color:#fff}
+.personnel-main #signed-in .personnel-zone-dossier .personnel-zone-mark{color:#d1a3ff;opacity:1}
+.personnel-main #signed-in .personnel-zone-progress{border-color:#81624f}
+.personnel-main #signed-in .personnel-zone-progress .personnel-zone-header{background:linear-gradient(100deg,#644231,#342b30);border-bottom-color:#9e7454}
+.personnel-main #signed-in .personnel-zone-progress .personnel-zone-number{background:#785037;border-color:#c9986c;color:#fff0da}
+.personnel-main #signed-in .personnel-zone-progress .personnel-zone-kicker,.personnel-main #signed-in .personnel-zone-progress .personnel-zone-mark{color:#ffd2a6;opacity:1}
+.personnel-main #signed-in .personnel-stats article:nth-child(1){border-top-color:#bd93ef}
+.personnel-main #signed-in .personnel-stats article:nth-child(2){border-top-color:#d7a0f8}
+.personnel-main #signed-in .personnel-stats article:nth-child(3){border-top-color:#ffb980}
+.personnel-main #signed-in .personnel-stats article:nth-child(4){border-top-color:#ffce99}
+.personnel-main #signed-in .personnel-level-track-fill{background:linear-gradient(90deg,#aa77eb,#d4a5ff 65%,#ffbd89);box-shadow:none}
+.personnel-main #signed-in .personnel-level-track{border-color:#796177}
+.personnel-main #signed-in .personnel-level-next{color:#ffcd9f}
+.personnel-main #signed-in .personnel-records-heading{border-left-color:#bd92f1}
+.personnel-main #signed-in .personnel-records-heading h3 em{color:#ffbd89}
+.personnel-main #signed-in .personnel-record-settings{--record-accent:#c49bff}
+.personnel-main #signed-in .personnel-record-xp{--record-accent:#b6a0ed}
+.personnel-main #signed-in .personnel-record-missions{--record-accent:#ffb782}
+.personnel-main #signed-in .personnel-record-badges{--record-accent:#ffd29b}
+.personnel-main #signed-in .personnel-record-header{border-bottom:1px solid #685369}
+.personnel-main #signed-in .personnel-record-settings .personnel-record-header{background:linear-gradient(90deg,#3d2d4c,#292630);border-bottom-color:#8a6ba4}
+.personnel-main #signed-in .personnel-record-xp .personnel-record-header{background:linear-gradient(90deg,#343048,#292630);border-bottom-color:#796c9e}
+.personnel-main #signed-in .personnel-record-missions .personnel-record-header{background:linear-gradient(90deg,#49352c,#292630);border-bottom-color:#98715a}
+.personnel-main #signed-in .personnel-record-badges .personnel-record-header{background:linear-gradient(90deg,#483a2c,#292630);border-bottom-color:#98805e}
+.personnel-main #signed-in .personnel-record-header:before{background:var(--record-accent)}
+.personnel-main #signed-in .personnel-record-header .personnel-zone-kicker{color:var(--record-accent)}
+.personnel-main #signed-in .personnel-record-symbol{color:var(--record-accent);border-color:var(--record-accent);background:#211b27}
+.personnel-main #signed-in .personnel-record-settings .personnel-list-item,
+.personnel-main #signed-in .personnel-record-settings .personnel-list>p{border-left-color:#c49bff}
+.personnel-main #signed-in .personnel-record-xp .personnel-list-item,
+.personnel-main #signed-in .personnel-record-xp .personnel-list>p{border-left-color:#b6a0ed}
+.personnel-main #signed-in .personnel-record-missions .personnel-list-item,
+.personnel-main #signed-in .personnel-record-missions .personnel-list>p{border-left-color:#ffb782}
+.personnel-main #signed-in .personnel-record-badges .personnel-list-item,
+.personnel-main #signed-in .personnel-record-badges .personnel-list>p{border-left-color:#ffd29b}
+.personnel-main #signed-in .personnel-mission-reward{background:#4c3527;color:#ffd0a5;border-color:#9c6b4b}
+.personnel-main #signed-in .personnel-badge-glyph{background:#55402d;border-color:#ac8759;color:#ffdcac}
+.personnel-main #signed-in .personnel-mission-item.is-complete{background:#222d28;border-color:#4c7660;border-left:3px solid #80cf9b}
+.personnel-main #signed-in .personnel-mission-item.is-complete .personnel-mission-state{color:#a2e2b8}
