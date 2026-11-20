@@ -609,3 +609,71 @@ background:radial-gradient(ellipse at 75% -10%,#5b287c34,transparent 43%),repeat
  .personnel-guest .personnel-join-button{font-size:16px;gap:9px;padding:12px 13px}
  .personnel-guest .personnel-capability-list>div{padding:11px;gap:10px}
 }
+
+/* ==========================================================
+   PERSONNEL 3.0 — CLEAR, COLOR-CODED OPERATIONS DIVISIONS
+   Signed-in only. Each division gets a unique header + spacing
+   while preserving all existing Supabase account/XP DOM IDs.
+   ========================================================== */
+.personnel-main{--profile-violet:#bd91fc;--profile-orange:#ffaf76;--profile-cyan:#80c5e3;--profile-gold:#f4c47d}
+.personnel-main #signed-in{padding-bottom:12px}
+.personnel-main .personnel-dashboard-intro{margin:22px 0 24px}
+.personnel-dashboard-intro h2{letter-spacing:-.5px}
+.personnel-section-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin:0 0 30px}
+.personnel-section-nav a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:47px;padding:11px 8px;background:#291936;border:1px solid #624579;border-bottom:3px solid #9b65c7;color:#f2e2ff;font:700 11px 'Roboto Mono',monospace;transition:background .2s,border-color .2s}
+.personnel-section-nav a:nth-child(2){border-bottom-color:#ffae70}
+.personnel-section-nav a:nth-child(3){border-bottom-color:#c79bff}
+.personnel-section-nav a:nth-child(4){border-bottom-color:#80c5e3}
+.personnel-section-nav a:nth-child(5){border-bottom-color:#ffab76}
+.personnel-section-nav a:nth-child(6){border-bottom-color:#f2c079}
+.personnel-section-nav a:hover,.personnel-section-nav a:focus-visible{background:#3d2850;border-color:#b78ae7}
+.personnel-section-nav a span{color:#d0bddc;font-family:'Rajdhani',sans-serif;font-size:15px;letter-spacing:.2px}
+.personnel-zone{position:relative;margin-bottom:29px;border:1px solid #74518a;background:linear-gradient(130deg,#251731,#15101d);scroll-margin-top:190px;overflow:hidden}
+.personnel-zone-header{display:flex;align-items:center;gap:15px;min-height:75px;padding:15px 24px;border-bottom:1px solid #7a5096;background:linear-gradient(100deg,#48305a,#2d1e3a)}
+.personnel-zone-number{display:grid;place-items:center;width:43px;height:43px;flex:none;border:1px solid #ad7dde;background:#2e1c3f;color:#e5c3ff;font:700 19px 'Rajdhani',sans-serif}
+.personnel-zone-header>div{flex:1;min-width:0}
+.personnel-zone-kicker{display:block;color:#d1a9eb;font:700 10px 'Roboto Mono',monospace;letter-spacing:1px;line-height:1.5}
+.personnel-zone-header h3{font:800 clamp(24px,3vw,31px)/1 'Rajdhani',sans-serif;letter-spacing:.35px;color:#f8ecff;margin:4px 0 0}
+.personnel-zone-mark{font-size:25px;color:#a678ce;flex:none}
+.personnel-zone-dossier .personnel-profile-top{clip-path:none;border:0;background:radial-gradient(circle at 10% 0%,#56316a50,transparent 45%),#1d1428;margin:0;padding:28px 30px;box-shadow:none}
+.personnel-zone-dossier .personnel-avatar{border-color:#c28af4}
+.personnel-zone-progress{border-color:#895b54;background:linear-gradient(135deg,#281d2c,#18111f)}
+.personnel-zone-progress .personnel-zone-header{background:linear-gradient(100deg,#56302c,#372132);border-bottom-color:#a26b55}
+.personnel-zone-progress .personnel-zone-number{border-color:#c78b62;background:#4d2b2b;color:#ffe1bf}
+.personnel-zone-progress .personnel-zone-kicker,.personnel-zone-progress .personnel-zone-mark{color:#ffc08c}
+.personnel-zone-progress .personnel-stats{padding:24px;gap:13px;margin:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+.personnel-zone-progress .personnel-stats article{min-width:0;min-height:143px;border:1px solid #714967;border-top:3px solid #bf88ea;background:#2b1b35;padding:19px 17px}
+.personnel-zone-progress .personnel-stats article:nth-child(2){border-top-color:#ffae76;background:#32222b}
+.personnel-zone-progress .personnel-stats article:nth-child(3){border-top-color:#86c6e9;background:#1d2b35}
+.personnel-zone-progress .personnel-stats article:nth-child(4){border-top-color:#f4c47d;background:#322724}
+.personnel-zone-progress .personnel-stats strong{font-size:clamp(28px,3vw,41px);overflow-wrap:anywhere}
+.personnel-zone-footnote{margin:0 24px 22px;padding:10px 13px;border-left:3px solid #d59c70;background:#32252c;color:#d5c3cd;font-size:11px;line-height:1.65}
+.personnel-records-heading{margin:56px 0 24px;padding-left:20px;border-left:4px solid #ff9850}
+.personnel-records-heading h3{font:800 clamp(34px,4.7vw,53px)/1 'Rajdhani',sans-serif;margin:9px 0;color:#f4edfc}
+.personnel-records-heading h3 em{font-style:normal;color:#ffb37b}
+.personnel-records-heading p{font-size:13px;color:#bbabc9;margin:0}
+.personnel-main .personnel-records-grid{gap:24px;align-items:stretch}
+.personnel-main .personnel-record{--record-accent:#c28bfb;--record-border:#8054a4;--record-header:#422858;display:flex;flex-direction:column;min-width:0;min-height:310px;padding:0!important;border:1px solid var(--record-border);background:linear-gradient(150deg,#271931,#17101e);scroll-margin-top:190px}
+.personnel-main .personnel-record-xp{--record-accent:#8fd9ff;--record-border:#447c98;--record-header:#1c4258;background:linear-gradient(150deg,#192b38,#15131e)}
+.personnel-main .personnel-record-missions{--record-accent:#ffb680;--record-border:#a7684b;--record-header:#513329;background:linear-gradient(150deg,#33221f,#1a131c)}
+.personnel-main .personnel-record-badges{--record-accent:#ffe0a0;--record-border:#a58b50;--record-header:#4a3d25;background:linear-gradient(150deg,#30291e,#17121d)}
+.personnel-main .personnel-record-header{position:relative;display:flex;align-items:center;gap:16px;min-height:91px;padding:19px 25px;background:var(--record-header);border-bottom:2px solid var(--record-accent)}
+.personnel-record-symbol{display:grid;place-items:center;flex:none;width:45px;height:45px;border:1px solid var(--record-accent);background:#110b1d72;color:var(--record-accent);font:800 24px 'Rajdhani',sans-serif}
+.personnel-record-header>div{min-width:0}
+.personnel-main .personnel-record-header h3{margin:4px 0 0;color:#fff9ff;font:800 clamp(26px,3vw,34px)/1 'Rajdhani',sans-serif}
+.personnel-main .personnel-record-header .personnel-zone-kicker{color:var(--record-accent);font-size:10px}
+.personnel-record-body{display:flex;flex-direction:column;flex:1;padding:26px 28px 30px;min-width:0}
+.personnel-record-description{min-height:35px;margin:0 0 22px;color:#d4c3da;font-size:13px;line-height:1.6}
+.personnel-main .personnel-record .personnel-list{gap:9px;flex:1}
+.personnel-main .personnel-record .personnel-list>p{margin:0;border:1px dashed var(--record-border);border-left:4px solid var(--record-accent);padding:23px 20px;background:#100c17aa;color:#d1c1d9;font-size:13px;line-height:1.7}
+.personnel-main .personnel-record .personnel-list-item{background:#130e1c9e;border-left:4px solid var(--record-accent);border-top:1px solid #ffffff0d;padding:16px 17px;gap:6px}
+.personnel-main .personnel-record .personnel-list-item strong{font-size:14px;line-height:1.4;color:#f6edfb}
+.personnel-main .personnel-record .personnel-list-item small{font-size:12px;color:#cbbcd3;line-height:1.5}
+.personnel-main .personnel-record-settings #profile-form{gap:13px}
+.personnel-main .personnel-record-settings input[type=text]{min-height:46px;padding:12px 14px;border-color:#9f77bf}
+.personnel-main .personnel-record-settings .personnel-toggle{padding:15px 12px;background:#32213f;border:1px solid #614678;margin:5px 0;line-height:1.6!important}
+.personnel-main .personnel-record-settings .personnel-primary{align-self:flex-start;min-width:170px;margin-top:5px}
+.personnel-main .personnel-record .personnel-small{min-height:0}
+@media(max-width:1050px){.personnel-section-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.personnel-zone-progress .personnel-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.personnel-records-grid{gap:17px!important}}
+@media(max-width:760px){.personnel-main .personnel-records-grid{grid-template-columns:1fr;gap:22px!important}.personnel-zone-header{padding:14px 18px}.personnel-zone-dossier .personnel-profile-top{padding:22px}.personnel-zone-progress .personnel-stats{padding:18px}.personnel-record-body{padding:22px}.personnel-records-heading{margin:45px 0 20px}.personnel-zone{scroll-margin-top:95px}.personnel-main .personnel-record{scroll-margin-top:95px}}
+@media(max-width:480px){.personnel-section-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.personnel-section-nav a{justify-content:flex-start}.personnel-zone-header{gap:10px;min-height:66px;padding:12px}.personnel-zone-number{width:36px;height:36px;font-size:17px}.personnel-zone-header h3{font-size:24px}.personnel-zone-kicker{font-size:9px}.personnel-zone-mark{font-size:19px}.personnel-zone-progress .personnel-stats{gap:9px;padding:12px}.personnel-zone-progress .personnel-stats article{padding:13px;min-height:129px}.personnel-zone-progress .personnel-stats strong{font-size:30px}.personnel-zone-footnote{margin:2px 13px 17px}.personnel-main .personnel-record-header{padding:15px;min-height:80px;gap:10px}.personnel-record-symbol{width:38px;height:38px}.personnel-main .personnel-record-header h3{font-size:27px}.personnel-record-body{padding:19px}.personnel-dashboard-intro{gap:12px}}
