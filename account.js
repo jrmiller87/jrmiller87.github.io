@@ -22,6 +22,40 @@ const makeItem = (label, detail) => {
   const small = document.createElement('small'); small.textContent = detail;
   entry.append(strong, small); return entry;
 };
+// Dashboard filters are presentation-only; they never award XP or complete missions.
+let missionEntries=[];
+let missionFilter='available';
+const setMissionFilter = filter => {
+  if(!['available','completed','all'].includes(filter))return;
+  missionFilter=filter;
+  document.querySelectorAll('[data-mission-filter]').forEach(button=>{
+    const active=button.dataset.missionFilter===filter;
+    button.classList.toggle('is-active',active);
+    button.setAttribute('aria-pressed',String(active));
+  });
+  const visible=missionEntries.filter(entry=>filter==='all'||(filter==='completed'?entry.done:!entry.done));
+  displayList('missions-list',visible.map(entry=>entry.node),
+    missionEntries.length===0?'No published missions yet.':
+    filter==='completed'?'No completed missions yet.':
+    filter==='available'?'You're all caught up. No available missions right now.':'No missions to show.');
+};
+document.querySelectorAll('[data-mission-filter]').forEach(button=>{
+  button.addEventListener('click',()=>setMissionFilter(button.dataset.missionFilter));
+});
+const createTimelineItem=(kind,label,detail)=>{
+  const el=document.createElement('div');
+  el.className='operator-timeline-item is-'+kind;
+  const marker=document.createElement('span');
+  marker.className='operator-timeline-marker';
+  marker.setAttribute('aria-hidden','true');
+  marker.textContent=kind==='badge'?'★':'✦';
+  const body=document.createElement('div');
+  body.className='operator-timeline-copy';
+  const title=document.createElement('strong');title.textContent=label;
+  const sub=document.createElement('small');sub.textContent=detail;
+  body.append(title,sub);el.append(marker,body);
+  return el;
+};
 const displayList = (id, items, empty) => {
   const node = byId(id); node.replaceChildren();
   if(!items.length){const p=document.createElement('p');p.textContent=empty;node.append(p);return;}
@@ -114,29 +148,37 @@ async function loadProfile(user) {
   byId('level-progress-rail').setAttribute('aria-valuetext',intoLevel+' of '+xpPerLevel+' XP toward next level');
   byId('level-progress-next').textContent=toNextLevel.toLocaleString()+' XP TO LEVEL '+String(level+1).padStart(2,'0');
 
-  displayList('xp-history',(xpRes.data||[]).map(x=>makeItem('+'+x.amount+' XP · '+x.source,formatDate(x.awarded_at))),'No XP recorded yet. XP is awarded only by trusted community systems.');
   const completed=new Set((completionsRes.data||[]).map(x=>x.mission_id));
   const published=missionsRes.data||[];
   const completedPublished=published.filter(m=>completed.has(m.id)).length;
   byId('operator-mission-count').textContent=completedPublished+' / '+published.length;
-  const missionCards=(missionsRes.data||[]).map(m=>{
+  byId('mission-available-count').textContent=String(published.length-completedPublished);
+  byId('mission-completed-count').textContent=String(completedPublished);
+  byId('mission-total-count').textContent=String(published.length);
+  missionEntries=published.map(m=>{
     const isDone=completed.has(m.id);
-    const card=document.createElement('div');
+    const card=document.createElement('article');
     card.className='personnel-mission-item'+(isDone?' is-complete':' is-awaiting');
-    const bar=document.createElement('div');
-    bar.className='personnel-mission-top';
+    const bar=document.createElement('div');bar.className='personnel-mission-top';
     const title=document.createElement('strong');title.textContent=m.title;
     const reward=document.createElement('span');reward.className='personnel-mission-reward';reward.textContent='+'+m.xp_reward+' XP';
     bar.append(title,reward);
     const description=document.createElement('p');description.textContent=m.description||'Community objective';
     const statusLine=document.createElement('span');statusLine.className='personnel-mission-state';
-    statusLine.textContent=isDone?'✓ COMPLETED · REWARD AWARDED':'◇ VERIFICATION COMING SOON';
+    statusLine.textContent=isDone?'✓ COMPLETED · REWARD AWARDED':'◇ AWAITING VERIFICATION';
     card.append(bar,description,statusLine);
-    return card;
+    return {done:isDone,node:card};
   });
-  displayList('missions-list',missionCards,'No published missions yet.');
+  setMissionFilter(missionFilter);
   const earned=(badgesRes.data||[]).filter(x=>x.operations_badges?.visible);
   byId('operator-badges').textContent=String(earned.length);
+  byId('achievement-collection-count').textContent=earned.length+' UNLOCKED';
+  const featured=earned[0];
+  byId('featured-badge').classList.toggle('is-empty',!featured);
+  byId('featured-badge-name').textContent=featured?featured.operations_badges.name:'AWAITING FIRST BADGE';
+  byId('featured-badge-detail').textContent=featured?
+    (featured.operations_badges.description||'Earned achievement')+' · '+formatDate(featured.awarded_at):
+    'Complete verified activities to unlock achievements.';
   const badgeCards=earned.map(x=>{
     const item=document.createElement('div');item.className='personnel-badge-item';
     const mark=document.createElement('span');mark.className='personnel-badge-glyph';mark.setAttribute('aria-hidden','true');mark.textContent='✦';
@@ -145,7 +187,13 @@ async function loadProfile(user) {
     const sub=document.createElement('small');sub.textContent=(x.operations_badges.description||'Earned achievement')+' · '+formatDate(x.awarded_at);
     copy.append(heading,sub);item.append(mark,copy);return item;
   });
-  displayList('badges-list',badgeCards,'No badges earned yet.');
+  displayList('badges-list',badgeCards,'No achievements unlocked yet.');
+  const events=[
+    ...(xpRes.data||[]).map(x=>({kind:'xp',time:Date.parse(x.awarded_at)||0,label:'+'+x.amount+' XP',detail:(x.source||'Verified XP')+' · '+formatDate(x.awarded_at)})),
+    ...earned.map(x=>({kind:'badge',time:Date.parse(x.awarded_at)||0,label:'Badge unlocked · '+x.operations_badges.name,detail:formatDate(x.awarded_at)}))
+  ].sort((a,b)=>b.time-a.time).slice(0,25);
+  displayList('xp-history',events.map(x=>createTimelineItem(x.kind,x.label,x.detail)),
+    'No verified activity yet. Your earned XP and badges will appear here.');
 
 }
 async function refresh() {
