@@ -166,3 +166,51 @@ header.site-header .site-nav a:not(.active):hover {border-color:#539966!importan
  .site-header .site-mark-rado {flex-basis:39px!important;width:39px!important;height:45px!important}
  .site-mark-rado img {width:38px!important;height:44px!important}
 }
+
+/* The Vaelen Estate: illustrated title-logo navigation */
+.site-header .site-header-inner,
+header.site-header .site-header-inner {
+ display:flex!important;
+ flex-wrap:wrap!important;
+ align-items:center!important;
+ justify-content:space-between!important;
+ gap:10px 24px!important;
+ padding-top:10px!important;
+ padding-bottom:10px!important;
+}
+.site-header .site-brand,header.site-header .site-brand {
+ display:flex!important;
+ flex:0 1 auto!important;
+ min-width:200px!important;
+ width:min(100%,430px)!important;
+ align-items:center!important;
+}
+.estate-header-logo {
+ display:block!important;
+ width:100%!important;
+ max-width:430px!important;
+ height:auto!important;
+ aspect-ratio:5/1!important;
+ object-fit:contain!important;
+ object-position:left center!important;
+ filter:drop-shadow(0 1px 3px #0008);
+}
+header.site-header .site-nav {
+ display:flex!important;
+ flex-wrap:wrap!important;
+ gap:3px 4px!important;
+ justify-content:flex-end!important;
+ flex:1 1 490px!important;
+}
+@media (max-width:1070px) {
+ header.site-header .site-header-inner{justify-content:center!important}
+ header.site-header .site-brand{width:min(90vw,490px)!important}
+ .estate-header-logo{max-width:490px!important}
+ header.site-header .site-nav{justify-content:center!important;flex:1 1 100%!important}
+}
+@media (max-width:580px) {
+ header.site-header .site-header-inner{padding:8px 10px!important}
+ header.site-header .site-brand{width:min(90vw,360px)!important;min-width:0!important}
+ header.site-header .site-nav{gap:2px!important}
+ header.site-header .site-nav a{padding:6px 8px!important;font-size:12px!important}
+}
