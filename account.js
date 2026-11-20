@@ -33,6 +33,33 @@ const setAuthUI = loggedIn => {
   document.body.classList.toggle('personnel-is-signed-in', loggedIn);
 };
 const rankFor = level => level>=50?'CAPTAIN':level>=35?'LIEUTENANT':level>=20?'SERGEANT':level>=10?'CORPORAL':level>=5?'PRIVATE':'RECRUIT';
+const rankMilestones=[
+  {name:'RECRUIT',minimum:1},
+  {name:'PRIVATE',minimum:5},
+  {name:'CORPORAL',minimum:10},
+  {name:'SERGEANT',minimum:20},
+  {name:'LIEUTENANT',minimum:35},
+  {name:'CAPTAIN',minimum:50}
+];
+const trustedDiscordAvatar = input => {
+  if(typeof input!=='string'||!input.trim())return null;
+  try {
+    const url=new URL(input);
+    if(url.protocol!=='https:')return null;
+    if(!['cdn.discordapp.com','media.discordapp.net','cdn.discord.com'].includes(url.hostname))return null;
+    return url.href;
+  } catch {return null;}
+};
+const showOperatorAvatar = (profile,user) => {
+  const image=byId('operator-avatar-image'),initials=byId('operator-avatar');
+  const avatar=trustedDiscordAvatar(profile.avatar_url)||trustedDiscordAvatar(user.user_metadata?.avatar_url)||trustedDiscordAvatar(user.user_metadata?.picture);
+  image.hidden=true;image.removeAttribute('src');initials.hidden=false;
+  if(!avatar)return;
+  image.onload=()=>{image.hidden=false;initials.hidden=true;};
+  image.onerror=()=>{image.hidden=true;image.removeAttribute('src');initials.hidden=false;};
+  image.src=avatar;
+};
+
 
 async function loadProfile(user) {
   let {data: profile,error} = await supabase.from('operator_profiles').select('user_id,display_name,avatar_url,profile_public').eq('user_id',user.id).single();
@@ -41,6 +68,7 @@ async function loadProfile(user) {
   byId('operator-name').textContent = profile.display_name || 'Operator';
   byId('operator-identity').textContent = 'Discord-linked operator account';
   byId('operator-avatar').textContent = (profile.display_name || 'ND').slice(0,2).toUpperCase();
+  showOperatorAvatar(profile,user);
   byId('display-name').value = profile.display_name || 'Operator';
   byId('profile-public').checked = !!profile.profile_public;
 
@@ -68,7 +96,15 @@ async function loadProfile(user) {
   const intoLevel=xp%xpPerLevel;
   const toNextLevel=xpPerLevel-intoLevel;
   const progressPct=(intoLevel/xpPerLevel)*100;
-  byId('operator-rank').textContent=rankFor(level);
+  const currentRank=rankFor(level);
+  byId('operator-rank').textContent=currentRank;
+  byId('operator-profile-rank').textContent=currentRank;
+  byId('operator-profile-level').textContent=String(level).padStart(2,'0');
+  byId('operator-rank-level').textContent=String(level).padStart(2,'0');
+  byId('operator-rank-emblem').dataset.rank=currentRank.toLowerCase();
+  const nextRank=rankMilestones.find(entry=>entry.minimum>level);
+  byId('operator-next-rank').textContent=nextRank?nextRank.name+' · LEVEL '+String(nextRank.minimum).padStart(2,'0'):'CAPTAIN · TOP RANK';
+  byId('operator-next-rank-xp').textContent=nextRank?(Math.max(0,(nextRank.minimum-1)*xpPerLevel-xp)).toLocaleString()+' XP TO PROMOTION':'TOP RANK ACHIEVED';
   byId('operator-level').textContent=String(level).padStart(2,'0');
   byId('operator-xp').textContent=xp.toLocaleString();
   byId('level-progress-label').textContent='LEVEL '+String(level).padStart(2,'0')+' PROGRESS';
