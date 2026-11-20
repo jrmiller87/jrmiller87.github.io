@@ -214,3 +214,22 @@ header.site-header .site-nav {
  header.site-header .site-nav{gap:2px!important}
  header.site-header .site-nav a{padding:6px 8px!important;font-size:12px!important}
 }
+
+/* Clear attribution of House Rado heraldry in the estate's brand lockup */
+.site-header .site-brand .estate-brand-lockup {
+ display:flex;flex-direction:column;align-items:flex-start;min-width:0;width:100%;
+}
+.site-header .site-brand .estate-brand-affiliation {
+ margin:-2px 0 0 clamp(24px,21%,88px);
+ color:#e2e9dd;font-family:'Cinzel',Georgia,serif;font-size:11px;
+ font-weight:500;letter-spacing:.13em;text-transform:uppercase;line-height:1.45;
+ white-space:nowrap;
+}
+.site-header .site-brand .estate-brand-affiliation strong {
+ color:#8bd69b;font-weight:700;
+}
+@media(max-width:580px){
+ .site-header .site-brand .estate-brand-affiliation {
+  font-size:9px;letter-spacing:.08em;margin-left:20%;
+ }
+}
