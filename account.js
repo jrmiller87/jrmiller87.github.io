@@ -80,6 +80,9 @@ async function loadProfile(user) {
 
   displayList('xp-history',(xpRes.data||[]).map(x=>makeItem('+'+x.amount+' XP · '+x.source,formatDate(x.awarded_at))),'No XP recorded yet. XP is awarded only by trusted community systems.');
   const completed=new Set((completionsRes.data||[]).map(x=>x.mission_id));
+  const published=missionsRes.data||[];
+  const completedPublished=published.filter(m=>completed.has(m.id)).length;
+  byId('operator-mission-count').textContent=completedPublished+' / '+published.length;
   const missionCards=(missionsRes.data||[]).map(m=>{
     const isDone=completed.has(m.id);
     const card=document.createElement('div');
