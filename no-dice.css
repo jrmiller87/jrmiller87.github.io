@@ -2255,3 +2255,80 @@ body{background:#100d16;color:var(--text)}
   padding-top:0;
  }
 }
+
+/* ==================================================
+   OPERATIONS 2.0 / LEADERBOARDS, CREW AND REWARD VAULT
+   ================================================== */
+.nd-personnel #signed-in .ops2-heading{margin:38px 0 17px;padding:0 2px}
+.nd-personnel #signed-in .ops2-heading>span{font:700 11px 'Roboto Mono',monospace;letter-spacing:2px;color:#ffaf74}
+.nd-personnel #signed-in .ops2-heading h2{margin:9px 0 5px;font:800 clamp(32px,4.4vw,56px)/.96 'Rajdhani',sans-serif;letter-spacing:.3px;color:#f8edff}
+.nd-personnel #signed-in .ops2-heading h2 em,
+.nd-personnel #signed-in .ops2-panel h3 em{font-style:normal;color:#bd8cf4}
+.nd-personnel #signed-in .ops2-heading p{margin:8px 0 0;color:#c9b9d2;font-size:14px;line-height:1.55}
+.nd-personnel #signed-in .ops2-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.nd-personnel #signed-in .ops2-panel{min-width:0;border:1px solid #725787;border-radius:9px;background:linear-gradient(158deg,#271c32,#1d1728 75%);padding:22px;box-shadow:0 10px 28px #08061242}
+.nd-personnel #signed-in .ops2-panel-head{margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid #604772}
+.nd-personnel #signed-in .ops2-panel-head>span{display:block;color:#ffb881;font:700 10px 'Roboto Mono',monospace;letter-spacing:1.4px}
+.nd-personnel #signed-in .ops2-panel-head h3{margin:6px 0;font:800 clamp(25px,3vw,35px)/1 'Rajdhani',sans-serif;letter-spacing:.4px;color:#f8edff}
+.nd-personnel #signed-in .ops2-panel-head p{margin:6px 0 0;color:#d0c0dc;line-height:1.5;font-size:13px}
+.nd-personnel #signed-in .ops2-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.nd-personnel #signed-in .ops2-button{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid #895eab;border-radius:6px;background:#442953;color:#f7eafe;font:800 11px/1.2 'Rajdhani',sans-serif;letter-spacing:.9px;cursor:pointer;transition:background .16s,border-color .16s}
+.nd-personnel #signed-in .ops2-button:hover:not(:disabled){background:#624178;border-color:#d9a7fb}
+.nd-personnel #signed-in .ops2-button.is-current{background:#8b4bc0;border-color:#cfa0ff}
+.nd-personnel #signed-in .ops2-button:disabled{opacity:.55;cursor:not-allowed}
+.nd-personnel #signed-in .ops2-button:focus-visible{outline:2px solid #ffb680;outline-offset:3px}
+.nd-personnel #signed-in .ops2-muted{border-color:#625169;background:#302736}
+.nd-personnel #signed-in .ops2-ranking{list-style:none;counter-reset:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.nd-personnel #signed-in .ops2-ranking li{min-width:0;padding:12px 13px;background:#35263f;border:1px solid #674b7a;border-radius:6px;color:#e3d3ed;font-size:13px}
+.nd-personnel #signed-in .ops2-leader-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:10px}
+.nd-personnel #signed-in .ops2-leader-row .ops2-place{font:800 16px 'Rajdhani',sans-serif;color:#ffb680}
+.nd-personnel #signed-in .ops2-leader-row strong{font:700 17px 'Rajdhani',sans-serif;color:#f6eafb;overflow-wrap:anywhere}
+.nd-personnel #signed-in .ops2-leader-row small{color:#cdb9d9;white-space:nowrap}
+.nd-personnel #signed-in .ops2-reward-list{display:flex;flex-direction:column;gap:8px}
+.nd-personnel #signed-in .ops2-reward{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;padding:12px;border-radius:7px;border:1px solid #634c75;background:#32243d}
+.nd-personnel #signed-in .ops2-reward.tier-rare{border-left:3px solid #81a9e5}
+.nd-personnel #signed-in .ops2-reward.tier-epic{border-left:3px solid #c087f7}
+.nd-personnel #signed-in .ops2-reward.tier-legendary{border-left:3px solid #ffad60}
+.nd-personnel #signed-in .ops2-reward-copy{display:flex;flex-direction:column;min-width:0;gap:4px}
+.nd-personnel #signed-in .ops2-reward-copy strong{font:800 17px 'Rajdhani',sans-serif;color:#f6eaff}
+.nd-personnel #signed-in .ops2-reward-copy small{font:600 10px 'Roboto Mono',monospace;letter-spacing:.4px;color:#c8b2d8}
+.nd-personnel #signed-in .ops2-crew-count{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;font:800 42px 'Rajdhani',sans-serif;color:#f5e6ff}
+.nd-personnel #signed-in .ops2-crew-count small{font:700 10px 'Roboto Mono',monospace;color:#ffb680;letter-spacing:.8px}
+.nd-personnel #signed-in .ops2-track{height:12px;background:#463351;border:1px solid #795a8a;border-radius:30px;overflow:hidden;margin:12px 0}
+.nd-personnel #signed-in .ops2-track span{display:block;height:100%;background:linear-gradient(90deg,#8d50c1,#ff9f6b);border-radius:30px;transition:width .3s ease}
+.nd-personnel #signed-in .ops2-caption{display:block;color:#c8b7d2;font-size:12px;line-height:1.55;margin:9px 0 0}
+.nd-personnel #signed-in .ops2-chronicle-count{display:block;font:800 60px/.95 'Rajdhani',sans-serif;color:#ffd19e}
+.nd-personnel #signed-in .ops2-submissions{display:flex;flex-direction:column;gap:9px}
+.nd-personnel #signed-in .ops2-submission{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px;border:1px solid #68527a;border-radius:7px;background:#332640}
+.nd-personnel #signed-in .ops2-submission strong{font:700 15px 'Rajdhani',sans-serif;color:#eee0f5}
+.nd-personnel #signed-in .ops2-submission small{color:#bda9cf}
+.nd-personnel #signed-in .ops2-submission .ops2-controls{margin:0 0 0 auto}
+.nd-personnel #signed-in .ops2-status-approved{color:#a9ebc5!important}
+.nd-personnel #signed-in .ops2-status-rejected{color:#ffb0b0!important}
+.nd-personnel #signed-in .ops2-status-pending{color:#ffce8d!important}
+.nd-personnel #signed-in .ops2-message{color:#b8e0c7;font-size:13px;line-height:1.55}
+.nd-personnel #signed-in .ops2-message:empty{display:none}
+.nd-personnel #signed-in .ops2-message.is-error{color:#ffb8bc}
+.nd-personnel #signed-in .ops2-claims-panel{margin-bottom:16px}
+.nd-personnel #signed-in .ops2-cadence{display:block;padding:4px 0;color:#deabd9;font:700 10px 'Roboto Mono',monospace;letter-spacing:1px}
+.nd-personnel #signed-in .ops2-mission-submit{margin-top:10px}
+.nd-personnel #signed-in .ops2-note-form{display:grid;gap:9px;padding:12px;border:1px solid #815f9a;border-radius:6px;background:#2a1e32;margin-top:10px}
+.nd-personnel #signed-in .ops2-note-form label{display:grid;gap:8px;color:#eee3f7;font-size:13px}
+.nd-personnel #signed-in .ops2-note-form textarea{width:100%;min-height:75px;box-sizing:border-box;resize:vertical;border:1px solid #8d71a1;border-radius:5px;background:#1c1524;padding:10px;color:#f6efff;font:13px 'DM Sans',sans-serif}
+.nd-personnel #signed-in .ops2-note-form .ops2-button{justify-self:start}
+.nd-personnel #signed-in .ops2-equipped-title{display:block;margin:5px 0 2px;color:#ffc48e;font:800 11px 'Roboto Mono',monospace;letter-spacing:1.1px;text-transform:uppercase}
+.nd-personnel #signed-in #operator-dossier[data-frame="frame-purple"] .operator-avatar-frame{outline:3px solid #ad7aea;outline-offset:4px;border-radius:12px}
+.nd-personnel #signed-in #operator-dossier[data-frame="frame-orange"] .operator-avatar-frame{outline:3px solid #ffac67;outline-offset:4px;border-radius:12px}
+.nd-personnel #signed-in #operator-dossier[data-frame="frame-royal"] .operator-avatar-frame{outline:4px double #d3a8fc;outline-offset:5px;border-radius:12px}
+.nd-personnel #signed-in #operator-dossier[data-frame="frame-legend"] .operator-avatar-frame{outline:4px double #ffcf83;outline-offset:5px;border-radius:12px;box-shadow:0 0 28px #e7a95b44}
+@media(max-width:950px){.nd-personnel #signed-in .ops2-grid{grid-template-columns:1fr}}
+@media(max-width:560px){
+ .nd-personnel #signed-in .ops2-panel{padding:16px}
+ .nd-personnel #signed-in .ops2-heading{margin-top:28px}
+ .nd-personnel #signed-in .ops2-leader-row{grid-template-columns:32px minmax(0,1fr);gap:5px 9px}
+ .nd-personnel #signed-in .ops2-leader-row small{grid-column:2;white-space:normal}
+ .nd-personnel #signed-in .ops2-reward{align-items:flex-start}
+ .nd-personnel #signed-in .ops2-reward .ops2-button{min-width:72px}
+ .nd-personnel #signed-in .ops2-submission .ops2-controls{margin-left:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){.nd-personnel #signed-in .ops2-track span,.nd-personnel #signed-in .ops2-button{transition:none}}
