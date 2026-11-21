@@ -152,6 +152,19 @@
 </section>
 <section class="ops2-panel ops2-admin" id="ops2-admin" hidden aria-labelledby="ops2-admin-title">
  <div class="ops2-panel-head"><span>STAFF ACCESS / 12</span><h3 id="ops2-admin-title">COMMAND <em>REVIEW.</em></h3><p>Approve a verified mission to award XP, or reject it without a reward.</p></div>
+
+ <form id="ops2-publish-form" class="ops2-publish-form">
+  <strong>CREATE A VERIFIED OPERATION</strong>
+  <label>MISSION TITLE<input name="title" type="text" minlength="4" maxlength="85" required placeholder="e.g. Saturday Night Crew Run"></label>
+  <label>MISSION OBJECTIVE<textarea name="description" minlength="10" maxlength="500" required rows="3" placeholder="Describe what staff will verify before awarding XP"></textarea></label>
+  <div class="ops2-publish-row">
+   <label>XP REWARD<input name="xp" type="number" min="0" max="500" step="25" value="100" required></label>
+   <label>CADENCE<select name="cadence"><option value="event">Special event</option><option value="weekly">Weekly</option><option value="daily">Daily</option><option value="once">One-time</option></select></label>
+   <label>CATEGORY<select name="category"><option value="community">Community</option><option value="crew">Crew challenge</option><option value="event">Event</option></select></label>
+  </div>
+  <label>ENDS AT (OPTIONAL)<input name="expires" type="datetime-local"></label>
+  <button class="ops2-button" type="submit">PUBLISH MISSION ↗</button>
+ </form>
  <p class="ops2-message" id="ops2-admin-status" role="status" aria-live="polite"></p>
  <div class="ops2-submissions" id="ops2-review-queue">Loading review queue…</div>
 </section>
