@@ -16,6 +16,7 @@
 </div></div></section>
 <section id="personnel-access" class="wrap personnel-content">
 <div id="account-status" class="personnel-alert" role="status" aria-live="polite">Checking your account…</div>
+<button id="account-retry" type="button" class="personnel-secondary account-retry" hidden>RETRY ACCOUNT CONNECTION ↻</button>
 <div id="signed-out" class="personnel-guest" hidden><div class="personnel-panel personnel-join-panel"><div class="personnel-panel-stripe"><span>PERSONNEL ACCESS</span><span>DISCORD SIGN-IN</span></div><div class="personnel-join-content"><span class="personnel-eyebrow">WELCOME TO THE CREW</span><h2>SIGN IN TO<br><em>NO DICE.</em></h2><p>Use your Discord account to view your operator profile, XP, and achievements.</p><button id="discord-signin" class="personnel-primary personnel-join-button" type="button"><span class="personnel-button-sigil" aria-hidden="true">✦</span><span>CONNECT WITH DISCORD</span><span aria-hidden="true">↗</span></button><p class="personnel-small">Official Discord authorization · No Dice never sees your password.</p></div><div class="personnel-panel-bottom"><span>DISCORD AUTHORIZATION</span><span>NO DICE // PERSONNEL</span></div></div></div>
 <div id="signed-in" class="operator-dashboard" hidden>
   <header class="operator-dashboard-header">
@@ -121,4 +122,16 @@
 
 </div>
 <div class="personnel-bottom"><span>NO DICE // YOUR COMMUNITY HQ</span><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD ↗</a></div>
-</section></main><footer class="wrap footer"><div><strong>NO DICE</strong> · Gaming. Friends. Stories. Chaos.</div><div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="footer-discord">Join Discord ↗</a> · <a href="./nexus/" style="color:#ebb2ff">Character Nexus ↗</a></div></footer><script>const btn=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));</script><script type="module" src="./account.js"></script></body></html>
+</section></main><footer class="wrap footer"><div><strong>NO DICE</strong> · Gaming. Friends. Stories. Chaos.</div><div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="footer-discord">Join Discord ↗</a> · <a href="./nexus/" style="color:#ebb2ff">Character Nexus ↗</a></div></footer><script>const btn=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));</script><script>
+/* Runs independently of the optional account module so loading failures are visible. */
+window.noDiceAccountStartupTimeout = setTimeout(() => {
+  const status = document.getElementById('account-status');
+  if (!status || status.hidden) return;
+  status.textContent = 'Account connection is taking too long. Check your connection and try again.';
+  status.classList.add('is-error');
+  document.getElementById('account-retry').hidden = false;
+  document.getElementById('signed-out').hidden = false;
+}, 16000);
+document.getElementById('account-retry').addEventListener('click', () => location.reload());
+</script><script type="module" src="./account.js"></script>
+<noscript><div class="wrap personnel-alert is-error">JavaScript must be enabled to sign in to Personnel.</div></noscript></body></html>
