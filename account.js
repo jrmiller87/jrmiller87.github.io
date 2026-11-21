@@ -197,13 +197,14 @@ async function loadProfile(user) {
     button.title=button.disabled?'Mission data temporarily unavailable':'';
   });
   const published=missionsRes.data||[];
-  const completedPublished=published.filter(m=>completed.has(m.id)).length;
+  // Recurring missions reset their actionable state each period; they must not permanently disappear after a prior verified completion.
+  const completedPublished=published.filter(m=>completed.has(m.id)&&!['daily','weekly'].includes(m.cadence)).length;
   byId('operator-mission-count').textContent=missionsReady&&completionsReady?completedPublished+' / '+published.length:'—';
   byId('mission-available-count').textContent=missionsReady&&completionsReady?String(published.length-completedPublished):'—';
   byId('mission-completed-count').textContent=missionsReady&&completionsReady?String(completedPublished):'—';
   byId('mission-total-count').textContent=missionsReady?String(published.length):'—';
   missionEntries=published.map(m=>{
-    const isDone=completed.has(m.id);
+    const isDone=completed.has(m.id)&&!['daily','weekly'].includes(m.cadence);
     const card=document.createElement('article');
     card.className='personnel-mission-item'+(isDone?' is-complete':' is-awaiting');
     card.dataset.missionId=m.id;
