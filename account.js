@@ -235,7 +235,8 @@ async function loadProfile(user) {
     warning.textContent=missionsReady?'Mission completion status is unavailable. Retry to load verified results.':'Missions are temporarily unavailable. Retry the connection.';
     list.append(warning);
   } else setMissionFilter(missionFilter);
-  const earned=(badgesRes.data||[]).filter(x=>x.operations_badges?.visible);
+  // Hidden achievements only resolve through RLS after they have been earned.
+  const earned=(badgesRes.data||[]).filter(x=>Boolean(x.operations_badges));
   byId('operator-badges').textContent=badgesRes.error?'—':String(earned.length);
   byId('achievement-collection-count').textContent=badgesRes.error?'UNAVAILABLE':earned.length+' UNLOCKED';
   const featured=earned[0];
