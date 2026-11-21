@@ -30,12 +30,23 @@ async function showClaims(){
    item.append(tag,detail);root.append(item);
   }
   // Pending submissions remain pending until staff decide; never imply XP was awarded.
-  const pending=new Set(data.filter(x=>x.status==='pending').map(x=>x.mission_id));
-  document.querySelectorAll('[data-claim-mission]').forEach(button=>{
-   const blocked=pending.has(button.dataset.claimMission);
-   button.disabled=blocked;
-   button.textContent=blocked?'PENDING STAFF REVIEW':'SUBMIT FOR REVIEW ↗';
-  });
+  // Match each claim to the current UTC day/week. Older verified weekly
+  // submissions must not block a new week's mission.
+  const now=new Date();
+  const day=now.toISOString().slice(0,10);
+  const monday=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));
+  monday.setUTCDate(monday.getUTCDate()-(monday.getUTCDay()+6)%7);
+  const week=monday.toISOString().slice(0,10);
+  window.noDiceRefreshMissionState=()=>{
+   document.querySelectorAll('[data-claim-mission]').forEach(button=>{
+    const cadence=button.closest('[data-mission-id]')?.dataset.missionCadence||'once';
+    const period=cadence==='daily'?day:cadence==='weekly'?week:'once';
+    const claim=data.find(x=>x.mission_id===button.dataset.claimMission&&x.period_key===period);
+    button.disabled=Boolean(claim);
+    button.textContent=claim?(claim.status==='approved'?'VERIFIED THIS PERIOD':claim.status==='rejected'?'REVIEWED THIS PERIOD':'PENDING STAFF REVIEW'):'SUBMIT FOR REVIEW ↗';
+   });
+  };
+  window.noDiceRefreshMissionState();
  }catch(error){$('ops2-my-claims').textContent='Submissions unavailable: '+fail(error);}
 }
 function missionClicks(){
