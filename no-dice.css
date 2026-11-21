@@ -2221,3 +2221,37 @@ body{background:#100d16;color:var(--text)}
 @media(max-width:540px){
  .nd-personnel #personnel-access>.account-retry{display:flex;width:100%}
 }
+
+/* Align the Discord avatar with the callsign in Operator Identity. */
+.nd-personnel .operator-identity-premium .operator-dash-profile-main{
+ display:grid;
+ grid-template-columns:106px minmax(0,1fr);
+ align-items:center;
+ justify-content:start;
+ column-gap:20px;
+ margin-top:0;
+ padding:20px 23px 22px;
+}
+.nd-personnel .operator-identity-premium .operator-avatar-frame{
+ align-self:center;
+ justify-self:start;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-identity{
+ align-self:center;
+ padding-top:0;
+}
+.nd-personnel .operator-identity-premium .operator-dash-profile-identity h3{
+ margin:4px 0 5px;
+}
+@media(max-width:440px){
+ .nd-personnel .operator-identity-premium .operator-dash-profile-main{
+  grid-template-columns:76px minmax(0,1fr);
+  column-gap:12px;
+  margin-top:0;
+  padding:16px 15px 18px;
+  align-items:center;
+ }
+ .nd-personnel .operator-identity-premium .operator-dash-profile-identity{
+  padding-top:0;
+ }
+}
