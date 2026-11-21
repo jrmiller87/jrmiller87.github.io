@@ -1,11 +1,27 @@
 // No Dice Personnel — public Supabase configuration only. Never store secret/service-role keys here.
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
-
-const supabase = createClient(
-  'https://tvftroekdnzpbtgxhxto.supabase.co',
-  'sb_publishable_hb2rXU8WaS1RH3-593mC0Q_JJgdGvxU',
-  { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-);
+// Avoid a static cross-origin import: when the CDN is blocked, it prevents
+// the entire module from running and leaves the page stuck on "Checking".
+let supabase;
+const supabaseConfig = {
+  url: 'https://tvftroekdnzpbtgxhxto.supabase.co',
+  key: 'sb_publishable_hb2rXU8WaS1RH3-593mC0Q_JJgdGvxU'
+};
+const timeout = (promise, milliseconds, label) => {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_,reject) => {
+      timer=setTimeout(()=>reject(new Error(label+' timed out. Check your network connection and retry.')),milliseconds);
+    })
+  ]).finally(()=>clearTimeout(timer));
+};
+const loadSupabaseSdk = async () => {
+  const sources = [
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm',
+    'https://esm.sh/@supabase/supabase-js@2.57.0'
+  ];
+  return timeout(Promise.any(sources.map(source=>import(source))), 11000, 'Discord sign-in library');
+};
 
 const byId = id => document.getElementById(id);
 const status = (message, error = false) => {
@@ -13,6 +29,8 @@ const status = (message, error = false) => {
   el.textContent = message;
   el.classList.toggle('is-error', error);
   el.hidden = !message;
+  byId('account-retry').hidden = !error;
+  if(!message || error)clearTimeout(window.noDiceAccountStartupTimeout);
 };
 const safeMessage = error => error?.message || 'Something went wrong. Please try again.';
 const formatDate = value => new Date(value).toLocaleDateString(undefined, {year:'numeric',month:'short',day:'numeric'});
@@ -199,7 +217,7 @@ async function loadProfile(user) {
 async function refresh() {
   status('Checking your Discord session…');
   try {
-    const {data:{user},error} = await supabase.auth.getUser();
+    const {data:{user},error} = await timeout(supabase.auth.getUser(), 9000, 'Account session check');
     if(error)throw error;
     if(!user){setAuthUI(false);status('');return;}
     setAuthUI(true);
@@ -213,11 +231,14 @@ async function refresh() {
 
 byId('discord-signin').addEventListener('click',async()=>{
   const button=byId('discord-signin');button.disabled=true;status('Opening Discord authorization…');
-  const {error}=await supabase.auth.signInWithOAuth({
-    provider:'discord',
-    options:{redirectTo:new URL('account.html',window.location.href).href}
-  });
-  if(error){status(safeMessage(error),true);button.disabled=false;}
+  try {
+    if(!supabase)throw new Error('Discord sign-in has not loaded. Use Retry Account Connection.');
+    const {error}=await timeout(supabase.auth.signInWithOAuth({
+      provider:'discord',
+      options:{redirectTo:new URL('account.html',window.location.href).href}
+    }),9000,'Discord authorization');
+    if(error)throw error;
+  } catch(error){status(safeMessage(error),true);button.disabled=false;}
 });
 byId('signout').addEventListener('click',async()=>{
   status('Signing out…');
@@ -250,8 +271,25 @@ byId('profile-form').addEventListener('submit',async event=>{
   } catch(error){byId('save-message').textContent=safeMessage(error);byId('save-message').classList.add('is-error');}
   finally{button.disabled=false;button.textContent='SAVE PROFILE';}
 });
-supabase.auth.onAuthStateChange(event=>{
-  if(event==='SIGNED_OUT'){setAuthUI(false);status('');}
-  // Avoid querying Supabase inside this synchronous auth callback.
-});
-refresh();
+async function startPersonnel() {
+  try {
+    status('Loading secure Discord sign-in…');
+    const sdk=await loadSupabaseSdk();
+    if(typeof sdk.createClient!=='function')throw new Error('Discord sign-in library was unavailable.');
+    supabase=sdk.createClient(supabaseConfig.url,supabaseConfig.key,{
+      auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+    });
+    supabase.auth.onAuthStateChange(event=>{
+      if(event==='SIGNED_OUT'){setAuthUI(false);status('');}
+      // Avoid querying Supabase inside this synchronous auth callback.
+    });
+    await refresh();
+  } catch(error) {
+    setAuthUI(false);
+    const message=safeMessage(error);
+    status('Could not connect to Personnel. '+message,true);
+    // The sign-in button should not appear usable if its SDK never loaded.
+    byId('discord-signin').disabled=!supabase;
+  }
+}
+startPersonnel();
