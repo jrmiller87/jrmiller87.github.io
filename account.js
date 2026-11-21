@@ -115,7 +115,7 @@ const showOperatorAvatar = (profile,user) => {
 
 
 async function loadProfile(user) {
-  const {data: profile,error} = await timeout(supabase.from('operator_profiles').select('user_id,display_name,avatar_url,profile_public').eq('user_id',user.id).single(),8500,'Operator profile');
+  const {data: profile,error} = await timeout(supabase.from('operator_profiles').select('user_id,display_name,avatar_url,profile_public,equipped_title,equipped_frame').eq('user_id',user.id).single(),8500,'Operator profile');
   // The auth trigger automatically creates profiles on first login.
   if(error) throw new Error('Your profile could not be loaded. ' + safeMessage(error));
   byId('operator-name').textContent = profile.display_name || 'Operator';
@@ -127,7 +127,7 @@ async function loadProfile(user) {
 
   const [xpRes, missionsRes, completionsRes, badgesRes] = await Promise.all([
     supabase.from('operations_xp_events').select('amount,source,awarded_at').eq('user_id',user.id).order('awarded_at',{ascending:false}).limit(50),
-    supabase.from('operations_missions').select('id,code,title,description,xp_reward').eq('published',true).order('created_at',{ascending:false}).limit(50),
+    supabase.from('operations_missions').select('id,code,title,description,xp_reward,cadence,category').eq('published',true).order('created_at',{ascending:false}).limit(50),
     supabase.from('operations_mission_completions').select('mission_id').eq('user_id',user.id),
     supabase.from('operations_member_badges').select('awarded_at, operations_badges(name,description,visible)').eq('user_id',user.id).order('awarded_at',{ascending:false})
   ]);
@@ -206,6 +206,7 @@ async function loadProfile(user) {
     const isDone=completed.has(m.id);
     const card=document.createElement('article');
     card.className='personnel-mission-item'+(isDone?' is-complete':' is-awaiting');
+    card.dataset.missionId=m.id;
     const bar=document.createElement('div');bar.className='personnel-mission-top';
     const title=document.createElement('strong');title.textContent=m.title;
     const reward=document.createElement('span');reward.className='personnel-mission-reward';reward.textContent='+'+m.xp_reward+' XP';
@@ -214,6 +215,14 @@ async function loadProfile(user) {
     const statusLine=document.createElement('span');statusLine.className='personnel-mission-state';
     statusLine.textContent=isDone?'✓ COMPLETED · REWARD AWARDED':'◇ AWAITING VERIFICATION';
     card.append(bar,description,statusLine);
+    const cadence=document.createElement('small');cadence.className='ops2-cadence';
+    cadence.textContent=(m.cadence||'once').toUpperCase()+' · '+(m.category||'community').toUpperCase();
+    card.append(cadence);
+    if(!isDone || ['daily','weekly'].includes(m.cadence)){
+      const submit=document.createElement('button');submit.type='button';
+      submit.className='ops2-button ops2-mission-submit';submit.dataset.claimMission=m.id;
+      submit.textContent='SUBMIT FOR REVIEW ↗';card.append(submit);
+    }
     return {done:isDone,node:card};
   });
   if(!missionsReady || !completionsReady){
@@ -251,6 +260,14 @@ async function loadProfile(user) {
       'No verified activity yet. Your earned XP and badges will appear here.');
   } else {
     displayList('xp-history',[],'Activity is temporarily unavailable. Retry the connection.');
+  }
+  // Operations 2.0 is optional to the core dashboard and can fail independently.
+  try {
+    const extra=await import('./operations2.js?v=20261120-ops2');
+    await timeout(extra.renderOperations2({supabase,user,profile,xp:xpReady?xp:null}),12000,'Operations 2.0');
+  } catch(extraError) {
+    const node=byId('ops2-claim-status');
+    if(node)node.textContent='Operations 2.0 is temporarily unavailable: '+safeMessage(extraError);
   }
   return [...new Set(failed)];
 }
