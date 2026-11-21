@@ -2194,3 +2194,30 @@ body{background:#100d16;color:var(--text)}
   font-size:7px;letter-spacing:.85px;
  }
 }
+
+/* Operator dashboard audit polish: clear loading/retry states and safe overflow */
+.nd-personnel #personnel-access>.account-retry{
+ display:inline-flex;align-items:center;justify-content:center;
+ margin:0 0 18px;min-height:42px;padding:10px 17px;
+ border:1px solid #bc92e4;border-radius:7px;background:#382645;
+ color:#f6e6ff;font:800 11px 'DM Sans',sans-serif;
+ letter-spacing:.5px;cursor:pointer;
+}
+.nd-personnel #personnel-access>.account-retry[hidden]{display:none!important}
+.nd-personnel #personnel-access>.account-retry:hover{background:#4d3260}
+.nd-personnel #personnel-access>.account-retry:focus-visible,
+.nd-personnel .operator-mission-filter:focus-visible{outline:2px solid #ffb680;outline-offset:3px}
+.nd-personnel .operator-mission-filter:disabled{
+ opacity:.48;cursor:not-allowed;filter:grayscale(.35)
+}
+.nd-personnel .operator-dash-panel .personnel-list>p{
+ margin:0;padding:16px;border:1px dashed #685273;border-radius:7px;
+ background:#2b2233;color:#dbc8e5;line-height:1.55;
+}
+.nd-personnel .operator-dashboard :is(.operator-dash-profile,.operator-dash-panel,.operator-dash-progression){
+ min-width:0;overflow-wrap:anywhere;
+}
+.nd-personnel #account-status{overflow-wrap:anywhere}
+@media(max-width:540px){
+ .nd-personnel #personnel-access>.account-retry{display:flex;width:100%}
+}
