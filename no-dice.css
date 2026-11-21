@@ -2340,3 +2340,14 @@ body{background:#100d16;color:var(--text)}
 .nd-personnel #signed-in #featured-badge[data-tier="rare"]{border-color:#8dbbf7!important}
 .nd-personnel #signed-in #featured-badge[data-tier="epic"]{border-color:#c58bf0!important}
 .nd-personnel #signed-in #featured-badge[data-tier="legendary"]{border-color:#ffb16b!important;background:linear-gradient(115deg,#3b2436,#282034)!important}
+
+/* Command Review: accessible staff mission publishing controls */
+.nd-personnel #signed-in .ops2-publish-form{display:grid;gap:12px;margin:0 0 20px;padding:17px;border:1px solid #7d5c92;border-radius:8px;background:#2e223b}
+.nd-personnel #signed-in .ops2-publish-form>strong{font:800 16px 'Rajdhani',sans-serif;letter-spacing:1px;color:#ffba84}
+.nd-personnel #signed-in .ops2-publish-form label{display:flex;flex-direction:column;gap:6px;min-width:0;font:700 11px 'Roboto Mono',monospace;letter-spacing:.65px;color:#d5c4e6}
+.nd-personnel #signed-in .ops2-publish-form :is(input,textarea,select){width:100%;box-sizing:border-box;min-width:0;min-height:42px;padding:10px;border:1px solid #806793;border-radius:5px;background:#1a1225;color:#f5eafa;font:500 13px 'DM Sans',sans-serif;outline-offset:2px}
+.nd-personnel #signed-in .ops2-publish-form :is(input,textarea,select):focus-visible{outline:2px solid #ffb680}
+.nd-personnel #signed-in .ops2-publish-form textarea{min-height:82px;resize:vertical}
+.nd-personnel #signed-in .ops2-publish-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.nd-personnel #signed-in .ops2-publish-form>button{justify-self:start}
+@media(max-width:640px){.nd-personnel #signed-in .ops2-publish-row{grid-template-columns:1fr}}
