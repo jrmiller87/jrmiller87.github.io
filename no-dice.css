@@ -2332,3 +2332,11 @@ body{background:#100d16;color:var(--text)}
  .nd-personnel #signed-in .ops2-submission .ops2-controls{margin-left:0;width:100%}
 }
 @media(prefers-reduced-motion:reduce){.nd-personnel #signed-in .ops2-track span,.nd-personnel #signed-in .ops2-button{transition:none}}
+
+/* Earned trophy rarity, backed by staff-approved achievement awards. */
+.nd-personnel #signed-in .personnel-badge-item.tier-rare{border-left:3px solid #85b2ed!important}
+.nd-personnel #signed-in .personnel-badge-item.tier-epic{border-left:3px solid #c68df6!important}
+.nd-personnel #signed-in .personnel-badge-item.tier-legendary{border-left:3px solid #ffad60!important;box-shadow:inset 0 0 21px #ffa46010}
+.nd-personnel #signed-in #featured-badge[data-tier="rare"]{border-color:#8dbbf7!important}
+.nd-personnel #signed-in #featured-badge[data-tier="epic"]{border-color:#c58bf0!important}
+.nd-personnel #signed-in #featured-badge[data-tier="legendary"]{border-color:#ffb16b!important;background:linear-gradient(115deg,#3b2436,#282034)!important}
