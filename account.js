@@ -267,7 +267,7 @@ async function loadProfile(user) {
   }
   // Operations 2.0 is optional to the core dashboard and can fail independently.
   try {
-    const extra=await import('./operations2.js?v=20261120-ops2-r2');
+    const extra=await import('./operations2.js?v=20261120-ops2-final');
     await timeout(extra.renderOperations2({supabase,user,profile,xp:xpReady?xp:null}),12000,'Operations 2.0');
   } catch(extraError) {
     const node=byId('ops2-claim-status');
