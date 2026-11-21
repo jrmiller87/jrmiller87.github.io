@@ -129,7 +129,7 @@ async function loadProfile(user) {
     supabase.from('operations_xp_events').select('amount,source,awarded_at').eq('user_id',user.id).order('awarded_at',{ascending:false}).limit(50),
     supabase.from('operations_missions').select('id,code,title,description,xp_reward,cadence,category').eq('published',true).order('created_at',{ascending:false}).limit(50),
     supabase.from('operations_mission_completions').select('mission_id').eq('user_id',user.id),
-    supabase.from('operations_member_badges').select('awarded_at, operations_badges(name,description,visible)').eq('user_id',user.id).order('awarded_at',{ascending:false})
+    supabase.from('operations_member_badges').select('awarded_at, operations_badges(name,description,visible,rarity)').eq('user_id',user.id).order('awarded_at',{ascending:false})
   ]);
   const failed=[];
   if(xpRes.error)failed.push('XP activity');
@@ -238,17 +238,18 @@ async function loadProfile(user) {
   byId('achievement-collection-count').textContent=badgesRes.error?'UNAVAILABLE':earned.length+' UNLOCKED';
   const featured=earned[0];
   byId('featured-badge').classList.toggle('is-empty',!featured);
+  byId('featured-badge').dataset.tier=featured?.operations_badges?.rarity||'common';
   byId('featured-badge-name').textContent=badgesRes.error?'ACHIEVEMENTS UNAVAILABLE':featured?featured.operations_badges.name:'AWAITING FIRST BADGE';
   byId('featured-badge-detail').textContent=badgesRes.error?
     'Badge collection could not be loaded. Retry the connection.':featured?
     (featured.operations_badges.description||'Earned achievement')+' · '+formatDate(featured.awarded_at):
     'Complete verified activities to unlock achievements.';
   const badgeCards=earned.map(x=>{
-    const item=document.createElement('div');item.className='personnel-badge-item';
+    const item=document.createElement('div');item.className='personnel-badge-item tier-'+(x.operations_badges.rarity||'common');
     const mark=document.createElement('span');mark.className='personnel-badge-glyph';mark.setAttribute('aria-hidden','true');mark.textContent='✦';
     const copy=document.createElement('div');
     const heading=document.createElement('strong');heading.textContent=x.operations_badges.name;
-    const sub=document.createElement('small');sub.textContent=(x.operations_badges.description||'Earned achievement')+' · '+formatDate(x.awarded_at);
+    const sub=document.createElement('small');sub.textContent=(x.operations_badges.rarity||'common').toUpperCase()+' · '+(x.operations_badges.description||'Earned achievement')+' · '+formatDate(x.awarded_at);
     copy.append(heading,sub);item.append(mark,copy);return item;
   });
   displayList('badges-list',badgeCards,badgesRes.error?'Achievements are temporarily unavailable. Retry the connection.':'No achievements unlocked yet.');
