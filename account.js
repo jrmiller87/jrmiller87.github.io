@@ -33,7 +33,7 @@ const status = (message, error = false) => {
   if(!message || error)clearTimeout(window.noDiceAccountStartupTimeout);
 };
 const safeMessage = error => error?.message || 'Something went wrong. Please try again.';
-const formatDate = value => new Date(value).toLocaleDateString(undefined, {year:'numeric',month:'short',day:'numeric'});
+const formatDate = value => { const date=new Date(value); return Number.isNaN(date.getTime())?'Date unavailable':date.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); };
 const makeItem = (label, detail) => {
   const entry = document.createElement('div'); entry.className = 'personnel-list-item';
   const strong = document.createElement('strong'); strong.textContent = label;
@@ -114,7 +114,7 @@ const showOperatorAvatar = (profile,user) => {
 
 
 async function loadProfile(user) {
-  let {data: profile,error} = await supabase.from('operator_profiles').select('user_id,display_name,avatar_url,profile_public').eq('user_id',user.id).single();
+  const {data: profile,error} = await timeout(supabase.from('operator_profiles').select('user_id,display_name,avatar_url,profile_public').eq('user_id',user.id).single(),8500,'Operator profile');
   // The auth trigger automatically creates profiles on first login.
   if(error) throw new Error('Your profile could not be loaded. ' + safeMessage(error));
   byId('operator-name').textContent = profile.display_name || 'Operator';
@@ -130,18 +130,31 @@ async function loadProfile(user) {
     supabase.from('operations_mission_completions').select('mission_id').eq('user_id',user.id),
     supabase.from('operations_member_badges').select('awarded_at, operations_badges(name,description,visible)').eq('user_id',user.id).order('awarded_at',{ascending:false})
   ]);
-  for(const result of [xpRes,missionsRes,completionsRes,badgesRes])if(result.error)throw result.error;
+  const failed=[];
+  if(xpRes.error)failed.push('XP activity');
+  if(missionsRes.error)failed.push('missions');
+  if(completionsRes.error)failed.push('mission progress');
+  if(badgesRes.error)failed.push('achievements');
 
-  // Paginate XP history so total XP remains correct beyond the 50 most recent events.
-  let xp=0, offset=0;
-  while(true){
-    const {data:page,error:pageError}=await supabase.from('operations_xp_events')
-      .select('amount').eq('user_id',user.id).range(offset,offset+999);
-    if(pageError)throw pageError;
-    xp+=(page||[]).reduce((sum,item)=>sum+item.amount,0);
-    if(!page||page.length<1000)break;
-    offset+=1000;
+  // XP totals are never inferred from the recent 50 events. If the full
+  // ledger fails, show an unavailable state instead of an incorrect total.
+  let xp=0,offset=0,xpReady=!xpRes.error;
+  if(xpReady){
+    try {
+      while(true){
+        const {data:page,error:pageError}=await timeout(supabase.from('operations_xp_events')
+          .select('amount').eq('user_id',user.id).range(offset,offset+999),8500,'XP ledger');
+        if(pageError)throw pageError;
+        xp+=(page||[]).reduce((sum,item)=>sum+(Number(item.amount)||0),0);
+        if(!page||page.length<1000)break;
+        offset+=1000;
+      }
+    } catch(error) {
+      xpReady=false;
+      failed.push('XP totals');
+    }
   }
+  if(xpReady){
   // Starter progression: 500 verified XP per level, with ranks at set levels.
   const xpPerLevel=500;
   const level=Math.floor(xp/xpPerLevel)+1;
@@ -166,13 +179,24 @@ async function loadProfile(user) {
   byId('level-progress-rail').setAttribute('aria-valuetext',intoLevel+' of '+xpPerLevel+' XP toward next level');
   byId('level-progress-next').textContent=toNextLevel.toLocaleString()+' XP TO LEVEL '+String(level+1).padStart(2,'0');
 
+  } else {
+    for(const id of ['operator-xp','operator-level','operator-rank','operator-profile-rank','operator-profile-level','operator-rank-level','level-progress-numbers','operator-next-rank','operator-next-rank-xp'])byId(id).textContent='—';
+    byId('level-progress-label').textContent='XP PROGRESSION UNAVAILABLE';
+    byId('level-progress-next').textContent='Retry to load your progression.';
+    byId('level-progress-fill').style.width='0%';
+    byId('level-progress-rail').setAttribute('aria-valuenow','0');
+    byId('operator-rank-emblem').dataset.rank='recruit';
+  }
+  if(xpRes.error)displayList('xp-history',[], 'XP activity is temporarily unavailable. Retry the connection.');
   const completed=new Set((completionsRes.data||[]).map(x=>x.mission_id));
+  const missionsReady=!missionsRes.error;
+  const completionsReady=!completionsRes.error;
   const published=missionsRes.data||[];
   const completedPublished=published.filter(m=>completed.has(m.id)).length;
-  byId('operator-mission-count').textContent=completedPublished+' / '+published.length;
-  byId('mission-available-count').textContent=String(published.length-completedPublished);
-  byId('mission-completed-count').textContent=String(completedPublished);
-  byId('mission-total-count').textContent=String(published.length);
+  byId('operator-mission-count').textContent=missionsReady&&completionsReady?completedPublished+' / '+published.length:'—';
+  byId('mission-available-count').textContent=missionsReady&&completionsReady?String(published.length-completedPublished):'—';
+  byId('mission-completed-count').textContent=missionsReady&&completionsReady?String(completedPublished):'—';
+  byId('mission-total-count').textContent=missionsReady?String(published.length):'—';
   missionEntries=published.map(m=>{
     const isDone=completed.has(m.id);
     const card=document.createElement('article');
@@ -187,10 +211,16 @@ async function loadProfile(user) {
     card.append(bar,description,statusLine);
     return {done:isDone,node:card};
   });
-  setMissionFilter(missionFilter);
+  if(!missionsReady || !completionsReady){
+    const list=byId('missions-list');
+    list.replaceChildren();
+    const warning=document.createElement('p');
+    warning.textContent=missionsReady?'Mission completion status is unavailable. Retry to load verified results.':'Missions are temporarily unavailable. Retry the connection.';
+    list.append(warning);
+  } else setMissionFilter(missionFilter);
   const earned=(badgesRes.data||[]).filter(x=>x.operations_badges?.visible);
-  byId('operator-badges').textContent=String(earned.length);
-  byId('achievement-collection-count').textContent=earned.length+' UNLOCKED';
+  byId('operator-badges').textContent=badgesRes.error?'—':String(earned.length);
+  byId('achievement-collection-count').textContent=badgesRes.error?'UNAVAILABLE':earned.length+' UNLOCKED';
   const featured=earned[0];
   byId('featured-badge').classList.toggle('is-empty',!featured);
   byId('featured-badge-name').textContent=featured?featured.operations_badges.name:'AWAITING FIRST BADGE';
@@ -205,14 +235,18 @@ async function loadProfile(user) {
     const sub=document.createElement('small');sub.textContent=(x.operations_badges.description||'Earned achievement')+' · '+formatDate(x.awarded_at);
     copy.append(heading,sub);item.append(mark,copy);return item;
   });
-  displayList('badges-list',badgeCards,'No achievements unlocked yet.');
+  displayList('badges-list',badgeCards,badgesRes.error?'Achievements are temporarily unavailable. Retry the connection.':'No achievements unlocked yet.');
   const events=[
     ...(xpRes.data||[]).map(x=>({kind:'xp',time:Date.parse(x.awarded_at)||0,label:'+'+x.amount+' XP',detail:(x.source||'Verified XP')+' · '+formatDate(x.awarded_at)})),
     ...earned.map(x=>({kind:'badge',time:Date.parse(x.awarded_at)||0,label:'Badge unlocked · '+x.operations_badges.name,detail:formatDate(x.awarded_at)}))
   ].sort((a,b)=>b.time-a.time).slice(0,25);
-  displayList('xp-history',events.map(x=>createTimelineItem(x.kind,x.label,x.detail)),
-    'No verified activity yet. Your earned XP and badges will appear here.');
-
+  if(!xpRes.error || !badgesRes.error){
+    displayList('xp-history',events.map(x=>createTimelineItem(x.kind,x.label,x.detail)),
+      'No verified activity yet. Your earned XP and badges will appear here.');
+  } else {
+    displayList('xp-history',[],'Activity is temporarily unavailable. Retry the connection.');
+  }
+  return [...new Set(failed)];
 }
 async function refresh() {
   status('Checking your Discord session…');
@@ -228,8 +262,8 @@ async function refresh() {
     authenticated=true;
     setAuthUI(true);
     status('Loading your operator dashboard…');
-    await timeout(loadProfile(user),13000,'Operator dashboard');
-    status('');
+    const issues=await timeout(loadProfile(user),30000,'Operator dashboard');
+    status(issues.length?'Some sections could not load: '+issues.join(', ')+'. Retry to refresh those sections.':'',issues.length>0);
   } catch(error) {
     // A failed activity query must not erase an authenticated user's identity.
     setAuthUI(authenticated);
@@ -273,7 +307,7 @@ byId('profile-form').addEventListener('submit',async event=>{
   byId('save-message').textContent='Saving your changes…';
   byId('save-message').classList.remove('is-success','is-error');
   try {
-    const {data:{user},error:authError}=await supabase.auth.getUser();
+    const {data:{user},error:authError}=await timeout(supabase.auth.getUser(),8500,'Account verification');
     if(authError||!user)throw authError||new Error('Please sign in again.');
     const {data:updated,error}=await timeout(supabase.from('operator_profiles')
       .update({display_name:name,profile_public:byId('profile-public').checked})
