@@ -2160,3 +2160,37 @@ body{background:#100d16;color:var(--text)}
 @media(max-width:390px){
  .personnel-sitehead .personnel-wordmark .brand-lockup strong{font-size:29px}
 }
+
+/* Global main-site wordmark subtitle — GAMING // COMMUNITY */
+.sitehead.personnel-sitehead .personnel-wordmark .brand-lockup{
+ display:inline-flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:center;
+ gap:4px;
+ white-space:nowrap;
+}
+.sitehead.personnel-sitehead .personnel-wordmark .brand-lockup strong{
+ display:inline-flex;
+ gap:0;
+ flex-shrink:0;
+}
+.sitehead.personnel-sitehead .personnel-wordmark .brand-lockup .personnel-wordmark-tagline{
+ display:block;
+ color:#ffb680;
+ font:700 9px/1.1 'Roboto Mono',monospace;
+ letter-spacing:1.45px;
+ text-transform:uppercase;
+ white-space:nowrap;
+}
+@media(max-width:750px){
+ .sitehead.personnel-sitehead .personnel-wordmark .brand-lockup{gap:3px}
+ .sitehead.personnel-sitehead .personnel-wordmark .brand-lockup .personnel-wordmark-tagline{
+  display:block;font-size:8px;letter-spacing:1.05px;
+ }
+}
+@media(max-width:390px){
+ .sitehead.personnel-sitehead .personnel-wordmark .brand-lockup .personnel-wordmark-tagline{
+  font-size:7px;letter-spacing:.85px;
+ }
+}
