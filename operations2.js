@@ -156,6 +156,34 @@ async function showChronicle(){
   $('ops2-active-weeks').textContent=String(streak).padStart(2,'0');
  }catch(error){$('ops2-active-weeks').textContent='—';}
 }
+
+function bindPublisher(){
+ const form=$('ops2-publish-form');
+ if(!form || form.dataset.ops2Bound || state.user.app_metadata?.operations_admin!==true)return;
+ form.dataset.ops2Bound='1';
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  const button=form.querySelector('button[type="submit"]');
+  const data=new FormData(form);
+  button.disabled=true;tell('ops2-admin-status','Publishing your new mission…');
+  try{
+   const expiry=String(data.get('expires')||'');
+   const expires=expiry?new Date(expiry).toISOString():null;
+   const response=await state.supabase.rpc('op2_admin_publish_mission',{
+    p_title:String(data.get('title')||'').trim(),
+    p_description:String(data.get('description')||'').trim(),
+    p_xp:Number(data.get('xp')),
+    p_cadence:String(data.get('cadence')||'event'),
+    p_category:String(data.get('category')||'community'),
+    p_expires:expires
+   });
+   requireData(response);
+   form.reset();
+   tell('ops2-admin-status','Mission published. Reload the page to see it on the Mission Board.');
+  }catch(error){tell('ops2-admin-status',fail(error),true);}
+  finally{button.disabled=false;}
+ });
+}
 async function showAdmin(){
  const root=$('ops2-admin');if(state.user.app_metadata?.operations_admin!==true)return;
  root.hidden=false;
@@ -191,6 +219,7 @@ export async function renderOperations2(input){
  const title=$('ops2-callsign-title');
  if(title)title.textContent='VERIFIED OPERATOR';
  missionClicks();
+ bindPublisher();
  const toggles=document.querySelectorAll('[data-leader-period]');
  toggles.forEach(btn=>{
   if(btn.dataset.ops2Bound)return;
