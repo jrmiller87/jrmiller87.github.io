@@ -55,7 +55,7 @@ const setMissionFilter = filter => {
   displayList('missions-list',visible.map(entry=>entry.node),
     missionEntries.length===0?'No published missions yet.':
     filter==='completed'?'No completed missions yet.':
-    filter==='available'?'You're all caught up. No available missions right now.':'No missions to show.');
+    filter==='available'?"You're all caught up. No available missions right now.":'No missions to show.');
 };
 document.querySelectorAll('[data-mission-filter]').forEach(button=>{
   button.addEventListener('click',()=>setMissionFilter(button.dataset.missionFilter));
