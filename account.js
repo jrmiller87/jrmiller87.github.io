@@ -216,16 +216,24 @@ async function loadProfile(user) {
 }
 async function refresh() {
   status('Checking your Discord session…');
+  let authenticated=false;
   try {
-    const {data:{user},error} = await timeout(supabase.auth.getUser(), 9000, 'Account session check');
+    // A local session check avoids a network request for signed-out visitors.
+    const {data:{session},error:sessionError}=await timeout(supabase.auth.getSession(),6000,'Session recovery');
+    if(sessionError)throw sessionError;
+    if(!session){setAuthUI(false);status('');return;}
+    const {data:{user},error}=await timeout(supabase.auth.getUser(),9000,'Account verification');
     if(error)throw error;
-    if(!user){setAuthUI(false);status('');return;}
+    if(!user){setAuthUI(false);status('Your Discord session expired. Sign in again.',true);return;}
+    authenticated=true;
     setAuthUI(true);
-    await loadProfile(user);
+    status('Loading your operator dashboard…');
+    await timeout(loadProfile(user),13000,'Operator dashboard');
     status('');
   } catch(error) {
-    setAuthUI(false);
-    status(safeMessage(error),true);
+    // A failed activity query must not erase an authenticated user's identity.
+    setAuthUI(authenticated);
+    status((authenticated?'Your dashboard could not finish loading. ':'Account connection failed. ')+safeMessage(error),true);
   }
 }
 
@@ -245,7 +253,7 @@ byId('signout').addEventListener('click',async()=>{
   const button=byId('signout');
   button.disabled=true;
   try {
-    const {error}=await supabase.auth.signOut();
+    const {error}=await timeout(supabase.auth.signOut(),9000,'Sign out');
     if(error)throw error;
     setAuthUI(false);status('');
   } catch(error){status(safeMessage(error),true);}
@@ -255,15 +263,23 @@ byId('profile-form').addEventListener('submit',async event=>{
   event.preventDefault();
   const button=byId('profile-form').querySelector('button[type="submit"]');
   const name=byId('display-name').value.trim();
-  if(!name||name.length>40){byId('save-message').textContent='Display names must contain 1–40 characters.';return;}
+  if(!name||name.length>40){
+    byId('save-message').textContent='Display names must contain 1–40 characters.';
+    byId('save-message').classList.remove('is-success');
+    byId('save-message').classList.add('is-error');
+    return;
+  }
   button.disabled=true;button.textContent='SAVING…';
   byId('save-message').textContent='Saving your changes…';
   byId('save-message').classList.remove('is-success','is-error');
   try {
     const {data:{user},error:authError}=await supabase.auth.getUser();
     if(authError||!user)throw authError||new Error('Please sign in again.');
-    const {error}=await supabase.from('operator_profiles').update({display_name:name,profile_public:byId('profile-public').checked}).eq('user_id',user.id);
+    const {data:updated,error}=await timeout(supabase.from('operator_profiles')
+      .update({display_name:name,profile_public:byId('profile-public').checked})
+      .eq('user_id',user.id).select('user_id').single(),9000,'Profile save');
     if(error)throw error;
+    if(!updated)throw new Error('Your changes were not saved. Try again.');
     byId('operator-name').textContent=name;
     byId('operator-avatar').textContent=name.slice(0,2).toUpperCase();
     byId('save-message').textContent='Profile saved successfully.';
@@ -280,14 +296,17 @@ async function startPersonnel() {
       auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
     });
     supabase.auth.onAuthStateChange(event=>{
-      if(event==='SIGNED_OUT'){setAuthUI(false);status('');}
-      // Avoid querying Supabase inside this synchronous auth callback.
+      if(event==='SIGNED_OUT'){
+        setAuthUI(false);
+        status('');
+      }
+      // Avoid database calls directly inside the auth state callback.
     });
     await refresh();
   } catch(error) {
     setAuthUI(false);
     const message=safeMessage(error);
-    status('Could not connect to Personnel. '+message,true);
+    status('Could not load secure sign-in. '+message,true);
     // The sign-in button should not appear usable if its SDK never loaded.
     byId('discord-signin').disabled=!supabase;
   }
