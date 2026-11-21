@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0a16"><meta name="description" content="No Dice Personnel — sign in with Discord to view your operator profile, XP, missions and achievements."><title>Personnel · No Dice</title><link rel="stylesheet" href="./no-dice.css?v=20261120-avatar-align"><link rel="icon" type="image/svg+xml" href="./no-dice-icon.svg"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0a16"><meta name="description" content="No Dice Personnel — sign in with Discord to view your operator profile, XP, missions and achievements."><title>Personnel · No Dice</title><link rel="stylesheet" href="./no-dice.css?v=20261120-ops2"><link rel="icon" type="image/svg+xml" href="./no-dice-icon.svg"></head>
 <body><header class="sitehead personnel-sitehead"><div class="wrap headinner"><a class="brand personnel-wordmark" href="./" aria-label="No Dice home"><span class="brand-lockup"><strong><span class="personnel-wordmark-no">NO</span><em class="personnel-wordmark-dice">DICE</em></strong><small class="personnel-wordmark-tagline">GAMING // COMMUNITY</small></span></a><button class="mobile-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false">Menu ☰</button><nav class="links" id="main-nav" aria-label="Main navigation"><a href="./">Home</a><a href="./lounge.html">The Lounge</a><a class="nexus-nav" href="./nexus/" aria-label="Launch Character Nexus, a separate No Dice experience"><span class="nexus-nav-copy"><strong class="nexus-nav-title">✦ CHARACTER NEXUS <span aria-hidden="true">↗</span></strong><span class="nexus-nav-subtitle">SEPARATE EXPERIENCE</span></span></a><a href="./studio.html">The Studio</a><a href="./community.html">Community</a><a href="./projects.html">Projects</a><a class="personnel-nav active" aria-current="page" href="./account.html">Personnel</a><a class="join discord-nav" href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></nav></div></header>
 <main class="personnel-main nd-interior nd-personnel"><section class="personnel-hero personnel-home-hero" aria-labelledby="personnel-main-title"><div class="wrap">
 <div class="personnel-home-signal"><span class="personnel-live-dot" aria-hidden="true"></span><span>NO DICE // PERSONNEL</span><span class="personnel-home-signal-rule" aria-hidden="true"></span><span class="personnel-home-signal-end">OPERATIONS / 006</span></div>
@@ -120,6 +120,41 @@
   </section>
   </div>
 
+
+<div class="ops2-heading"><span>NO DICE // OPERATIONS 2.0</span><h2>THE HOUSE <em>NEVER FOLDS.</em></h2><p>Verified challenges, operator standings, and rewards earned through actual community participation.</p></div>
+<div class="ops2-grid" id="operations-two" aria-label="Operations 2.0">
+ <section class="ops2-panel" id="operator-leaderboard" aria-labelledby="ops2-leader-title">
+  <div class="ops2-panel-head"><span>COMPETITION / 07</span><h3 id="ops2-leader-title">THE <em>LEADERBOARD.</em></h3><p>Only operators who enable public profiles appear here.</p></div>
+  <div class="ops2-controls"><button type="button" class="ops2-button is-current" data-leader-period="month" aria-pressed="true">THIS MONTH</button><button type="button" class="ops2-button" data-leader-period="all" aria-pressed="false">ALL TIME</button></div>
+  <ol class="ops2-ranking" id="ops2-ranking"><li>Loading rankings…</li></ol>
+ </section>
+ <section class="ops2-panel" id="operator-rewards" aria-labelledby="ops2-reward-title">
+  <div class="ops2-panel-head"><span>CUSTOMIZE / 08</span><h3 id="ops2-reward-title">REWARD <em>VAULT.</em></h3><p>Unlock cosmetic titles and frames with verified XP. No points are spent.</p></div>
+  <div class="ops2-reward-list" id="ops2-rewards"><p>Loading rewards…</p></div>
+  <p class="ops2-message" id="ops2-reward-status" role="status" aria-live="polite"></p>
+ </section>
+ <section class="ops2-panel" id="operator-crew" aria-labelledby="ops2-crew-title">
+  <div class="ops2-panel-head"><span>TOGETHER / 09</span><h3 id="ops2-crew-title">CREW <em>OBJECTIVE.</em></h3><p>Every approved community mission submission helps push the crew forward.</p></div>
+  <div class="ops2-crew-count" id="ops2-crew-count">— / 10 <small>APPROVED THIS MONTH</small></div>
+  <div class="ops2-track"><span id="ops2-crew-fill" style="width:0%"></span></div>
+  <p class="ops2-caption">Shared goal: 10 verified submissions per month. No XP is granted for opening this dashboard.</p>
+ </section>
+ <section class="ops2-panel" id="operator-chronicle" aria-labelledby="ops2-chronicle-title">
+  <div class="ops2-panel-head"><span>YOUR LEGACY / 10</span><h3 id="ops2-chronicle-title">OPERATOR <em>CHRONICLE.</em></h3><p>Your recorded participation and weekly activity, based only on verified XP.</p></div>
+  <strong class="ops2-chronicle-count" id="ops2-active-weeks">—</strong><span class="ops2-caption">CONSECUTIVE ACTIVE WEEKS</span>
+  <p class="ops2-caption">Participation counts only when staff award verified XP. Taking a break is always okay.</p>
+ </section>
+</div>
+<section class="ops2-panel ops2-claims-panel" aria-labelledby="ops2-claims-title">
+ <div class="ops2-panel-head"><span>VERIFICATION / 11</span><h3 id="ops2-claims-title">MISSION <em>SUBMISSIONS.</em></h3><p>Request a mission review from the Mission Board above. Submission never awards XP automatically.</p></div>
+ <p class="ops2-message" id="ops2-claim-status" role="status" aria-live="polite"></p>
+ <div id="ops2-my-claims" class="ops2-submissions"><p>Loading your submissions…</p></div>
+</section>
+<section class="ops2-panel ops2-admin" id="ops2-admin" hidden aria-labelledby="ops2-admin-title">
+ <div class="ops2-panel-head"><span>STAFF ACCESS / 12</span><h3 id="ops2-admin-title">COMMAND <em>REVIEW.</em></h3><p>Approve a verified mission to award XP, or reject it without a reward.</p></div>
+ <p class="ops2-message" id="ops2-admin-status" role="status" aria-live="polite"></p>
+ <div class="ops2-submissions" id="ops2-review-queue">Loading review queue…</div>
+</section>
 </div>
 <div class="personnel-bottom"><span>NO DICE // YOUR COMMUNITY HQ</span><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD ↗</a></div>
 </section></main><footer class="wrap footer"><div><strong>NO DICE</strong> · Gaming. Friends. Stories. Chaos.</div><div><a href="https://discord.gg/Ym2QfJcg9Z" target="_blank" rel="noopener noreferrer" class="footer-discord">Join Discord ↗</a> · <a href="./nexus/" style="color:#ebb2ff">Character Nexus ↗</a></div></footer><script>const btn=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));</script><script>
