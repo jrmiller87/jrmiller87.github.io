@@ -208,6 +208,7 @@ async function loadProfile(user) {
     const card=document.createElement('article');
     card.className='personnel-mission-item'+(isDone?' is-complete':' is-awaiting');
     card.dataset.missionId=m.id;
+    card.dataset.missionCadence=m.cadence||'once';
     const bar=document.createElement('div');bar.className='personnel-mission-top';
     const title=document.createElement('strong');title.textContent=m.title;
     const reward=document.createElement('span');reward.className='personnel-mission-reward';reward.textContent='+'+m.xp_reward+' XP';
@@ -265,7 +266,7 @@ async function loadProfile(user) {
   }
   // Operations 2.0 is optional to the core dashboard and can fail independently.
   try {
-    const extra=await import('./operations2.js?v=20261120-ops2');
+    const extra=await import('./operations2.js?v=20261120-ops2-r2');
     await timeout(extra.renderOperations2({supabase,user,profile,xp:xpReady?xp:null}),12000,'Operations 2.0');
   } catch(extraError) {
     const node=byId('ops2-claim-status');
