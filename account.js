@@ -45,6 +45,7 @@ let missionEntries=[];
 let missionFilter='available';
 const setMissionFilter = filter => {
   if(!['available','completed','all'].includes(filter))return;
+  if([...document.querySelectorAll('[data-mission-filter]')].some(button=>button.disabled))return;
   missionFilter=filter;
   document.querySelectorAll('[data-mission-filter]').forEach(button=>{
     const active=button.dataset.missionFilter===filter;
@@ -191,6 +192,10 @@ async function loadProfile(user) {
   const completed=new Set((completionsRes.data||[]).map(x=>x.mission_id));
   const missionsReady=!missionsRes.error;
   const completionsReady=!completionsRes.error;
+  document.querySelectorAll('[data-mission-filter]').forEach(button=>{
+    button.disabled=!missionsReady||!completionsReady;
+    button.title=button.disabled?'Mission data temporarily unavailable':'';
+  });
   const published=missionsRes.data||[];
   const completedPublished=published.filter(m=>completed.has(m.id)).length;
   byId('operator-mission-count').textContent=missionsReady&&completionsReady?completedPublished+' / '+published.length:'—';
@@ -223,8 +228,9 @@ async function loadProfile(user) {
   byId('achievement-collection-count').textContent=badgesRes.error?'UNAVAILABLE':earned.length+' UNLOCKED';
   const featured=earned[0];
   byId('featured-badge').classList.toggle('is-empty',!featured);
-  byId('featured-badge-name').textContent=featured?featured.operations_badges.name:'AWAITING FIRST BADGE';
-  byId('featured-badge-detail').textContent=featured?
+  byId('featured-badge-name').textContent=badgesRes.error?'ACHIEVEMENTS UNAVAILABLE':featured?featured.operations_badges.name:'AWAITING FIRST BADGE';
+  byId('featured-badge-detail').textContent=badgesRes.error?
+    'Badge collection could not be loaded. Retry the connection.':featured?
     (featured.operations_badges.description||'Earned achievement')+' · '+formatDate(featured.awarded_at):
     'Complete verified activities to unlock achievements.';
   const badgeCards=earned.map(x=>{
