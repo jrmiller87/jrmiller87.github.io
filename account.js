@@ -57,6 +57,7 @@ const setMissionFilter = filter => {
     missionEntries.length===0?'No published missions yet.':
     filter==='completed'?'No completed missions yet.':
     filter==='available'?"You're all caught up. No available missions right now.":'No missions to show.');
+  window.noDiceRefreshMissionState?.();
 };
 document.querySelectorAll('[data-mission-filter]').forEach(button=>{
   button.addEventListener('click',()=>setMissionFilter(button.dataset.missionFilter));
